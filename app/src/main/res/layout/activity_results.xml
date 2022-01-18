@@ -20,6 +20,7 @@
             android:layout_weight="1" />
 
         <ListView
+            android:id="@+id/experimentsLV"
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="9" />
