@@ -14,6 +14,7 @@
         <activity android:name=".FreeFallData" />
         <activity android:name=".FreeFallActivity" />
         <activity android:name=".MenuActivity" />
+        <activity android:name=".ResultsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
