@@ -88,13 +88,13 @@ public class FreeFallResults extends AppCompatActivity
 
             String v=String.valueOf(vList[i-1]);
             dot=v.indexOf('.');
-            if(v.length()>dot+digitsAfterDot+1)
+            if(v.length()>dot+digitsAfterDot+3 && !v.contains("E"))
             {
-                v=v.substring(0,dot+digitsAfterDot+1);
+                v=v.substring(0,dot+digitsAfterDot+3);
             }
             else
             {
-                while(h.length()<=dot+digitsAfterDot+1)
+                while(v.length()<=dot+digitsAfterDot+1)
                 {
                     v+=" ";
                 }

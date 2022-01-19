@@ -104,4 +104,12 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             startActivity(si);
         }
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }

@@ -78,12 +78,15 @@ public class MenuActivity extends AppCompatActivity
 
     public void logOut(View view)
     {
-        /*
         FirebaseAuth.getInstance().signOut();
         FBRef.myRef=null;
 
         Intent si=new Intent(this, MainActivity.class);
-        startActivity(si);*/
+        startActivity(si);
+    }
+
+    public void results(View view)
+    {
         Intent si=new Intent(this, ResultsActivity.class);
         startActivity(si);
     }

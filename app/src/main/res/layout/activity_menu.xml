@@ -75,6 +75,24 @@
             android:layout_weight="1" />
 
         <Button
+            android:id="@+id/resultsButton"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="4"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:onClick="results"
+            android:text="Results"
+            android:textColor="#06073E"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1" />
+
+        <Button
             android:id="@+id/creditsButton"
             android:layout_width="match_parent"
             android:layout_height="0px"
