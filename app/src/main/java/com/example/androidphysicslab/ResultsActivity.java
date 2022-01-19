@@ -20,8 +20,9 @@ import java.util.ArrayList;
 public class ResultsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
 {
     ArrayList<String> experimentsList;
-    ArrayList<Experiment> resultsList;
+    ArrayList<FreeFallObject> freeFallList;
     ListView experimentsLV;
+    int freeFallStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,52 +31,30 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_results);
 
         experimentsList=new ArrayList<>();
-        resultsList=new ArrayList<>();
+        freeFallList=new ArrayList<>();
         experimentsLV=(ListView)findViewById(R.id.experimentsLV);
         experimentsLV.setOnItemClickListener(this);
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-        ValueEventListener stuListener = new ValueEventListener()
+        FBRef.myRef.child("Free Fall").addListenerForSingleValueEvent(new ValueEventListener()
         {
-
-            /**
-             * This method will be called with a snapshot of the data at this location. It will also be called
-             * each time that data changes.
-             *
-             * @param snapshot The current data at the location
-             */
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
+            public void onDataChange(@NonNull DataSnapshot dS)
             {
-                experimentsList.clear();
-                for (DataSnapshot data : snapshot.getChildren())
+                freeFallStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
                 {
-                    Log.d("TAG","Added an experiment");
-                    String name=data.getKey();
                     experimentsList.add(data.getKey());
-
-                    resultsList.add(data.getValue(Experiment.class));
+                    freeFallList.add(data.getValue(FreeFallObject.class));
                 }
-
                 displayList();
             }
-
-            /**
-             * This method will be triggered in the event that this listener either failed at the server, or
-             * is removed as a result of the security and Firebase Database rules. For more information on
-             * securing your data, see: <a
-             * href="https://firebase.google.com/docs/database/security/quickstart" target="_blank"> Security
-             * Quickstart</a>
-             *
-             * @param error A description of the error that occurred
-             */
             @Override
-            public void onCancelled(@NonNull DatabaseError error)
+            public void onCancelled(@NonNull DatabaseError databaseError)
             {
 
             }
-        };
-        FBRef.myRef.addValueEventListener(stuListener);
+        });
     }
 
     public void displayList()
@@ -103,7 +82,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
     {
         if(experimentsList.get(position).startsWith("Free Fall"))
         {
-            FreeFallObject results=(FreeFallObject)(resultsList.get(position));
+            FreeFallObject results=freeFallList.get(position-freeFallStart);
             double[] hList=new double[results.getHList().size()];
             double[] vList=new double[results.getVList().size()];
 

@@ -14,6 +14,8 @@ public class FreeFallObject extends Experiment
         this.name=name;
     }
 
+    public FreeFallObject(){}
+
     public void setHList(ArrayList<Double> hList)
     {
         this.hList=hList;
