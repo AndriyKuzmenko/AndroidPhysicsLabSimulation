@@ -59,7 +59,7 @@ public class FreeFallActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        menu.add("Results");
+        menu.add(Languages.results);
 
         return true;
     }
