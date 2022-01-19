@@ -42,6 +42,11 @@ public class Languages
     public static String emailAddress;
     public static String password;
     public static String signIn;
+    public static String spring;
+    public static String results;
+    public static String credits;
+    public static String logOut;
+    public static String springConstant;
 
     public static void toEnglish()
     {
@@ -84,6 +89,11 @@ public class Languages
         emailAddress="Email address";
         password="Password";
         signIn="Sign In";
+        spring="Spring";
+        results="Results";
+        credits="Credits";
+        logOut="Log out";
+        springConstant="k (N/m)";
     }
 
     public static void toHebrew()
@@ -127,5 +137,10 @@ public class Languages
         emailAddress="כתובת אימייל";
         password="סיסמא";
         signIn="התחברות";
+        spring="קפיץ";
+        results="תוצאות";
+        credits="קרדיטים";
+        logOut="התנתקות";
+        springConstant="קבוע הקפיץ (ניוטון/מטר)";
     }
 }

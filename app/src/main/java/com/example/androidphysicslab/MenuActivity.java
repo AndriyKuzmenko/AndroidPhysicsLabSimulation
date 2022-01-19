@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity
 {
-    Button freeFallButton;
+    Button freeFallButton, springButton, resultsButton, creditsButton, logOutButton;
     TextView emailTV;
 
     @Override
@@ -24,6 +24,10 @@ public class MenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_menu);
 
         freeFallButton=(Button)findViewById(R.id.freeFallButton);
+        springButton=(Button)findViewById(R.id.springButton);
+        resultsButton=(Button)findViewById(R.id.resultsButton);
+        creditsButton=(Button)findViewById(R.id.creditsButton);
+        logOutButton=(Button)findViewById(R.id.logOutButton);
         emailTV=(TextView)findViewById(R.id.emailTV);
 
         changeLanguage();
@@ -66,6 +70,10 @@ public class MenuActivity extends AppCompatActivity
     public void changeLanguage()
     {
         freeFallButton.setText(Languages.freeFall);
+        springButton.setText(Languages.spring);
+        resultsButton.setText(Languages.results);
+        creditsButton.setText(Languages.credits);
+        logOutButton.setText(Languages.logOut);
     }
 
     @Override

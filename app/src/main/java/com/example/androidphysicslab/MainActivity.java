@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity
         logInButton=(Button)findViewById(R.id.logInButton);
         signInButton=(Button)findViewById(R.id.signInButton);
 
-        Languages.toEnglish();
+        if(Languages.signIn==null)
+        {
+            Languages.toEnglish();
+        }
         changeLanguage();
     }
 
