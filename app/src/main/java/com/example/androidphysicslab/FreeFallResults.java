@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -18,8 +19,11 @@ import java.util.ArrayList;
 public class FreeFallResults extends AppCompatActivity
 {
     ListView results;
-    double[] hList,vList;
+    TextView mgView;
     Button plotsButton,menuButton;
+
+    double[] hList,vList;
+    double m,g;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,11 +36,15 @@ public class FreeFallResults extends AppCompatActivity
         results=(ListView)findViewById(R.id.results);
         plotsButton=(Button)findViewById(R.id.plotsButton);
         menuButton=(Button)findViewById(R.id.menuButton);
+        mgView=(TextView)findViewById(R.id.mgView);
         changeLanguage();
 
         Intent gi=getIntent();
         hList=gi.getDoubleArrayExtra("hList");
         vList=gi.getDoubleArrayExtra("vList");
+        m=gi.getDoubleExtra("m",0);
+        g=gi.getDoubleExtra("g",0);
+        mgView.setText("m="+m+" kg     "+"g="+g+"m/(sec^2)");
 
         Log.w("Tag",String.valueOf(hList==null));
         Log.w("TAG"," l="+hList.length);
@@ -107,6 +115,8 @@ public class FreeFallResults extends AppCompatActivity
 
         si.putExtra("hList",hList);
         si.putExtra("vList",vList);
+        si.putExtra("g",g);
+        si.putExtra("m",m);
 
         startActivity(si);
     }

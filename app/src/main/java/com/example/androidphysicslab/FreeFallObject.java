@@ -6,12 +6,15 @@ public class FreeFallObject extends Experiment
 {
     private ArrayList<Double> hList;
     private ArrayList<Double> vList;
+    private double m,g;
 
-    public FreeFallObject(ArrayList<Double> hList, ArrayList<Double> vList, String name)
+    public FreeFallObject(ArrayList<Double> hList, ArrayList<Double> vList, String name, double g, double m)
     {
         this.hList=hList;
         this.vList=vList;
         this.name=name;
+        this.m=m;
+        this.g=g;
     }
 
     public FreeFallObject(){}
@@ -26,6 +29,15 @@ public class FreeFallObject extends Experiment
         this.vList=vList;
     }
 
+    public void setM(double m)
+    {
+        this.m=m;
+    }
+
+    public void setG(double m)
+    {
+        this.g=g;
+    }
 
     public ArrayList<Double> getHList()
     {
@@ -37,4 +49,13 @@ public class FreeFallObject extends Experiment
         return vList;
     }
 
+    public double getM()
+    {
+        return m;
+    }
+
+    public double getG()
+    {
+        return g;
+    }
 }

@@ -24,6 +24,7 @@ public class FreeFallPlots extends AppCompatActivity
     DataPoint[] vPlot,hPlot;
     TextView heightTime, velocityTime;
     Button backButton;
+    double g,m;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +41,9 @@ public class FreeFallPlots extends AppCompatActivity
         Intent gi=getIntent();
         hList=gi.getDoubleArrayExtra("hList");
         vList=gi.getDoubleArrayExtra("vList");
+        g=gi.getDoubleExtra("g",0);
+        m=gi.getDoubleExtra("m",0);
+
         vPlot=new DataPoint[vList.length];
         hPlot=new DataPoint[vList.length];
 
@@ -79,6 +83,8 @@ public class FreeFallPlots extends AppCompatActivity
 
         si.putExtra("hList",hList);
         si.putExtra("vList",vList);
+        si.putExtra("g",g);
+        si.putExtra("m",m);
 
         startActivity(si);
     }

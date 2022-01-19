@@ -80,10 +80,12 @@ public class FreeFallActivity extends AppCompatActivity
                 vList[i]=drawingView.vList.get(i);
             }
 
-            saveResults(new FreeFallObject(drawingView.hList,drawingView.vList,drawingView.name));
+            saveResults(new FreeFallObject(drawingView.hList,drawingView.vList,drawingView.name,gravity,mass));
 
             si.putExtra("hList",hList);
             si.putExtra("vList",vList);
+            si.putExtra("g",gravity);
+            si.putExtra("m",mass);
             startActivity(si);
         }
 

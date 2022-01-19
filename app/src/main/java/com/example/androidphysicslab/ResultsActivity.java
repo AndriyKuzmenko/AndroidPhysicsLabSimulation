@@ -46,6 +46,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                 {
                     experimentsList.add(data.getKey());
                     freeFallList.add(data.getValue(FreeFallObject.class));
+                    Log.d("g=",freeFallList.get(freeFallList.size()-1).getG()+"");
                 }
                 displayList();
             }
@@ -92,9 +93,14 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                 vList[i]=results.getVList().get(i);
             }
 
+            Log.d("g=",""+results.getG());
+            Log.d("m=",""+results.getM());
+
             Intent si=new Intent(this,FreeFallResults.class);
             si.putExtra("hList",hList);
             si.putExtra("vList",vList);
+            si.putExtra("m",results.getM());
+            si.putExtra("g",results.getG());
             startActivity(si);
         }
     }
