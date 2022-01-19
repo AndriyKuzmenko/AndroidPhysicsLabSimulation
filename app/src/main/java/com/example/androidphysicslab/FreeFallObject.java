@@ -6,7 +6,6 @@ public class FreeFallObject extends Experiment
 {
     private ArrayList<Double> hList;
     private ArrayList<Double> vList;
-    private String name;
 
     public FreeFallObject(ArrayList<Double> hList, ArrayList<Double> vList, String name)
     {
@@ -25,10 +24,6 @@ public class FreeFallObject extends Experiment
         this.vList=vList;
     }
 
-    public void setName(String name)
-    {
-        this.name=name;
-    }
 
     public ArrayList<Double> getHList()
     {
@@ -40,8 +35,4 @@ public class FreeFallObject extends Experiment
         return vList;
     }
 
-    public String getName()
-    {
-        return name;
-    }
 }
