@@ -66,6 +66,22 @@
                     android:textColor="#06073E"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10px" />
+
+                <Button
+                    android:id="@+id/springButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:onClick="spring"
+                    android:text="Spring"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </ScrollView>
 

@@ -90,4 +90,9 @@ public class MenuActivity extends AppCompatActivity
         Intent si=new Intent(this, ResultsActivity.class);
         startActivity(si);
     }
+
+    public void spring(View view)
+    {
+
+    }
 }
