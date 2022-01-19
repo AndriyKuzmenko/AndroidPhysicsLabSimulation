@@ -93,6 +93,7 @@ public class MenuActivity extends AppCompatActivity
 
     public void spring(View view)
     {
-
+        Intent si=new Intent(this, SpringData.class);
+        startActivity(si);
     }
 }
