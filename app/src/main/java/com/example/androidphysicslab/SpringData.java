@@ -38,6 +38,7 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
         kET=(EditText)findViewById(R.id.kET);
 
         planet=0;
+        planetSpringSpinner.setOnItemSelectedListener(this);
 
         changeLanguage();
     }
@@ -149,6 +150,7 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
         planet=position;
+        Log.d("planet=",""+planet);
     }
 
     /**
