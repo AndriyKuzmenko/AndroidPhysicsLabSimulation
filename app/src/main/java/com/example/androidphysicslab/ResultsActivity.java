@@ -21,8 +21,9 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
 {
     ArrayList<String> experimentsList;
     ArrayList<FreeFallObject> freeFallList;
+    ArrayList<SpringObject> springList;
     ListView experimentsLV;
-    int freeFallStart;
+    int freeFallStart,springStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,6 +33,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
 
         experimentsList=new ArrayList<>();
         freeFallList=new ArrayList<>();
+        springList=new ArrayList<>();
         experimentsLV=(ListView)findViewById(R.id.experimentsLV);
         experimentsLV.setOnItemClickListener(this);
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -44,9 +46,32 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                 freeFallStart=experimentsList.size();
                 for(DataSnapshot data : dS.getChildren())
                 {
-                    experimentsList.add(data.getKey());
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
                     freeFallList.add(data.getValue(FreeFallObject.class));
                     Log.d("g=",freeFallList.get(freeFallList.size()-1).getG()+"");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+
+        FBRef.myRef.child("Spring").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                springStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    springList.add(data.getValue(SpringObject.class));
                 }
                 displayList();
             }
@@ -101,6 +126,32 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("vList",vList);
             si.putExtra("m",results.getM());
             si.putExtra("g",results.getG());
+            startActivity(si);
+        }
+        else if(experimentsList.get(position).startsWith("Spring"))
+        {
+            SpringObject results=springList.get(position-springStart);
+            double[] xList=new double[results.getVList().size()];
+            double[] vList=new double[results.getVList().size()];
+            double[] aList=new double[results.getVList().size()];
+
+            for(int i=0; i<xList.length; i++)
+            {
+                xList[i]=results.getXList().get(i);
+                vList[i]=results.getVList().get(i);
+                aList[i]=results.getAList().get(i);
+            }
+
+            Log.d("g=",""+results.getG());
+            Log.d("m=",""+results.getM());
+
+            Intent si=new Intent(this,SpringResults.class);
+            si.putExtra("xList",xList);
+            si.putExtra("vList",vList);
+            si.putExtra("aList",aList);
+            si.putExtra("m",results.getM());
+            si.putExtra("g",results.getG());
+            si.putExtra("k",results.getK());
             startActivity(si);
         }
     }
