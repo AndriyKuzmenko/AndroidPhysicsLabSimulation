@@ -89,7 +89,6 @@ class SpringView extends SurfaceView
                     {
                         canvas = surfaceHolder.lockCanvas();
                         canvas.drawColor(Color.YELLOW);
-                        paint.setColor(Color.RED);
                         started=true;
 
                         int difference=(int)(deltaX-ceiling.bottom)/14;
@@ -97,14 +96,17 @@ class SpringView extends SurfaceView
                         int x2=right;
                         int y1=ceiling.bottom;
                         int y2=ceiling.bottom+difference;
-                        paint.setStrokeWidth(3);
+                        paint.setStrokeWidth(5);
+                        paint.setColor(Color.BLUE);
+                        canvas.drawRect(ceiling,paint);
+                        paint.setColor(Color.RED);
 
                         for(int i=0;i<14;i++)
                         {
                             canvas.drawLine(x1,y1,x2,y2,paint);
                             y1+=difference;
                             y2+=difference;
-                            if(i==5)
+                            if(i==12)
                             {
                                 x1=right;
                                 x2=middle;
