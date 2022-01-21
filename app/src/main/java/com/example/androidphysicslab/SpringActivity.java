@@ -66,11 +66,11 @@ class SpringView extends SurfaceView
         this.g=g;
         this.k=k;
         this.pixelsPerMeter=pixelsPerMeter;
-        ceiling=new Rect(0,0,Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels/10);
-        deltaX=ceiling.bottom+35;
+        ceiling=new Rect(0,0,Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels/20);
+        deltaX=ceiling.bottom+100;
         middle=Resources.getSystem().getDisplayMetrics().widthPixels/2;
-        left=(int)(middle*0.7);
-        right=(int)(middle*1.3);
+        left=(int)(middle*0.8);
+        right=(int)(middle*1.2);
         started=false;
     }
 
@@ -92,20 +92,21 @@ class SpringView extends SurfaceView
                         paint.setColor(Color.RED);
                         started=true;
 
-                        int difference=(int)(deltaX-ceiling.bottom)/7;
+                        int difference=(int)(deltaX-ceiling.bottom)/14;
                         int x1=middle;
                         int x2=right;
                         int y1=ceiling.bottom;
                         int y2=ceiling.bottom+difference;
+                        paint.setStrokeWidth(3);
 
-                        for(int i=0;i<7;i++)
+                        for(int i=0;i<14;i++)
                         {
                             canvas.drawLine(x1,y1,x2,y2,paint);
                             y1+=difference;
                             y2+=difference;
-                            if(i==6)
+                            if(i==5)
                             {
-                                x1=left;
+                                x1=right;
                                 x2=middle;
                             }
                             else if(i%2==0)
@@ -119,6 +120,7 @@ class SpringView extends SurfaceView
                                 x2=right;
                             }
                         }
+                        canvas.drawRect(new Rect(middle-30,(int)deltaX,middle+30,(int)deltaX+60),paint);
 
                         surfaceHolder.unlockCanvasAndPost(canvas);
                     }
