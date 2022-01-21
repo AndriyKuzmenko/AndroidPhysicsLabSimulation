@@ -8,7 +8,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -44,6 +47,61 @@ public class SpringActivity extends AppCompatActivity
         springView=new SpringView(this,m,g,k,pixelsPerMeter);
         setContentView(springView);
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        menu.add(Languages.results);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if (springView.xList.contains(-1.1))
+        {
+            Log.i("TAG","here");
+            springView.xList.remove(-1.1);
+            SpringObject results=new SpringObject(springView.xList,springView.vList,springView.aList,springView.m,springView.g,springView.k);
+            results.setName(springView.name);
+            saveResults(results);
+
+            Intent si=new Intent(this,SpringResults.class);
+            double[] xList=new double[results.getXList().size()];
+            double[] vList=new double[results.getVList().size()];
+            double[] aList=new double[results.getAList().size()];
+
+            for(int i=0; i<xList.length; i++)
+            {
+                xList[i]=results.getXList().get(i);
+                vList[i]=results.getVList().get(i);
+                aList[i]=results.getAList().get(i);
+            }
+
+            si.putExtra("xList",xList);
+            si.putExtra("vList",vList);
+            si.putExtra("aList",aList);
+            si.putExtra("g",g);
+            si.putExtra("m",m);
+            si.putExtra("k",k);
+            startActivity(si);
+        }
+        return true;
+    }
+
+    public void saveResults(SpringObject results)
+    {
+        Log.d("TAG",results.getName());
+        FBRef.myRef.child("Spring").child(results.getName()).setValue(results);
+    }
 }
 
 class SpringView extends SurfaceView
@@ -57,13 +115,15 @@ class SpringView extends SurfaceView
     int middle,left,right;
     boolean started,a0;
     int counter;
-    ArrayList<Double> xList,vList,aList;
+    public ArrayList<Double> xList,vList,aList;
+    public String name;
 
     public SpringView(Context context, double m, double g, double k, double pixelsPerMeter)
     {
         super(context);
         surfaceHolder=getHolder();
         paint=new Paint();
+        name="Spring "+ SystemClock.uptimeMillis();
 
         this.m=m;
         this.g=g;
