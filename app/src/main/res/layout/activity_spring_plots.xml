@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FreeFallPlots">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50px" />
+
+            <TextView
+                android:id="@+id/deltaXTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="X as a function of time"
+                android:textColor="#000022"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/deltaXGraph"
+                android:layout_width="match_parent"
+                android:layout_height="800px" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30px" />
+
+            <TextView
+                android:id="@+id/velocitySpringTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Velocity as a function of time"
+                android:textColor="#000022"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/velocitySpringGraph"
+                android:layout_width="match_parent"
+                android:layout_height="800px" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30px" />
+
+            <TextView
+                android:id="@+id/aTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Acceleration as a function of time"
+                android:textColor="#000022"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/aSpringGraph"
+                android:layout_width="match_parent"
+                android:layout_height="800px" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30px" />
+
+            <Button
+                android:id="@+id/backSpringButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="back"
+                android:text="Back" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50px" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
