@@ -15,6 +15,7 @@ import android.view.SurfaceView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,7 +34,7 @@ public class SpringActivity extends AppCompatActivity
         else g=Languages.gravity[planet];
         k=gi.getDoubleExtra("k",0);
 
-        double height=2.3*m*g/k;
+        double height=3.3*m*g/k;
         pixelsPerMeter=(double) Resources.getSystem().getDisplayMetrics().heightPixels/(height);
 
         Log.d("values","m="+m+"  k="+k+"  g="+g);
@@ -52,9 +53,11 @@ class SpringView extends SurfaceView
     Paint paint;
     double m,g,k,pixelsPerMeter;
     Rect ceiling;
-    double deltaX;
+    double drawingPosition,deltaX,a,v;
     int middle,left,right;
-    boolean started;
+    boolean started,a0;
+    int counter;
+    ArrayList<Double> xList,vList,aList;
 
     public SpringView(Context context, double m, double g, double k, double pixelsPerMeter)
     {
@@ -67,11 +70,18 @@ class SpringView extends SurfaceView
         this.k=k;
         this.pixelsPerMeter=pixelsPerMeter;
         ceiling=new Rect(0,0,Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels/20);
-        deltaX=ceiling.bottom+100;
+        drawingPosition=ceiling.bottom+100;
         middle=Resources.getSystem().getDisplayMetrics().widthPixels/2;
         left=(int)(middle*0.8);
         right=(int)(middle*1.2);
         started=false;
+        deltaX=a=v=0;
+        counter=0;
+        a0=false;
+
+        xList=new ArrayList<>();
+        vList=new ArrayList<>();
+        aList=new ArrayList<>();
     }
 
     @Override
@@ -87,11 +97,15 @@ class SpringView extends SurfaceView
                     @Override
                     public void run()
                     {
+                        xList.add(deltaX);
+                        vList.add(v);
+                        aList.add(a);
+
                         canvas = surfaceHolder.lockCanvas();
                         canvas.drawColor(Color.YELLOW);
                         started=true;
 
-                        int difference=(int)(deltaX-ceiling.bottom)/14;
+                        int difference=(int)(drawingPosition-ceiling.bottom)/14;
                         int x1=middle;
                         int x2=right;
                         int y1=ceiling.bottom;
@@ -99,8 +113,8 @@ class SpringView extends SurfaceView
                         paint.setStrokeWidth(5);
                         paint.setColor(Color.BLUE);
                         canvas.drawRect(ceiling,paint);
-                        paint.setColor(Color.RED);
 
+                        paint.setColor(Color.rgb(0,0,33));
                         for(int i=0;i<14;i++)
                         {
                             canvas.drawLine(x1,y1,x2,y2,paint);
@@ -122,9 +136,33 @@ class SpringView extends SurfaceView
                                 x2=right;
                             }
                         }
-                        canvas.drawRect(new Rect(middle-30,(int)deltaX,middle+30,(int)deltaX+60),paint);
+
+                        paint.setColor(Color.RED);
+                        canvas.drawRect(new Rect(middle-30,(int)drawingPosition,middle+30,(int)drawingPosition+60),paint);
 
                         surfaceHolder.unlockCanvasAndPost(canvas);
+
+                        a=g-(k*deltaX)/m;
+                        v+=a*0.01;
+                        deltaX+=v*0.01;
+                        drawingPosition=deltaX*pixelsPerMeter+ceiling.bottom+100;
+
+                        if((int)a==0 && !a0)
+                        {
+                            counter++;
+                            a0=true;
+                            Log.d("counter",counter+"");
+
+                            if(counter==10)
+                            {
+                                t.cancel();
+                                xList.add(-1.1);
+                            }
+                        }
+                        else if ((int)a!=0)
+                        {
+                            a0=false;
+                        }
                     }
                 },5,5);
             }
