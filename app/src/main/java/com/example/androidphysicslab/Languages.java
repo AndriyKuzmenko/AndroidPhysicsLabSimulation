@@ -47,6 +47,8 @@ public class Languages
     public static String credits;
     public static String logOut;
     public static String springConstant;
+    public static String xTime;
+    public static String aTime;
 
     public static void toEnglish()
     {
@@ -94,6 +96,8 @@ public class Languages
         credits="Credits";
         logOut="Log out";
         springConstant="k (N/m)";
+        aTime="Acceleration as function of time";
+        xTime="length as function of time";
     }
 
     public static void toHebrew()
@@ -142,5 +146,7 @@ public class Languages
         credits="קרדיטים";
         logOut="התנתקות";
         springConstant="קבוע הקפיץ (ניוטון/מטר)";
+        aTime="תאוצה כפונקציה של זמן";
+        xTime="אורך כפונקציה של זמן";
     }
 }

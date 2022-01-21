@@ -3,6 +3,9 @@ package com.example.androidphysicslab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +51,7 @@ public class SpringPlots extends AppCompatActivity
         xPlot=new DataPoint[vList.length];
         aPlot=new DataPoint[vList.length];
 
-        //changeLanguage();
+        changeLanguage();
 
         for(int i=0;i<vList.length;i++)
         {
@@ -78,5 +81,61 @@ public class SpringPlots extends AppCompatActivity
         {
             Toast.makeText(SpringPlots.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,SpringResults.class);
+
+        si.putExtra("aList",aList);
+        si.putExtra("vList",vList);
+        si.putExtra("xList",xList);
+        si.putExtra("g",g);
+        si.putExtra("m",m);
+        si.putExtra("k",k);
+
+        startActivity(si);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.English)
+        {
+            Languages.toEnglish();
+        }
+        else if(id==R.id.Hebrew)
+        {
+            Languages.toHebrew();
+        }
+
+        changeLanguage();
+
+        return true;
+    }
+
+    public void changeLanguage()
+    {
+        deltaXTime.setText(Languages.xTime);
+        velocitySpringTime.setText(Languages.velocityTime);
+        aTime.setText(Languages.aTime);
+        backSpringButton.setText(Languages.back);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
     }
 }
