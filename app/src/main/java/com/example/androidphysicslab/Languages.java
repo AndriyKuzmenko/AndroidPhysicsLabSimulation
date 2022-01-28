@@ -99,7 +99,7 @@ public class Languages
         springConstant="k (N/m)";
         aTime="Acceleration as function of time";
         xTime="length as function of time";
-        secondNewtonsLaw="Second Newton's Law";
+        secondNewtonsLaw="2nd Newton's Law";
     }
 
     public static void toHebrew()
