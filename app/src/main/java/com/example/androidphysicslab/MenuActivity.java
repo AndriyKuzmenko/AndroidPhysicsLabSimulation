@@ -104,4 +104,10 @@ public class MenuActivity extends AppCompatActivity
         Intent si=new Intent(this, SpringData.class);
         startActivity(si);
     }
+
+    public void momentum(View view)
+    {
+        Intent si=new Intent(this, SpringData.class);
+        startActivity(si);
+    }
 }

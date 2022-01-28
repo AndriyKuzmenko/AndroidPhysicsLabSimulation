@@ -82,6 +82,22 @@
                     android:textColor="#06073E"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10px" />
+
+                <Button
+                    android:id="@+id/momentumButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:onClick="momentum"
+                    android:text="Momentum"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </ScrollView>
 
