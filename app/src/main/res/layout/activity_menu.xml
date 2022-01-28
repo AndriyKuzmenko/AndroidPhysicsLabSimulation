@@ -15,8 +15,38 @@
     <LinearLayout
         android:layout_width="0px"
         android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_weight="7"
         android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="Android Physics Lab"
+            android:textColor="#FF0000"
+            android:textSize="27sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="(Beta release)"
+            android:textColor="#FF0000"
+            android:textSize="27sp"
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
@@ -50,6 +80,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10px" />
+
+                <TextView
+                    android:id="@+id/experimentsLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Experiments"
+                    android:textColor="#3A0543"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -98,66 +143,75 @@
                     android:textColor="#06073E"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10px" />
+
+                <TextView
+                    android:id="@+id/otherLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Other"
+                    android:textColor="#3A0543"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10px" />
+
+                <Button
+                    android:id="@+id/resultsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:onClick="results"
+                    android:text="Results"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10px" />
+
+                <Button
+                    android:id="@+id/creditsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Credits"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10px" />
+
+                <Button
+                    android:id="@+id/logOutButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:onClick="logOut"
+                    android:text="Log Out"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10px" />
             </LinearLayout>
         </ScrollView>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/resultsButton"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="4"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:onClick="results"
-            android:text="Results"
-            android:textColor="#06073E"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/creditsButton"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="4"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="Credits"
-            android:textColor="#06073E"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/logOutButton"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="4"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:onClick="logOut"
-            android:text="Log Out"
-            android:textColor="#06073E"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
     </LinearLayout>
 
     <Space

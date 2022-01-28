@@ -41,6 +41,7 @@ public class NewtonData  extends AppCompatActivity
         mass1Label.setText(Languages.mass1);
         mass2Label.setText(Languages.mass2);
         frictionLabel.setText(Languages.friction);
+        startNewtonButton.setText(Languages.start);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);

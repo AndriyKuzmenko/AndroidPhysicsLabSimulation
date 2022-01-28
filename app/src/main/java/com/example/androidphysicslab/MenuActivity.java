@@ -12,10 +12,12 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.w3c.dom.Text;
+
 public class MenuActivity extends AppCompatActivity
 {
     Button freeFallButton,springButton,newtonButton,resultsButton,creditsButton,logOutButton;
-    TextView emailTV;
+    TextView emailTV,experimentsLabel,otherLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +32,8 @@ public class MenuActivity extends AppCompatActivity
         creditsButton=(Button)findViewById(R.id.creditsButton);
         logOutButton=(Button)findViewById(R.id.logOutButton);
         emailTV=(TextView)findViewById(R.id.emailTV);
+        experimentsLabel=(TextView)findViewById(R.id.experimentsLabel);
+        otherLabel=(TextView)findViewById(R.id.otherLabel);
 
         changeLanguage();
         emailTV.setText(FBRef.mUser.getEmail());
@@ -76,6 +80,8 @@ public class MenuActivity extends AppCompatActivity
         creditsButton.setText(Languages.credits);
         logOutButton.setText(Languages.logOut);
         newtonButton.setText(Languages.secondNewtonsLaw);
+        experimentsLabel.setText(Languages.experiments);
+        otherLabel.setText(Languages.other);
     }
 
     @Override

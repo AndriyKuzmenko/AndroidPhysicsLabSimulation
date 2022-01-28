@@ -53,6 +53,8 @@ public class Languages
     public static String mass1;
     public static String mass2;
     public static String friction;
+    public static String experiments;
+    public static String other;
 
     public static void toEnglish()
     {
@@ -106,6 +108,8 @@ public class Languages
         mass1="Mass on desk (kg)";
         mass2="Mass in air (kg)";
         friction="Coefficient of friction";
+        experiments="Experiments";
+        other="Other";
     }
 
     public static void toHebrew()
@@ -160,5 +164,7 @@ public class Languages
         mass1="מסה על שולחן (קילוגרם)";
         mass2="מסה באוויק (קילוגרם)";
         friction="מקדם חיכוך";
+        experiments="ניסויים";
+        other="אחר";
     }
 }
