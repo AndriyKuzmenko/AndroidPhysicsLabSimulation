@@ -109,7 +109,7 @@ public class MenuActivity extends AppCompatActivity
 
     public void newton(View view)
     {
-        Intent si=new Intent(this, SpringData.class);
+        Intent si=new Intent(this, NewtonData.class);
         startActivity(si);
     }
 }

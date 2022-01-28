@@ -50,6 +50,9 @@ public class Languages
     public static String xTime;
     public static String aTime;
     public static String secondNewtonsLaw;
+    public static String mass1;
+    public static String mass2;
+    public static String friction;
 
     public static void toEnglish()
     {
@@ -100,6 +103,9 @@ public class Languages
         aTime="Acceleration as function of time";
         xTime="length as function of time";
         secondNewtonsLaw="2nd Newton's Law";
+        mass1="Mass on desk (kg)";
+        mass2="Mass in air (kg)";
+        friction="Coefficient of friction";
     }
 
     public static void toHebrew()
@@ -151,5 +157,8 @@ public class Languages
         aTime="תאוצה כפונקציה של זמן";
         xTime="אורך כפונקציה של זמן";
         secondNewtonsLaw="חוק שני של ניוטון";
+        mass1="מסה על שולחן (קילוגרם)";
+        mass2="מסה באוויק (קילוגרם)";
+        friction="מקדם חיכוך";
     }
 }
