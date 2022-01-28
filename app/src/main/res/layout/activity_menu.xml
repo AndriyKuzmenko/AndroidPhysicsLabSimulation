@@ -88,13 +88,13 @@
                     android:layout_height="10px" />
 
                 <Button
-                    android:id="@+id/momentumButton"
+                    android:id="@+id/newtonButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:gravity="center"
-                    android:onClick="momentum"
-                    android:text="Momentum"
+                    android:onClick="newton"
+                    android:text="Second Newton's Law"
                     android:textColor="#06073E"
                     android:textSize="20sp"
                     android:textStyle="bold" />

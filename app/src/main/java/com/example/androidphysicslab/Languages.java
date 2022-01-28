@@ -49,6 +49,7 @@ public class Languages
     public static String springConstant;
     public static String xTime;
     public static String aTime;
+    public static String secondNewtonsLaw;
 
     public static void toEnglish()
     {
@@ -98,6 +99,7 @@ public class Languages
         springConstant="k (N/m)";
         aTime="Acceleration as function of time";
         xTime="length as function of time";
+        secondNewtonsLaw="Second Newton's Law";
     }
 
     public static void toHebrew()
@@ -148,5 +150,6 @@ public class Languages
         springConstant="קבוע הקפיץ (ניוטון/מטר)";
         aTime="תאוצה כפונקציה של זמן";
         xTime="אורך כפונקציה של זמן";
+        secondNewtonsLaw="חוק שני של ניוטון";
     }
 }

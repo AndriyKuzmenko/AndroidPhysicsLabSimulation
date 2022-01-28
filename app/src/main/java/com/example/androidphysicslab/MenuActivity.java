@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity
 {
-    Button freeFallButton, springButton, resultsButton, creditsButton, logOutButton;
+    Button freeFallButton,springButton,newtonButton,resultsButton,creditsButton,logOutButton;
     TextView emailTV;
 
     @Override
@@ -25,6 +25,7 @@ public class MenuActivity extends AppCompatActivity
 
         freeFallButton=(Button)findViewById(R.id.freeFallButton);
         springButton=(Button)findViewById(R.id.springButton);
+        newtonButton=(Button)findViewById(R.id.newtonButton);
         resultsButton=(Button)findViewById(R.id.resultsButton);
         creditsButton=(Button)findViewById(R.id.creditsButton);
         logOutButton=(Button)findViewById(R.id.logOutButton);
@@ -74,6 +75,7 @@ public class MenuActivity extends AppCompatActivity
         resultsButton.setText(Languages.results);
         creditsButton.setText(Languages.credits);
         logOutButton.setText(Languages.logOut);
+        newtonButton.setText(Languages.secondNewtonsLaw);
     }
 
     @Override
@@ -105,7 +107,7 @@ public class MenuActivity extends AppCompatActivity
         startActivity(si);
     }
 
-    public void momentum(View view)
+    public void newton(View view)
     {
         Intent si=new Intent(this, SpringData.class);
         startActivity(si);
