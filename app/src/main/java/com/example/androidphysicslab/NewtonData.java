@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NewtonData  extends AppCompatActivity
+import com.google.firebase.database.core.view.View;
+
+public class NewtonData extends AppCompatActivity
 {
     TextView mass1Label,mass2Label,frictionLabel;
     EditText mass1ET,mass2ET,frictionET;
@@ -72,5 +74,10 @@ public class NewtonData  extends AppCompatActivity
         changeLanguage();
 
         return true;
+    }
+
+    public void start(View view)
+    {
+
     }
 }
