@@ -32,7 +32,7 @@ public class SpringActivity extends AppCompatActivity
     {
         Intent gi=getIntent();
         m=gi.getDoubleExtra("mass",0);
-        int planet=gi.getIntExtra("planet",0);
+        int planet=gi.getIntExtra("planet",-2);
         if(planet==-1) g=10;
         else g=Languages.gravity[planet];
         k=gi.getDoubleExtra("k",0);

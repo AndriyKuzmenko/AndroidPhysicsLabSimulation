@@ -36,7 +36,7 @@ public class FreeFallActivity extends AppCompatActivity
         Intent gi = getIntent();
         mass=gi.getDoubleExtra("mass",0); //will be used in the table to calculate energy
         height=gi.getDoubleExtra("height",0);
-        int planet=gi.getIntExtra("planet",0);
+        int planet=gi.getIntExtra("planet",-2);
         if(planet>=0) gravity=Languages.gravity[planet];
         else gravity=10;
         double meter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height*1.3);
