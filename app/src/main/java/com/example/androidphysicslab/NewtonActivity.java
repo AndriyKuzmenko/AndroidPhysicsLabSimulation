@@ -8,7 +8,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -64,6 +68,39 @@ public class NewtonActivity extends AppCompatActivity
         newtonView=new NewtonView(this,m1,m2,mu,g,a,pixelsPerMeter,maxLength,seconds);
         setContentView(newtonView);
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        menu.add(Languages.results);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if (newtonView.xList.contains(-1.1))
+        {
+            newtonView.xList.remove(-1.1);
+            NewtonObject results=new NewtonObject(m1,m2,g,mu,newtonView.xList,newtonView.vList);
+            results.setName(newtonView.name);
+            saveResults(results);
+        }
+        return true;
+    }
+
+    public void saveResults(NewtonObject results)
+    {
+        FBRef.myRef.child("Newton").child(results.getName()).setValue(results);
+    }
 }
 
 class NewtonView extends SurfaceView
@@ -74,6 +111,8 @@ class NewtonView extends SurfaceView
     private Paint paint;
     Canvas canvas;
     boolean started;
+    ArrayList<Double> xList,vList;
+    String name;
 
     public NewtonView(Context context,double m1,double m2,double mu,double g,double a,double pixelsPerMeter,double maxLength,int seconds)
     {
@@ -90,6 +129,7 @@ class NewtonView extends SurfaceView
         v=0;
         xMeter=0;
         counter=0;
+        name="Second Newton's Law "+ SystemClock.uptimeMillis();
 
         paint=new Paint();
         surfaceHolder=getHolder();
@@ -100,6 +140,8 @@ class NewtonView extends SurfaceView
         bottom=Resources.getSystem().getDisplayMetrics().heightPixels;
         y=top+50;
         x=right-maxLength*pixelsPerMeter+25;
+        xList=new ArrayList<>();
+        vList=new ArrayList<>();
     }
 
     @Override
@@ -125,10 +167,13 @@ class NewtonView extends SurfaceView
                         xMeter+=v*0.01;
                         x+=v*pixelsPerMeter*0.01;
                         y+=v*pixelsPerMeter*0.01;
+                        xList.add(xMeter);
+                        vList.add(v);
 
                         counter++;
                         if(counter==25)
                         {
+                            xList.add(-1.1);
                             t.cancel();
                         }
                     }

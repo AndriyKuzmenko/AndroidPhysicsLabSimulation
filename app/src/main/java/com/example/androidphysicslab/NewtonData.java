@@ -170,4 +170,12 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
     {
 
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }

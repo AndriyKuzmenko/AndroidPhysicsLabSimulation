@@ -9,10 +9,7 @@ public class SpringObject extends Experiment
     private ArrayList<Double> aList;
     private double m,g,k;
 
-    public SpringObject()
-    {
-
-    }
+    public SpringObject() { }
 
     public SpringObject(ArrayList<Double> xList, ArrayList<Double> vList, ArrayList<Double> aList, double m, double g, double k)
     {
