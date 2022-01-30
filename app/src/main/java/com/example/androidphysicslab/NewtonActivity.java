@@ -93,6 +93,22 @@ public class NewtonActivity extends AppCompatActivity
             NewtonObject results=new NewtonObject(m1,m2,g,mu,newtonView.xList,newtonView.vList);
             results.setName(newtonView.name);
             saveResults(results);
+            Intent si=new Intent(this,NewtonResults.class);
+            double[] xList=new double[newtonView.xList.size()];
+            double[] vList=new double[newtonView.vList.size()];
+
+            for(int i=0; i<xList.length; i++)
+            {
+                xList[i]=newtonView.xList.get(i);
+                vList[i]=newtonView.vList.get(i);
+            }
+            si.putExtra("xList",xList);
+            si.putExtra("vList",vList);
+            si.putExtra("g",g);
+            si.putExtra("m1",m1);
+            si.putExtra("m2",m2);
+            si.putExtra("a",a);
+            startActivity(si);
         }
         return true;
     }

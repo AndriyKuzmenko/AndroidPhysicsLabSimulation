@@ -16,7 +16,7 @@ public class NewtonResults extends AppCompatActivity
     ListView resultsNewtonLV;
     Button plotsNewtonButton,menuNewtonButton;
 
-    double[] hList,vList;
+    double[] xList,vList;
     double m,g;
 
     @Override
@@ -34,19 +34,19 @@ public class NewtonResults extends AppCompatActivity
         changeLanguage();
 
         Intent gi=getIntent();
-        hList=gi.getDoubleArrayExtra("hList");
+        xList=gi.getDoubleArrayExtra("xList");
         vList=gi.getDoubleArrayExtra("vList");
         m=gi.getDoubleExtra("m",0);
         g=gi.getDoubleExtra("g",0);
         m1m2gaView.setText("m="+m+" kg     "+"g="+g+"m/(sec^2)");
 
-        Log.w("Tag",String.valueOf(hList==null));
-        Log.w("TAG"," l="+hList.length);
+        Log.w("Tag",String.valueOf(xList==null));
+        Log.w("TAG"," l="+xList.length);
 
-        String[] list=new String[hList.length+1];
-        list[0]="t(sec)    h(m)    v(m/sec)";
+        String[] list=new String[xList.length+1];
+        list[0]="t(sec)    x(m)    v(m/sec)";
 
-        for(int i=1; i<hList.length+1; i++)
+        for(int i=1; i<xList.length+1; i++)
         {
             String t=" ";
             String time=String.valueOf((double)(i-1)/100);
@@ -65,20 +65,22 @@ public class NewtonResults extends AppCompatActivity
             }
             t+=time+"      ";
 
-            String h=String.valueOf(hList[i-1]);
-            dot=h.indexOf('.');
-            if(h.length()>dot+digitsAfterDot+1)
+            String x=String.valueOf(xList[i-1]);
+            Log.d("TAG",x);
+            dot=x.indexOf('.');
+            if(x.length()>dot+digitsAfterDot+1)
             {
-                h=h.substring(0,dot+digitsAfterDot+1);
+                x=x.substring(0,dot+digitsAfterDot+1);
+                Log.d("TAG",x);
             }
             else
             {
-                while(h.length()<=dot+digitsAfterDot+1)
+                while(x.length()<=dot+digitsAfterDot+1)
                 {
-                    h+=" ";
+                    x+=" ";
                 }
             }
-            t+=h+"      ";
+            t+=x+"      ";
 
             String v=String.valueOf(vList[i-1]);
             dot=v.indexOf('.');

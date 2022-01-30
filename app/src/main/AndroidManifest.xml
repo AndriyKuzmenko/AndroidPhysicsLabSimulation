@@ -21,6 +21,7 @@
         <activity android:name=".SpringPlots" />
         <activity android:name=".NewtonData" />
         <activity android:name=".NewtonActivity" />
+        <activity android:name=".NewtonResults" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
