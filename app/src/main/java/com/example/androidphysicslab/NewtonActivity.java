@@ -163,12 +163,12 @@ class NewtonView extends SurfaceView
                         drawDesk(canvas);
                         drawBoxes(canvas);
                         surfaceHolder.unlockCanvasAndPost(canvas);
+                        xList.add(xMeter);
+                        vList.add(v);
                         v+=a*0.01;
                         xMeter+=v*0.01;
                         x+=v*pixelsPerMeter*0.01;
                         y+=v*pixelsPerMeter*0.01;
-                        xList.add(xMeter);
-                        vList.add(v);
 
                         counter++;
                         if(counter==25)
