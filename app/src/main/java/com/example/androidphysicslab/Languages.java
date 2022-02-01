@@ -55,6 +55,7 @@ public class Languages
     public static String friction;
     public static String experiments;
     public static String other;
+    public static String positionTime;
 
     public static void toEnglish()
     {
@@ -104,12 +105,13 @@ public class Languages
         springConstant="k (N/m)";
         aTime="Acceleration as function of time";
         xTime="length as function of time";
-        secondNewtonsLaw="II Newton's Law";
+        secondNewtonsLaw="2nd Newton's Law";
         mass1="Mass on desk (kg)";
         mass2="Mass in air (kg)";
         friction="Coefficient of friction";
         experiments="Experiments";
         other="Other";
+        positionTime="Position as a function of time";
     }
 
     public static void toHebrew()
@@ -166,5 +168,6 @@ public class Languages
         friction="מקדם חיכוך";
         experiments="ניסויים";
         other="אחר";
+        positionTime="מיקום כפונקציה של זמן";
     }
 }

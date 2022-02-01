@@ -3,6 +3,9 @@ package com.example.androidphysicslab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -17,7 +20,7 @@ public class NewtonResults extends AppCompatActivity
     Button plotsNewtonButton,menuNewtonButton;
 
     double[] xList,vList;
-    double m,g;
+    double m1,m2,g,mu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,9 +39,10 @@ public class NewtonResults extends AppCompatActivity
         Intent gi=getIntent();
         xList=gi.getDoubleArrayExtra("xList");
         vList=gi.getDoubleArrayExtra("vList");
-        m=gi.getDoubleExtra("m",0);
+        m1=gi.getDoubleExtra("m1",0);
+        m2=gi.getDoubleExtra("m2",0);
         g=gi.getDoubleExtra("g",0);
-        m1m2gaView.setText("m="+m+" kg     "+"g="+g+"m/(sec^2)");
+        m1m2gaView.setText("m1="+m1+" m2="+m2+" g="+g+" mu="+mu);
 
         Log.w("Tag",String.valueOf(xList==null));
         Log.w("TAG"," l="+xList.length);
@@ -117,5 +121,51 @@ public class NewtonResults extends AppCompatActivity
         super.onPause();
 
         finish();
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.English)
+        {
+            Languages.toEnglish();
+        }
+        else if(id==R.id.Hebrew)
+        {
+            Languages.toHebrew();
+        }
+
+        changeLanguage();
+
+        return true;
+    }
+
+    public void plots(View view)
+    {
+        Intent si=new Intent(this,NewtonPlots.class);
+
+        si.putExtra("xList",xList);
+        si.putExtra("vList",vList);
+        si.putExtra("g",g);
+        si.putExtra("m1",m1);
+        si.putExtra("m2",m2);
+        si.putExtra("mu",mu);
+
+        startActivity(si);
     }
 }

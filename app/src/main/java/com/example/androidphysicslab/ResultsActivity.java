@@ -22,8 +22,9 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
     ArrayList<String> experimentsList;
     ArrayList<FreeFallObject> freeFallList;
     ArrayList<SpringObject> springList;
+    ArrayList<NewtonObject> newtonList;
     ListView experimentsLV;
-    int freeFallStart,springStart;
+    int freeFallStart,springStart,newtonStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,6 +35,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         experimentsList=new ArrayList<>();
         freeFallList=new ArrayList<>();
         springList=new ArrayList<>();
+        newtonList=new ArrayList<>();
         experimentsLV=(ListView)findViewById(R.id.experimentsLV);
         experimentsLV.setOnItemClickListener(this);
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -72,6 +74,28 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                     experimentsList.add(name);
 
                     springList.add(data.getValue(SpringObject.class));
+                }
+                displayList();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+
+        FBRef.myRef.child("Newton").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                newtonStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    newtonList.add(data.getValue(NewtonObject.class));
                 }
                 displayList();
             }
@@ -152,6 +176,27 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("m",results.getM());
             si.putExtra("g",results.getG());
             si.putExtra("k",results.getK());
+            startActivity(si);
+        }
+        else if(experimentsList.get(position).startsWith("Second Newton's Law"))
+        {
+            NewtonObject results=newtonList.get(position-newtonStart);
+            double[] xList=new double[results.getVList().size()];
+            double[] vList=new double[results.getVList().size()];
+
+            for(int i=0; i<xList.length; i++)
+            {
+                xList[i]=results.getXList().get(i);
+                vList[i]=results.getVList().get(i);
+            }
+
+            Intent si=new Intent(this,NewtonResults.class);
+            si.putExtra("xList",xList);
+            si.putExtra("vList",vList);
+            si.putExtra("m1",results.getM1());
+            si.putExtra("m2",results.getM2());
+            si.putExtra("g",results.getG());
+            si.putExtra("mu",results.getMu());
             startActivity(si);
         }
     }

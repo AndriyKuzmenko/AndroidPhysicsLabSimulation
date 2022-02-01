@@ -107,6 +107,7 @@ public class NewtonActivity extends AppCompatActivity
             si.putExtra("g",g);
             si.putExtra("m1",m1);
             si.putExtra("m2",m2);
+            si.putExtra("mu",mu);
             si.putExtra("a",a);
             startActivity(si);
         }
