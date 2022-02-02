@@ -118,4 +118,10 @@ public class MenuActivity extends AppCompatActivity
         Intent si=new Intent(this, NewtonData.class);
         startActivity(si);
     }
+
+    public void credits(View view)
+    {
+        Intent si=new Intent(this, CreditsActivity.class);
+        startActivity(si);
+    }
 }

@@ -185,6 +185,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:gravity="center"
+                    android:onClick="credits"
                     android:text="Credits"
                     android:textColor="#06073E"
                     android:textSize="20sp"
