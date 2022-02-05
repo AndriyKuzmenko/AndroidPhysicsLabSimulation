@@ -1,13 +1,20 @@
 package com.example.androidphysicslab;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class VoltageActivity extends AppCompatActivity
 {
@@ -27,12 +34,45 @@ class VoltageView extends SurfaceView
     SurfaceHolder surfaceHolder;
     Paint paint;
     String name;
+    int width,height;
+    boolean started;
+    Canvas canvas;
 
     public VoltageView(Context context)
     {
         super(context);
         surfaceHolder=getHolder();
         paint=new Paint();
-        name="Spring "+ SystemClock.uptimeMillis();
+        name="Voltage "+ SystemClock.uptimeMillis();
+        width= Resources.getSystem().getDisplayMetrics().widthPixels;
+        height=Resources.getSystem().getDisplayMetrics().heightPixels;
+        started=false;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
+        if (event.getAction() == MotionEvent.ACTION_DOWN)
+        {
+            if (surfaceHolder.getSurface().isValid() && !started)
+            {
+                started=true;
+                Timer t=new Timer();
+                t.scheduleAtFixedRate(new TimerTask()
+                {
+                    @Override
+                    public void run()
+                    {
+                        canvas = surfaceHolder.lockCanvas();
+                        canvas.drawColor(Color.YELLOW);
+                        paint.setStrokeWidth(5);
+                        paint.setColor(Color.RED);
+                        canvas.drawLine(width/5,height/10,width*4/5,height*7/10,paint);
+                        surfaceHolder.unlockCanvasAndPost(canvas);
+                    }
+                },500,500);
+            }
+        }
+        return true;
     }
 }

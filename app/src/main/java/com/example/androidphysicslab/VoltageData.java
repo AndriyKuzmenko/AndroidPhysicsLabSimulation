@@ -1,8 +1,11 @@
 package com.example.androidphysicslab;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,5 +68,20 @@ public class VoltageData extends AppCompatActivity
         changeLanguage();
 
         return true;
+    }
+
+    public void start(View view)
+    {
+        Intent si=new Intent(this,VoltageActivity.class);
+
+        double epsilon=Double.parseDouble(epsilonET.getText().toString());
+        double internalR=Double.parseDouble(internalRET.getText().toString());
+        double maxR=Double.parseDouble(maxRET.getText().toString());
+
+        si.putExtra("epsilon",epsilon);
+        si.putExtra("internalR",internalR);
+        si.putExtra("maxR",maxR);
+
+        startActivity(si);
     }
 }
