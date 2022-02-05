@@ -57,6 +57,9 @@ public class Languages
     public static String other;
     public static String positionTime;
     public static String voltageExperiment;
+    public static String epsilon;
+    public static String internalR;
+    public static String maxR;
 
     public static void toEnglish()
     {
@@ -114,6 +117,9 @@ public class Languages
         other="Other";
         positionTime="Position as a function of time";
         voltageExperiment="Voltage Experiment";
+        epsilon="Electromotive Force (Volt)";
+        internalR="Internal Resistannce (Ohm)";
+        maxR="Maximum resistance (Ohm)";
     }
 
     public static void toHebrew()
@@ -172,5 +178,8 @@ public class Languages
         other="אחר";
         positionTime="מיקום כפונקציה של זמן";
         voltageExperiment="ניסוי מתח";
+        epsilon="כוח אלקטרומניע (וולט)";
+        internalR="התנגדות פנימית (אום)";
+        maxR="התנגדות מקסימלית (אום)";
     }
 }
