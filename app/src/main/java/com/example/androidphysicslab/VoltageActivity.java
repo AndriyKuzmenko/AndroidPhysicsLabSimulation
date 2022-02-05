@@ -65,9 +65,12 @@ class VoltageView extends SurfaceView
                     {
                         canvas = surfaceHolder.lockCanvas();
                         canvas.drawColor(Color.YELLOW);
-                        paint.setStrokeWidth(5);
+                        paint.setStrokeWidth(10);
                         paint.setColor(Color.RED);
-                        canvas.drawLine(width/5,height/10,width*4/5,height*7/10,paint);
+                        canvas.drawLine(width/5,height/10,width/2-15,height/10,paint);
+                        canvas.drawLine(width/2+15,height/10,width*4/5,height/10,paint);
+                        canvas.drawLine(width/2-15,height/10-50,width/2-15,height/10+50,paint);
+                        canvas.drawLine(width/2+15,height/10-25,width/2+15,height/10+25,paint);
                         surfaceHolder.unlockCanvasAndPost(canvas);
                     }
                 },500,500);
