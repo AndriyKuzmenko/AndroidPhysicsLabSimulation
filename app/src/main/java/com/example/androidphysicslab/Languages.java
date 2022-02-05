@@ -56,6 +56,7 @@ public class Languages
     public static String experiments;
     public static String other;
     public static String positionTime;
+    public static String voltageExperiment;
 
     public static void toEnglish()
     {
@@ -112,6 +113,7 @@ public class Languages
         experiments="Experiments";
         other="Other";
         positionTime="Position as a function of time";
+        voltageExperiment="Voltage Experiment";
     }
 
     public static void toHebrew()
@@ -169,5 +171,6 @@ public class Languages
         experiments="ניסויים";
         other="אחר";
         positionTime="מיקום כפונקציה של זמן";
+        voltageExperiment="ניסוי מתח";
     }
 }

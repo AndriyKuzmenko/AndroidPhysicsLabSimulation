@@ -12,12 +12,10 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
-
 public class MenuActivity extends AppCompatActivity
 {
-    Button freeFallButton,springButton,newtonButton,resultsButton,creditsButton,logOutButton;
-    TextView emailTV,experimentsLabel,otherLabel;
+    Button freeFallButton,springButton,newtonButton,resultsButton,creditsButton,logOutButton,voltageButton;
+    TextView emailTV,experimentsLabel,otherLabel,bonusLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,6 +29,7 @@ public class MenuActivity extends AppCompatActivity
         resultsButton=(Button)findViewById(R.id.resultsButton);
         creditsButton=(Button)findViewById(R.id.creditsButton);
         logOutButton=(Button)findViewById(R.id.logOutButton);
+        voltageButton=(Button)findViewById(R.id.voltageButton);
         emailTV=(TextView)findViewById(R.id.emailTV);
         experimentsLabel=(TextView)findViewById(R.id.experimentsLabel);
         otherLabel=(TextView)findViewById(R.id.otherLabel);
@@ -82,6 +81,7 @@ public class MenuActivity extends AppCompatActivity
         newtonButton.setText(Languages.secondNewtonsLaw);
         experimentsLabel.setText(Languages.experiments);
         otherLabel.setText(Languages.other);
+        voltageButton.setText(Languages.voltageExperiment);
     }
 
     @Override
@@ -122,6 +122,12 @@ public class MenuActivity extends AppCompatActivity
     public void credits(View view)
     {
         Intent si=new Intent(this, CreditsActivity.class);
+        startActivity(si);
+    }
+
+    public void voltage(View view)
+    {
+        Intent si=new Intent(this, VoltageData.class);
         startActivity(si);
     }
 }
