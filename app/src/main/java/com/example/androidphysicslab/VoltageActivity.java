@@ -67,25 +67,32 @@ class VoltageView extends SurfaceView
                         canvas.drawColor(Color.YELLOW);
                         paint.setStrokeWidth(10);
                         paint.setColor(Color.RED);
-                        canvas.drawLine(width/5,height/10,width/2-15,height/10,paint);
-                        canvas.drawLine(width/2+15,height/10,width*4/5,height/10,paint);
-                        canvas.drawLine(width/2-15,height/10-50,width/2-15,height/10+50,paint);
-                        canvas.drawLine(width/2+15,height/10-25,width/2+15,height/10+25,paint);
-                        canvas.drawLine(width/5,height/10,width/5,height*7/10,paint);
+                        //circuit
+                        canvas.drawLine(width/5,height/5,width/2-15,height/5,paint);
+                        canvas.drawLine(width/2+15,height/5,width*4/5,height/5,paint);
+                        canvas.drawLine(width/2-15,height/5-50,width/2-15,height/5+50,paint);
+                        canvas.drawLine(width/2+15,height/5-25,width/2+15,height/5+25,paint);
+                        canvas.drawLine(width/5,height/5,width/5,height*7/10,paint);
                         canvas.drawLine(width/5,height*7/10,width*2/5,height*7/10,paint);
-                        canvas.drawLine(width*4/5,height/10,width*4/5,height/2,paint);
+                        canvas.drawLine(width*4/5,height/5,width*4/5,height/2,paint);
                         canvas.drawLine(width*4/5,height/2,width*3/5,height/2,paint);
                         canvas.drawLine(width*3/5,height/2,width*3/5,height*7/10,paint);
+                        //voltmeter
+                        canvas.drawLine(width/2-90,height/5,width/2-90,height/5-150,paint);
+                        canvas.drawLine(width/2+90,height/5,width/2+90,height/5-150,paint);
+                        canvas.drawLine(width/2-90,height/5-150,width/2+90,height/5-150,paint);
 
                         paint.setStrokeWidth(70);
                         canvas.drawLine(width*2/5,height*7/10,width*3/5,height*7/10,paint);
 
                         paint.setColor(Color.BLUE);
                         canvas.drawCircle(width/5,height/2,50,paint);
+                        canvas.drawCircle(width/2,height/5-150,50,paint);
 
                         paint.setColor(Color.WHITE);
                         paint.setTextSize(100);
                         canvas.drawText("A",width/5-36,height/2+36,paint);
+                        canvas.drawText("V",width/2-36,height/5-114,paint);
 
                         surfaceHolder.unlockCanvasAndPost(canvas);
                     }
