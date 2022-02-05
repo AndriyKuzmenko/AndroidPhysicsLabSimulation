@@ -9,6 +9,8 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -35,6 +37,51 @@ public class VoltageActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         voltageView=new VoltageView(this,epsilon,internalR,maxR);
         setContentView(voltageView);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        menu.add(Languages.results);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if (voltageView.rList.size()==10)
+        {
+            VoltageObject results=new VoltageObject(voltageView.rList,voltageView.iList,voltageView.vList,epsilon,internalR,maxR);
+            results.setName(voltageView.name);
+            saveResults(results);
+
+            Intent si=new Intent(this,SpringResults.class);
+            double[] rList=new double[results.getRList().size()];
+            double[] vList=new double[results.getVList().size()];
+            double[] iList=new double[results.getIList().size()];
+
+            for(int i=0; i<rList.length; i++)
+            {
+                rList[i]=results.getRList().get(i);
+                vList[i]=results.getVList().get(i);
+                iList[i]=results.getIList().get(i);
+            }
+
+            si.putExtra("rList",rList);
+            si.putExtra("vList",vList);
+            si.putExtra("iList",iList);
+            si.putExtra("epsilon",epsilon);
+            si.putExtra("internalR",internalR);
+            si.putExtra("maxR",maxR);
+            //startActivity(si);
+        }
+        return true;
+    }
+
+    public void saveResults(VoltageObject results)
+    {
+        Log.d("TAG",results.getName());
+        FBRef.myRef.child("Voltage").child(results.getName()).setValue(results);
     }
 }
 
@@ -116,7 +163,6 @@ class VoltageView extends SurfaceView
                         canvas.drawText("V",width/2-36,height/5-114,paint);
 
                         surfaceHolder.unlockCanvasAndPost(canvas);
-                        counter--;
 
                         double r=maxR*counter/10;
                         double i=epsilon/(r+internalR);
@@ -127,6 +173,7 @@ class VoltageView extends SurfaceView
                         iList.add(i);
                         vList.add(v);
 
+                        counter--;
                         if(counter==0)
                         {
                             t.cancel();
