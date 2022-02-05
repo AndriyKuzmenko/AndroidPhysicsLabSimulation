@@ -1,30 +1,39 @@
 package com.example.androidphysicslab;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class VoltageActivity extends AppCompatActivity
 {
     VoltageView voltageView;
+    double epsilon,internalR,maxR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        Intent gi=getIntent();
+        epsilon=gi.getDoubleExtra("epsilon",epsilon);
+        internalR=gi.getDoubleExtra("internalR",internalR);
+        maxR=gi.getDoubleExtra("maxR",maxR);
+
         super.onCreate(savedInstanceState);
-        voltageView=new VoltageView(this);
+        voltageView=new VoltageView(this,epsilon,internalR,maxR);
         setContentView(voltageView);
     }
 }
@@ -37,8 +46,11 @@ class VoltageView extends SurfaceView
     int width,height;
     boolean started;
     Canvas canvas;
+    int counter=10;
+    double epsilon,internalR,maxR;
+    ArrayList<Double> rList,iList,vList;
 
-    public VoltageView(Context context)
+    public VoltageView(Context context,double epsilon,double internalR,double maxR)
     {
         super(context);
         surfaceHolder=getHolder();
@@ -47,6 +59,13 @@ class VoltageView extends SurfaceView
         width= Resources.getSystem().getDisplayMetrics().widthPixels;
         height=Resources.getSystem().getDisplayMetrics().heightPixels;
         started=false;
+
+        this.epsilon=epsilon;
+        this.internalR=internalR;
+        this.maxR=maxR;
+        rList=new ArrayList<>();
+        iList=new ArrayList<>();
+        vList=new ArrayList<>();
     }
 
     @Override
@@ -63,6 +82,8 @@ class VoltageView extends SurfaceView
                     @Override
                     public void run()
                     {
+                        int arrowX=width*2/5+width*counter/50;
+
                         canvas = surfaceHolder.lockCanvas();
                         canvas.drawColor(Color.YELLOW);
                         paint.setStrokeWidth(10);
@@ -75,8 +96,8 @@ class VoltageView extends SurfaceView
                         canvas.drawLine(width/5,height/5,width/5,height*7/10,paint);
                         canvas.drawLine(width/5,height*7/10,width*2/5,height*7/10,paint);
                         canvas.drawLine(width*4/5,height/5,width*4/5,height/2,paint);
-                        canvas.drawLine(width*4/5,height/2,width*3/5,height/2,paint);
-                        canvas.drawLine(width*3/5,height/2,width*3/5,height*7/10,paint);
+                        canvas.drawLine(width*4/5,height/2,arrowX,height/2,paint);
+                        canvas.drawLine(arrowX,height/2,arrowX,height*7/10,paint);
                         //voltmeter
                         canvas.drawLine(width/2-90,height/5,width/2-90,height/5-150,paint);
                         canvas.drawLine(width/2+90,height/5,width/2+90,height/5-150,paint);
@@ -95,6 +116,21 @@ class VoltageView extends SurfaceView
                         canvas.drawText("V",width/2-36,height/5-114,paint);
 
                         surfaceHolder.unlockCanvasAndPost(canvas);
+                        counter--;
+
+                        double r=maxR*counter/10;
+                        double i=epsilon/(r+internalR);
+                        double v=i*r;
+                        Log.d("TAG","R="+r+"  I="+i+"  V="+v);
+
+                        rList.add(r);
+                        iList.add(i);
+                        vList.add(v);
+
+                        if(counter==0)
+                        {
+                            t.cancel();
+                        }
                     }
                 },500,500);
             }
