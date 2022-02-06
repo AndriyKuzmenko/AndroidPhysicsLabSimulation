@@ -55,7 +55,7 @@ public class VoltageActivity extends AppCompatActivity
             results.setName(voltageView.name);
             saveResults(results);
 
-            Intent si=new Intent(this,SpringResults.class);
+            Intent si=new Intent(this,VoltageResults.class);
             double[] rList=new double[results.getRList().size()];
             double[] vList=new double[results.getVList().size()];
             double[] iList=new double[results.getIList().size()];
@@ -73,7 +73,7 @@ public class VoltageActivity extends AppCompatActivity
             si.putExtra("epsilon",epsilon);
             si.putExtra("internalR",internalR);
             si.putExtra("maxR",maxR);
-            //startActivity(si);
+            startActivity(si);
         }
         return true;
     }
@@ -82,6 +82,14 @@ public class VoltageActivity extends AppCompatActivity
     {
         Log.d("TAG",results.getName());
         FBRef.myRef.child("Voltage").child(results.getName()).setValue(results);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
     }
 }
 

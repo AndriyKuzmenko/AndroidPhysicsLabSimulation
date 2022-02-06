@@ -84,4 +84,12 @@ public class VoltageData extends AppCompatActivity
 
         startActivity(si);
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }
