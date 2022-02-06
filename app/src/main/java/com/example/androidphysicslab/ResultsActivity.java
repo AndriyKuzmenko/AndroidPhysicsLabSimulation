@@ -23,8 +23,9 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
     ArrayList<FreeFallObject> freeFallList;
     ArrayList<SpringObject> springList;
     ArrayList<NewtonObject> newtonList;
+    ArrayList<VoltageObject> voltageList;
     ListView experimentsLV;
-    int freeFallStart,springStart,newtonStart;
+    int freeFallStart,springStart,newtonStart,voltageStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,6 +37,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         freeFallList=new ArrayList<>();
         springList=new ArrayList<>();
         newtonList=new ArrayList<>();
+        voltageList=new ArrayList<>();
         experimentsLV=(ListView)findViewById(R.id.experimentsLV);
         experimentsLV.setOnItemClickListener(this);
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -73,7 +75,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                     String name=data.getKey();
                     experimentsList.add(name);
 
-                    springList.add(data.getValue(SpringObject.class));
+                    voltageList.add(data.getValue(VoltageObject.class));
                 }
                 displayList();
             }
@@ -96,6 +98,28 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                     experimentsList.add(name);
 
                     newtonList.add(data.getValue(NewtonObject.class));
+                }
+                displayList();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+
+        FBRef.myRef.child("Voltage").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                voltageStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    voltageList.add(data.getValue(VoltageObject.class));
                 }
                 displayList();
             }
@@ -197,6 +221,29 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("m2",results.getM2());
             si.putExtra("g",results.getG());
             si.putExtra("mu",results.getMu());
+            startActivity(si);
+        }
+        else if(experimentsList.get(position).startsWith("Voltage"))
+        {
+            VoltageObject results=voltageList.get(position-voltageStart);
+            double[] rList=new double[10];
+            double[] iList=new double[10];
+            double[] vList=new double[10];
+
+            for(int i=0; i<10; i++)
+            {
+                rList[i]=results.getRList().get(i);
+                iList[i]=results.getIList().get(i);
+                vList[i]=results.getVList().get(i);
+            }
+
+            Intent si=new Intent(this,VoltageResults.class);
+            si.putExtra("rList",rList);
+            si.putExtra("vList",vList);
+            si.putExtra("iList",iList);
+            si.putExtra("epsilon",results.getEpsilon());
+            si.putExtra("internalR",results.getInternalR());
+            si.putExtra("maxR",results.getMaxR());
             startActivity(si);
         }
     }

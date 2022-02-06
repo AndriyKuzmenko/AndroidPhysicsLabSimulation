@@ -111,4 +111,12 @@ public class VoltagePlots extends AppCompatActivity
 
         return true;
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }
