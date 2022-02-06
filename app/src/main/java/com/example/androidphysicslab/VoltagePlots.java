@@ -3,6 +3,8 @@ package com.example.androidphysicslab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -82,5 +84,31 @@ public class VoltagePlots extends AppCompatActivity
     {
         backVoltageButton.setText(Languages.back);
         vAsI.setText(Languages.iVPlot);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.English)
+        {
+            Languages.toEnglish();
+        }
+        else if(id==R.id.Hebrew)
+        {
+            Languages.toHebrew();
+        }
+
+        changeLanguage();
+
+        return true;
     }
 }

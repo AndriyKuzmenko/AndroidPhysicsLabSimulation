@@ -45,6 +45,8 @@ public class VoltageResults extends AppCompatActivity
 
         String[] list=new String[11];
         list[0]="R(Ohm)    I(A)    V(V)";
+        changeLanguage();
+        voltageView.setText("ϵ="+epsilon+" V   r="+internalR+" Ω");
 
         for(int j=1; j<11; j++)
         {
