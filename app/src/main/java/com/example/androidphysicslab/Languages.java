@@ -60,6 +60,7 @@ public class Languages
     public static String epsilon;
     public static String internalR;
     public static String maxR;
+    public static String iVPlot;
 
     public static void toEnglish()
     {
@@ -120,6 +121,7 @@ public class Languages
         epsilon="Electromotive Force (Volt)";
         internalR="Internal Resistannce (Ohm)";
         maxR="Maximum resistance (Ohm)";
+        iVPlot="Voltage ad a function of Current";
     }
 
     public static void toHebrew()
@@ -181,5 +183,6 @@ public class Languages
         epsilon="כוח אלקטרומניע (וולט)";
         internalR="התנגדות פנימית (אום)";
         maxR="התנגדות מקסימלית (אום)";
+        iVPlot="מתח כפונקציה של זרם";
     }
 }
