@@ -132,4 +132,10 @@ public class MenuActivity extends AppCompatActivity
         Intent si=new Intent(this, VoltageData.class);
         startActivity(si);
     }
+
+    public void disc(View view)
+    {
+        Intent si=new Intent(this, DiscData.class);
+        startActivity(si);
+    }
 }

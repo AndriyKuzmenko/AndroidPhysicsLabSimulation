@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:gravity="center"
-                    android:onClick="voltage"
+                    android:onClick="disc"
                     android:text="Disc Experiment"
                     android:textColor="#06073E"
                     android:textSize="20sp"
