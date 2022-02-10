@@ -106,6 +106,34 @@
             android:layout_height="0px"
             android:layout_weight="1" />
 
+        <TextView
+            android:id="@+id/shiftDiscLabel"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="2"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="K (N/m)"
+            android:textColor="#06073E"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/shiftDiscET"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="2"
+            android:fontFamily="serif"
+            android:inputType="numberDecimal"
+            android:textColor="#06073E"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1" />
+
         <Spinner
             android:id="@+id/planetDiscSpinner"
             android:layout_width="match_parent"

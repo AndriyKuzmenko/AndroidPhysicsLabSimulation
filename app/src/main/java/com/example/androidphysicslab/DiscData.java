@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DiscData extends AppCompatActivity
 {
-    TextView massDiscLabel,muDiscLabel,kDiscLabel;
-    EditText massDiscET,muDiscET,kDiscET;
+    TextView massDiscLabel,muDiscLabel,kDiscLabel,shiftDiscLabel;
+    EditText massDiscET,muDiscET,kDiscET,shiftDiscET;
     Spinner planetDiscSpinner;
     Button startButton;
 
@@ -31,6 +31,10 @@ public class DiscData extends AppCompatActivity
         kDiscET=(EditText)findViewById(R.id.kDiscET);
         planetDiscSpinner=(Spinner)findViewById(R.id.planetDiscSpinner);
         startButton=(Button)findViewById(R.id.startButton);
+        shiftDiscLabel=(TextView)findViewById(R.id.shiftDiscLabel);
+        shiftDiscET=(EditText)findViewById(R.id.shiftDiscET);
+
+        changeLanguage();
     }
 
     @Override
