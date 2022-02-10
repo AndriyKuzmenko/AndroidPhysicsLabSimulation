@@ -62,6 +62,7 @@ public class Languages
     public static String maxR;
     public static String iVPlot;
     public static String discExperiment;
+    public static String elasticConstant;
 
     public static void toEnglish()
     {
@@ -108,7 +109,7 @@ public class Languages
         results="Results";
         credits="Credits";
         logOut="Log out";
-        springConstant="k (N/m)";
+        springConstant="Spring Constant (N/m)";
         aTime="Acceleration as function of time";
         xTime="length as function of time";
         secondNewtonsLaw="2nd Newton's Law";
@@ -124,6 +125,7 @@ public class Languages
         maxR="Maximum resistance (Ohm)";
         iVPlot="Voltage ad a function of Current";
         discExperiment="Disc Experiment";
+        elasticConstant="Elastic Constant (N/m)";
     }
 
     public static void toHebrew()
@@ -187,5 +189,6 @@ public class Languages
         maxR="התנגדות מקסימלית (אום)";
         iVPlot="מתח כפונקציה של זרם";
         discExperiment="ניסוי דיסקה";
+        elasticConstant="קבוע אלסטי (ניוטון/מטר)";
     }
 }
