@@ -61,6 +61,7 @@ public class Languages
     public static String internalR;
     public static String maxR;
     public static String iVPlot;
+    public static String discExperiment;
 
     public static void toEnglish()
     {
@@ -122,6 +123,7 @@ public class Languages
         internalR="Internal Resistannce (Ohm)";
         maxR="Maximum resistance (Ohm)";
         iVPlot="Voltage ad a function of Current";
+        discExperiment="Disc Experiment";
     }
 
     public static void toHebrew()
@@ -174,7 +176,7 @@ public class Languages
         xTime="אורך כפונקציה של זמן";
         secondNewtonsLaw="חוק שני של ניוטון";
         mass1="מסה על שולחן (קילוגרם)";
-        mass2="מסה באוויק (קילוגרם)";
+        mass2="מסה באוויר (קילוגרם)";
         friction="מקדם חיכוך";
         experiments="ניסויים";
         other="אחר";
@@ -184,5 +186,6 @@ public class Languages
         internalR="התנגדות פנימית (אום)";
         maxR="התנגדות מקסימלית (אום)";
         iVPlot="מתח כפונקציה של זרם";
+        discExperiment="ניסוי דיסקה";
     }
 }

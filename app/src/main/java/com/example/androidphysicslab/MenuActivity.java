@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity
 {
-    Button freeFallButton,springButton,newtonButton,resultsButton,creditsButton,logOutButton,voltageButton;
+    Button freeFallButton,springButton,newtonButton,resultsButton,creditsButton,logOutButton,voltageButton,discButton;
     TextView emailTV,experimentsLabel,otherLabel,bonusLabel;
 
     @Override
@@ -28,6 +28,7 @@ public class MenuActivity extends AppCompatActivity
         newtonButton=(Button)findViewById(R.id.newtonButton);
         resultsButton=(Button)findViewById(R.id.resultsButton);
         creditsButton=(Button)findViewById(R.id.creditsButton);
+        discButton=(Button)findViewById(R.id.discButton);
         logOutButton=(Button)findViewById(R.id.logOutButton);
         voltageButton=(Button)findViewById(R.id.voltageButton);
         emailTV=(TextView)findViewById(R.id.emailTV);
@@ -82,6 +83,7 @@ public class MenuActivity extends AppCompatActivity
         experimentsLabel.setText(Languages.experiments);
         otherLabel.setText(Languages.other);
         voltageButton.setText(Languages.voltageExperiment);
+        discButton.setText(Languages.discExperiment);
     }
 
     @Override
