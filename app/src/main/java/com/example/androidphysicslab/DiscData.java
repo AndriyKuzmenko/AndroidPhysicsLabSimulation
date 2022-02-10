@@ -43,6 +43,7 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
         shiftDiscLabel=(TextView)findViewById(R.id.shiftDiscLabel);
         shiftDiscET=(EditText)findViewById(R.id.shiftDiscET);
         planet=0;
+        planetDiscSpinner.setOnItemSelectedListener(this);
 
         changeLanguage();
     }
@@ -86,7 +87,7 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
         planetDiscSpinner.setAdapter(adp);
     }
 
-    public void start()
+    public void start(View view)
     {
         if(planet==2)
         {
@@ -122,16 +123,16 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
 
     public void startAnimation(boolean b)
     {
-        Intent si=new Intent(this,NewtonActivity.class);
+        Intent si=new Intent(this,DiscActivity.class);
 
         Log.i("TAG","planet="+planet+", g="+Languages.gravity[planet]);
 
-        double m1=Double.parseDouble(massDiscET.getText().toString());
+        double m=Double.parseDouble(massDiscET.getText().toString());
         double mu=Double.parseDouble(muDiscET.getText().toString());
         double k=Double.parseDouble(kDiscET.getText().toString());
         double shift=Double.parseDouble(shiftDiscET.getText().toString());
 
-        si.putExtra("m1",m1);
+        si.putExtra("m",m);
         si.putExtra("mu",mu);
         si.putExtra("k",k);
         si.putExtra("shift",shift);

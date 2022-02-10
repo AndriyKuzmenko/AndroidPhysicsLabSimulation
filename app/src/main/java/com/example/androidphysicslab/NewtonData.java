@@ -43,6 +43,7 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
 
         changeLanguage();
         planet=0;
+        planetNewtonSpinner.setOnItemSelectedListener(this);
     }
 
     public void changeLanguage()
