@@ -63,6 +63,7 @@ public class Languages
     public static String iVPlot;
     public static String discExperiment;
     public static String elasticConstant;
+    public static String shiftDistance;
 
     public static void toEnglish()
     {
@@ -126,6 +127,7 @@ public class Languages
         iVPlot="Voltage ad a function of Current";
         discExperiment="Disc Experiment";
         elasticConstant="Elastic Constant (N/m)";
+        shiftDistance="Shift Distance (m)";
     }
 
     public static void toHebrew()
@@ -190,5 +192,6 @@ public class Languages
         iVPlot="מתח כפונקציה של זרם";
         discExperiment="ניסוי דיסקה";
         elasticConstant="קבוע אלסטי (ניוטון/מטר)";
+        shiftDistance="מרחק הסתה (מטר)";
     }
 }

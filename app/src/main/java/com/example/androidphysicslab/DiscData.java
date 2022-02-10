@@ -69,5 +69,6 @@ public class DiscData extends AppCompatActivity
         muDiscLabel.setText(Languages.friction);
         kDiscLabel.setText(Languages.elasticConstant);
         startButton.setText(Languages.start);
+        shiftDiscLabel.setText(Languages.shiftDistance);
     }
 }
