@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,7 +64,7 @@ public class DiscActivity extends AppCompatActivity
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if(discView.vList.contains(-1.0))
+        if(discView.lList.contains(-1.1))
         {
             discView.lList.remove(-1.1);
             Intent si=new Intent(this,FreeFallResults.class);
@@ -76,7 +77,9 @@ public class DiscActivity extends AppCompatActivity
                 vList[i]=discView.vList.get(i);
             }
 
-            //saveResults(new FreeFallObject(drawingView.hList,drawingView.vList,drawingView.name,gravity,mass));
+            DiscObject results=new DiscObject(m,mu,g,k,discView.lList,discView.vList);
+            results.setName(discView.name);
+            saveResults(results);
 
             si.putExtra("hList",lList);
             si.putExtra("vList",vList);
@@ -86,6 +89,11 @@ public class DiscActivity extends AppCompatActivity
         }
 
         return true;
+    }
+
+    public void saveResults(DiscObject results)
+    {
+        FBRef.myRef.child("Disc").child(results.getName()).setValue(results);
     }
 }
 
@@ -98,6 +106,7 @@ class DiscView extends SurfaceView
     Canvas canvas;
     Paint paint;
     ArrayList<Double> lList,vList;
+    String name;
 
     public DiscView(Context context,double shift,double v0,double a,double pixelsPerMeter)
     {
@@ -120,6 +129,7 @@ class DiscView extends SurfaceView
 
         lList=new ArrayList<>();
         vList=new ArrayList<>();
+        name="Disc "+ SystemClock.uptimeMillis();
     }
 
     @Override

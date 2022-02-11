@@ -18,4 +18,64 @@ public class DiscObject extends Experiment
         this.xList=xList;
         this.vList=vList;
     }
+
+    public void setM(double m)
+    {
+        this.m=m;
+    }
+
+    public void setMu(double mu)
+    {
+        this.mu=mu;
+    }
+
+    public void setG(double g)
+    {
+        this.g=g;
+    }
+
+    public void getK(double k)
+    {
+        this.k=k;
+    }
+
+    public void setXList(ArrayList<Double> xList)
+    {
+        this.xList=xList;
+    }
+
+    public void setVList(ArrayList<Double> vList)
+    {
+        this.vList=vList;
+    }
+
+    public double getM()
+    {
+        return m;
+    }
+
+    public double getMu()
+    {
+        return mu;
+    }
+
+    public double getG()
+    {
+        return g;
+    }
+
+    public double getK()
+    {
+        return k;
+    }
+
+    public ArrayList<Double> getXList()
+    {
+        return xList;
+    }
+
+    public ArrayList<Double> getVList()
+    {
+        return vList;
+    }
 }
