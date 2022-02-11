@@ -41,7 +41,7 @@ public class DiscActivity extends AppCompatActivity
         l0=v0*t-0.5*a*t*t;
         Log.d("TAG","v0="+v0+" a="+a+" t="+t+" l="+l0);
 
-        double maxLength=3*l0;
+        double maxLength=5*l0;
         double pixlsPerMeter=(double) Resources.getSystem().getDisplayMetrics().heightPixels/maxLength;
         Log.d("TAG","maxlength="+maxLength+" pixelsPerMeter="+pixlsPerMeter);
 
@@ -53,7 +53,7 @@ public class DiscActivity extends AppCompatActivity
 
 class DiscView extends SurfaceView
 {
-    double shift,v0,a,pixelsPerMeter,v,l;
+    double shift,v0,a,pixelsPerMeter,v,l,deltax;
     int rulerPosition,rulerLength;
     boolean started,hit;
     SurfaceHolder surfaceHolder;
@@ -70,6 +70,7 @@ class DiscView extends SurfaceView
         this.v0=v0;
         this.a=a;
         this.pixelsPerMeter=pixelsPerMeter;
+        deltax=shift;
 
         started=false;
         hit=false;
@@ -97,8 +98,14 @@ class DiscView extends SurfaceView
                             canvas.drawColor(Color.YELLOW);
                             paint.setStrokeWidth(15);
                             paint.setColor(Color.rgb(0,0,33));
-                            canvas.drawLine(rulerLength/2,rulerPosition,rulerLength*3/2,rulerPosition,paint);
+
+                            int y=(int)(deltax*pixelsPerMeter);
+                            int x=(int)Math.sqrt(rulerLength*rulerLength-y*y);
+                            canvas.drawLine(rulerLength/2,rulerPosition,rulerLength/2+x,rulerPosition+y,paint);
                             surfaceHolder.unlockCanvasAndPost(canvas);
+
+                            deltax-=shift/5;
+                            if(deltax<0) hit=true;
                         }
                     }
                 },5,5);
