@@ -54,7 +54,7 @@ public class DiscActivity extends AppCompatActivity
 class DiscView extends SurfaceView
 {
     double shift,v0,a,pixelsPerMeter,v,l,deltax;
-    int rulerPosition,rulerLength;
+    int rulerPosition,halfWidth;
     boolean started,hit;
     SurfaceHolder surfaceHolder;
     Canvas canvas;
@@ -71,11 +71,12 @@ class DiscView extends SurfaceView
         this.a=a;
         this.pixelsPerMeter=pixelsPerMeter;
         deltax=shift;
+        l=0;
 
         started=false;
         hit=false;
         rulerPosition=Resources.getSystem().getDisplayMetrics().heightPixels/2;
-        rulerLength=Resources.getSystem().getDisplayMetrics().widthPixels/2;
+        halfWidth=Resources.getSystem().getDisplayMetrics().widthPixels/2;
     }
 
     @Override
@@ -100,8 +101,12 @@ class DiscView extends SurfaceView
                             paint.setColor(Color.rgb(0,0,33));
 
                             int y=(int)(deltax*pixelsPerMeter);
-                            int x=(int)Math.sqrt(rulerLength*rulerLength-y*y);
-                            canvas.drawLine(rulerLength/2,rulerPosition,rulerLength/2+x,rulerPosition+y,paint);
+                            int x=(int)Math.sqrt(halfWidth*halfWidth-y*y);
+                            canvas.drawLine(halfWidth/2,rulerPosition,halfWidth/2+x,rulerPosition+y,paint);
+
+                            paint.setColor(Color.RED);
+                            canvas.drawCircle(halfWidth,rulerPosition-(int)(l*pixelsPerMeter)-45,30, paint);
+
                             surfaceHolder.unlockCanvasAndPost(canvas);
 
                             deltax-=shift/5;
