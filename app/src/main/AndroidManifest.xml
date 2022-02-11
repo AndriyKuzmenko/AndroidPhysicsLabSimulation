@@ -30,6 +30,7 @@
         <activity android:name=".VoltagePlots" />
         <activity android:name=".DiscData" />
         <activity android:name=".DiscActivity" />
+        <activity android:name=".DiscResults" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

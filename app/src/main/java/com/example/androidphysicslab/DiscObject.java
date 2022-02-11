@@ -4,18 +4,21 @@ import java.util.ArrayList;
 
 public class DiscObject extends Experiment
 {
-    private double m,mu,g,k;
-    private ArrayList<Double> xList,vList;
+    private double m,mu,g,k,v0,l0,deltax;
+    private ArrayList<Double> lList,vList;
 
     public DiscObject() { }
 
-    public DiscObject(double m,double mu,double g,double k,ArrayList<Double> xList,ArrayList<Double> vList)
+    public DiscObject(double m,double mu,double g,double k,double v0,double l0,double deltax,ArrayList<Double> lList,ArrayList<Double> vList)
     {
         this.m=m;
         this.mu=mu;
         this.g=g;
         this.k=k;
-        this.xList=xList;
+        this.v0=v0;
+        this.l0=l0;
+        this.deltax=deltax;
+        this.lList=lList;
         this.vList=vList;
     }
 
@@ -34,14 +37,29 @@ public class DiscObject extends Experiment
         this.g=g;
     }
 
-    public void getK(double k)
+    public void setK(double k)
     {
         this.k=k;
     }
 
-    public void setXList(ArrayList<Double> xList)
+    public void setV0(double v0)
     {
-        this.xList=xList;
+        this.v0=v0;
+    }
+
+    public void setL0(double l0)
+    {
+        this.l0 = l0;
+    }
+
+    public void setDeltax(double deltax)
+    {
+        this.deltax=deltax;
+    }
+
+    public void setXList(ArrayList<Double> lList)
+    {
+        this.lList=lList;
     }
 
     public void setVList(ArrayList<Double> vList)
@@ -69,9 +87,24 @@ public class DiscObject extends Experiment
         return k;
     }
 
-    public ArrayList<Double> getXList()
+    public double getV0()
     {
-        return xList;
+        return v0;
+    }
+
+    public double getL0()
+    {
+        return l0;
+    }
+
+    public double getDeltax()
+    {
+        return deltax;
+    }
+
+    public ArrayList<Double> getLList()
+    {
+        return lList;
     }
 
     public ArrayList<Double> getVList()

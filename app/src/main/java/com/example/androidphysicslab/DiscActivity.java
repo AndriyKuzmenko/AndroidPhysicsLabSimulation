@@ -67,7 +67,7 @@ public class DiscActivity extends AppCompatActivity
         if(discView.lList.contains(-1.1))
         {
             discView.lList.remove(-1.1);
-            Intent si=new Intent(this,FreeFallResults.class);
+            Intent si=new Intent(this,DiscResults.class);
             double[] lList=new double[discView.lList.size()];
             double[] vList=new double[discView.vList.size()];
 
@@ -77,15 +77,21 @@ public class DiscActivity extends AppCompatActivity
                 vList[i]=discView.vList.get(i);
             }
 
-            DiscObject results=new DiscObject(m,mu,g,k,discView.lList,discView.vList);
+            DiscObject results=new DiscObject(m,mu,g,k,v0,l0,shift,discView.lList,discView.vList);
             results.setName(discView.name);
             saveResults(results);
 
-            si.putExtra("hList",lList);
+            si.putExtra("lList",lList);
             si.putExtra("vList",vList);
             si.putExtra("g",g);
             si.putExtra("m",m);
-            //startActivity(si);
+            si.putExtra("mu",mu);
+            si.putExtra("k",k);
+            si.putExtra("v0",v0);
+            si.putExtra("l0",l0);
+            si.putExtra("deltax",shift);
+
+            startActivity(si);
         }
 
         return true;
