@@ -54,7 +54,7 @@ public class DiscActivity extends AppCompatActivity
 class DiscView extends SurfaceView
 {
     double shift,v0,a,pixelsPerMeter,v,l,deltax;
-    int rulerPosition,halfWidth;
+    int rulerPosition,halfWidth,rulerX,rulerY;
     boolean started,hit;
     SurfaceHolder surfaceHolder;
     Canvas canvas;
@@ -72,6 +72,7 @@ class DiscView extends SurfaceView
         this.pixelsPerMeter=pixelsPerMeter;
         deltax=shift;
         l=0;
+        v=v0;
 
         started=false;
         hit=false;
@@ -93,24 +94,37 @@ class DiscView extends SurfaceView
                     @Override
                     public void run()
                     {
+                        canvas=surfaceHolder.lockCanvas();
+                        canvas.drawColor(Color.YELLOW);
+                        paint.setStrokeWidth(20);
+                        paint.setColor(Color.rgb(0,0,33));
+
                         if(!hit)
                         {
-                            canvas=surfaceHolder.lockCanvas();
-                            canvas.drawColor(Color.YELLOW);
-                            paint.setStrokeWidth(15);
-                            paint.setColor(Color.rgb(0,0,33));
+                            rulerY=(int)(deltax*pixelsPerMeter);
+                            rulerX=(int)Math.sqrt(2*halfWidth*halfWidth-rulerY*rulerY);
+                        }
+                        canvas.drawLine(halfWidth/4,rulerPosition,halfWidth/4+rulerX,rulerPosition+rulerY,paint);
 
-                            int y=(int)(deltax*pixelsPerMeter);
-                            int x=(int)Math.sqrt(halfWidth*halfWidth-y*y);
-                            canvas.drawLine(halfWidth/2,rulerPosition,halfWidth/2+x,rulerPosition+y,paint);
+                        paint.setColor(Color.RED);
+                        canvas.drawCircle(halfWidth,rulerPosition-(int)(l*pixelsPerMeter)-40,30, paint);
 
-                            paint.setColor(Color.RED);
-                            canvas.drawCircle(halfWidth,rulerPosition-(int)(l*pixelsPerMeter)-45,30, paint);
+                        surfaceHolder.unlockCanvasAndPost(canvas);
 
-                            surfaceHolder.unlockCanvasAndPost(canvas);
-
+                        if(!hit)
+                        {
                             deltax-=shift/5;
-                            if(deltax<0) hit=true;
+                            if (deltax<0) hit=true;
+                        }
+                        else
+                        {
+                            l+=v*0.01;
+                            v-=a*0.01;
+
+                            if(v<0)
+                            {
+                                t.cancel();
+                            }
                         }
                     }
                 },5,5);
