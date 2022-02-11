@@ -38,7 +38,7 @@ public class SpringActivity extends AppCompatActivity
         k=gi.getDoubleExtra("k",0);
 
         double height=3.3*m*g/k;
-        pixelsPerMeter=(double) Resources.getSystem().getDisplayMetrics().heightPixels/(height);
+        pixelsPerMeter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height);
 
         Log.d("values","m="+m+"  k="+k+"  g="+g);
         Log.d("values","h="+height+"   meter="+pixelsPerMeter);
