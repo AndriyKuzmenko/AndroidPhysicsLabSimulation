@@ -101,6 +101,14 @@ public class DiscActivity extends AppCompatActivity
     {
         FBRef.myRef.child("Disc").child(results.getName()).setValue(results);
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }
 
 class DiscView extends SurfaceView

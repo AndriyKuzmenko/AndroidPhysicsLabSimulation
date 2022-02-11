@@ -2,6 +2,7 @@ package com.example.androidphysicslab;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -101,5 +102,34 @@ public class DiscResults extends AppCompatActivity
 
         ArrayAdapter<String> adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,list);
         resultsDiscLV.setAdapter(adp);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
+
+    public void plots(View view)
+    {
+        Intent si=new Intent(this,DiscPlots.class);
+        si.putExtra("lList",lList);
+        si.putExtra("vList",vList);
+        si.putExtra("g",g);
+        si.putExtra("m",m);
+        si.putExtra("mu",mu);
+        si.putExtra("k",k);
+        si.putExtra("v0",v0);
+        si.putExtra("l0",l0);
+        si.putExtra("deltax",deltax);
+        startActivity(si);
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
     }
 }

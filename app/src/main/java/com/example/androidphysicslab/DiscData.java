@@ -175,4 +175,12 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
     {
 
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }
