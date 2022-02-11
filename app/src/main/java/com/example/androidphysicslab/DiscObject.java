@@ -57,7 +57,7 @@ public class DiscObject extends Experiment
         this.deltax=deltax;
     }
 
-    public void setXList(ArrayList<Double> lList)
+    public void setLList(ArrayList<Double> lList)
     {
         this.lList=lList;
     }

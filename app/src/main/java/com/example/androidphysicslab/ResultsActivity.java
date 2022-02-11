@@ -24,8 +24,9 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
     ArrayList<SpringObject> springList;
     ArrayList<NewtonObject> newtonList;
     ArrayList<VoltageObject> voltageList;
+    ArrayList<DiscObject> discList;
     ListView experimentsLV;
-    int freeFallStart,springStart,newtonStart,voltageStart;
+    int freeFallStart,springStart,newtonStart,voltageStart,discStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,6 +39,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         springList=new ArrayList<>();
         newtonList=new ArrayList<>();
         voltageList=new ArrayList<>();
+        discList=new ArrayList<>();
         experimentsLV=(ListView)findViewById(R.id.experimentsLV);
         experimentsLV.setOnItemClickListener(this);
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -120,6 +122,28 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                     experimentsList.add(name);
 
                     voltageList.add(data.getValue(VoltageObject.class));
+                }
+                displayList();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+
+        FBRef.myRef.child("Disc").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                discStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    discList.add(data.getValue(DiscObject.class));
                 }
                 displayList();
             }
@@ -244,6 +268,32 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("epsilon",results.getEpsilon());
             si.putExtra("internalR",results.getInternalR());
             si.putExtra("maxR",results.getMaxR());
+            startActivity(si);
+        }
+        else if(experimentsList.get(position).startsWith("Disc"))
+        {
+            DiscObject results=discList.get(position-discStart);
+
+            double[] lList=new double[results.getVList().size()];
+            double[] vList=new double[results.getVList().size()];
+
+            for(int i=0; i<lList.length; i++)
+            {
+                Log.w("TAG",(results.getLList()==null)+"    "+(results.getVList()==null));
+                lList[i]=results.getLList().get(i);
+                vList[i]=results.getVList().get(i);
+            }
+
+            Intent si=new Intent(this,DiscResults.class);
+            si.putExtra("lList",lList);
+            si.putExtra("vList",vList);
+            si.putExtra("g",results.getG());
+            si.putExtra("m",results.getM());
+            si.putExtra("mu",results.getMu());
+            si.putExtra("k",results.getK());
+            si.putExtra("v0",results.getV0());
+            si.putExtra("l0",results.getL0());
+            si.putExtra("deltax",results.getDeltax());
             startActivity(si);
         }
     }
