@@ -186,7 +186,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:gravity="center"
-                    android:onClick="disc"
+                    android:onClick="collision"
                     android:text="2D collision"
                     android:textColor="#06073E"
                     android:textSize="20sp"

@@ -66,6 +66,8 @@ public class Languages
     public static String shiftDistance;
     public static String collision;
     public static String distanceTime;
+    public static String railHeight;
+    public static String tableHeight;
 
     public static void toEnglish()
     {
@@ -132,6 +134,8 @@ public class Languages
         shiftDistance="Shift Distance (m)";
         collision="2D collision";
         distanceTime="Distance as a function of time";
+        railHeight="Rail height (m)";
+        tableHeight="Table height (m)";
     }
 
     public static void toHebrew()
@@ -199,5 +203,8 @@ public class Languages
         shiftDistance="מרחק הסתה (מטר)";
         collision="התנגשות בשני מימדים";
         distanceTime="מרחק כפונקציה של זמן";
+
+        railHeight="גובה מסילה (מטר)";
+        tableHeight="גובה שולחן (מטר)";
     }
 }

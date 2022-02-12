@@ -140,4 +140,10 @@ public class MenuActivity extends AppCompatActivity
         Intent si=new Intent(this, DiscData.class);
         startActivity(si);
     }
+
+    public void collision(View view)
+    {
+        Intent si=new Intent(this, CollisionData.class);
+        startActivity(si);
+    }
 }
