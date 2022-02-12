@@ -64,6 +64,7 @@ public class Languages
     public static String discExperiment;
     public static String elasticConstant;
     public static String shiftDistance;
+    public static String collision;
 
     public static void toEnglish()
     {
@@ -128,6 +129,7 @@ public class Languages
         discExperiment="Disc Experiment";
         elasticConstant="Elastic Constant (N/m)";
         shiftDistance="Shift Distance (m)";
+        collision="2D collision";
     }
 
     public static void toHebrew()
@@ -193,5 +195,6 @@ public class Languages
         discExperiment="ניסוי דיסקה";
         elasticConstant="קבוע אלסטי (ניוטון/מטר)";
         shiftDistance="מרחק הסתה (מטר)";
+        collision="התנגשות בשני מימדים";
     }
 }
