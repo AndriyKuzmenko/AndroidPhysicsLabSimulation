@@ -49,7 +49,7 @@ class CollisionView extends SurfaceView
     SurfaceHolder surfaceHolder;
     Canvas canvas;
     Paint paint;
-    int width,height;
+    int width,height,x1,y1,x2,y2;
 
     public CollisionView(Context context,double h1,double h2,double g,double pixelsPerMeter)
     {
@@ -65,6 +65,11 @@ class CollisionView extends SurfaceView
         started=false;
         width=Resources.getSystem().getDisplayMetrics().widthPixels;
         height=Resources.getSystem().getDisplayMetrics().heightPixels;
+
+        y1=(int)(height*3/4-(h1+h2)*pixelsPerMeter-10);
+
+        x2=width/2-10;
+        y2=height*3/4-(int)(h1*pixelsPerMeter);
     }
 
     @Override
@@ -88,7 +93,8 @@ class CollisionView extends SurfaceView
                         canvas.drawRect(new Rect(0,height*3/4,width,height),paint);
                         canvas.drawRect(new Rect(0,height*3/4-(int)(h1*pixelsPerMeter),width/2,height*3/4),paint);
                         paint.setColor(Color.rgb(0,0,33));
-                        canvas.drawLine(width/3,(float)(height*3/4-h1*pixelsPerMeter),0,(float)(height*3/4-(h1+h2)*pixelsPerMeter),paint);
+                        canvas.drawLine(width/3,(float)(height*3/4-h1*pixelsPerMeter),0,(float)(height*3/4-(h1+h2)*pixelsPerMeter-50),paint);
+
                         surfaceHolder.unlockCanvasAndPost(canvas);
                     }
                 },5,5);
