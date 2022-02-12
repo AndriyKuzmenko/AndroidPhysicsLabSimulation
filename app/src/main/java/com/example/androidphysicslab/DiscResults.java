@@ -2,6 +2,8 @@ package com.example.androidphysicslab;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -102,6 +104,8 @@ public class DiscResults extends AppCompatActivity
 
         ArrayAdapter<String> adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,list);
         resultsDiscLV.setAdapter(adp);
+
+        changeLanguage();
     }
 
     @Override
@@ -131,5 +135,37 @@ public class DiscResults extends AppCompatActivity
     {
         Intent si=new Intent(this,MenuActivity.class);
         startActivity(si);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.English)
+        {
+            Languages.toEnglish();
+        }
+        else if(id==R.id.Hebrew)
+        {
+            Languages.toHebrew();
+        }
+
+        changeLanguage();
+
+        return true;
+    }
+
+    public void changeLanguage()
+    {
+        plotsDiscButton.setText(Languages.plots);
+        menuDiscButton.setText(Languages.backToMenu);
     }
 }

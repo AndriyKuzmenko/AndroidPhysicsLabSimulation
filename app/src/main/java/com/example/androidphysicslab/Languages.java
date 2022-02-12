@@ -65,6 +65,7 @@ public class Languages
     public static String elasticConstant;
     public static String shiftDistance;
     public static String collision;
+    public static String distanceTime;
 
     public static void toEnglish()
     {
@@ -130,6 +131,7 @@ public class Languages
         elasticConstant="Elastic Constant (N/m)";
         shiftDistance="Shift Distance (m)";
         collision="2D collision";
+        distanceTime="Distance as a function of time";
     }
 
     public static void toHebrew()
@@ -196,5 +198,6 @@ public class Languages
         elasticConstant="קבוע אלסטי (ניוטון/מטר)";
         shiftDistance="מרחק הסתה (מטר)";
         collision="התנגשות בשני מימדים";
+        distanceTime="מרחק כפונקציה של זמן";
     }
 }

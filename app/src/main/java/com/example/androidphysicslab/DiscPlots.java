@@ -3,7 +3,10 @@ package com.example.androidphysicslab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +21,7 @@ public class DiscPlots extends AppCompatActivity
     DataPoint[] vPlot,lPlot;
     double m,mu,g,k,deltax,v0,l0;
     GraphView lGraph,vGraph;
+    TextView lTime,vTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,6 +42,8 @@ public class DiscPlots extends AppCompatActivity
 
         vGraph=(GraphView)findViewById(R.id.vGraph);
         lGraph=(GraphView)findViewById(R.id.lGraph);
+        lTime=(TextView)findViewById(R.id.lTime);
+        vTime=(TextView)findViewById(R.id.vTime);
 
         vPlot=new DataPoint[vList.length];
         lPlot=new DataPoint[vList.length];
@@ -97,6 +103,33 @@ public class DiscPlots extends AppCompatActivity
 
     public void changeLanguage()
     {
+        vTime.setText(Languages.velocityTime);
+        lTime.setText(Languages.distanceTime);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.English)
+        {
+            Languages.toEnglish();
+        }
+        else if(id==R.id.Hebrew)
+        {
+            Languages.toHebrew();
+        }
+
+        changeLanguage();
+
+        return true;
     }
 }
