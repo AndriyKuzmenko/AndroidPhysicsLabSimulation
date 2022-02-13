@@ -41,6 +41,7 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
 
         changeLanguage();
         planet=0;
+        planetCollisionSpinner.setOnItemSelectedListener(this);
     }
 
     @Override

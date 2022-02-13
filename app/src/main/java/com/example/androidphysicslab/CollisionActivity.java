@@ -114,6 +114,14 @@ class CollisionView extends SurfaceView
 
                         x1+=vx*pixelsPerMeter/100;
                         y1+=vy*pixelsPerMeter/100;
+
+                        if(y1>=height*3/4-(int)(h1*pixelsPerMeter))
+                        {
+                            vx=Math.sqrt(vx*vx+vy*vy);
+                            vy=0;
+                            Log.d("TAG","v="+vx);
+                            t.cancel();
+                        }
                     }
                 },5,5);
             }
