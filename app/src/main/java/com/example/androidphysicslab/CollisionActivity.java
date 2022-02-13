@@ -45,7 +45,7 @@ public class CollisionActivity extends AppCompatActivity
 
 class CollisionView extends SurfaceView
 {
-    double h1,h2,g,pixelsPerMeter,a,alpha,sin,cos,vx,vy;
+    double h1,h2,g,pixelsPerMeter,a,alpha,sin,cos,vx,vy,ux,uy;
     boolean started;
     SurfaceHolder surfaceHolder;
     Canvas canvas;
@@ -75,9 +75,9 @@ class CollisionView extends SurfaceView
         sin=Math.sin(alpha);
         cos=Math.cos(alpha);
         a=g*Math.sin(alpha);
-        vx=vy=0;
+        vx=vy=ux=uy=0;
 
-        x2=width/2-10;
+        x2=width/2;
         y2=height*3/4-(int)(h1*pixelsPerMeter);
     }
 
@@ -105,22 +105,46 @@ class CollisionView extends SurfaceView
                         canvas.drawLine(width/3,(float)(height*3/4-h1*pixelsPerMeter),0,(float)(height*3/4-(h1+h2)*pixelsPerMeter-50),paint);
                         paint.setColor(Color.RED);
                         canvas.drawCircle(x1-20,y1,20,paint);
+                        canvas.drawCircle(x2,y2-20,20,paint);
 
                         surfaceHolder.unlockCanvasAndPost(canvas);
 
                         vy+=a*sin/100;
                         vx+=a*cos/100;
-                        Log.d("TAG","vx="+vx+" vy="+vy+" x1="+x1);
+                        if(x1>=width/2-20)
+                        {
+                            uy+=g/100;
+                        }
+                        Log.d("TAG","vx="+vx+" vy="+vy+" x1="+x1+" ux="+ux);
 
                         x1+=vx*pixelsPerMeter/100;
                         y1+=vy*pixelsPerMeter/100;
+                        x2+=ux*pixelsPerMeter/100;
+                        y2+=uy*pixelsPerMeter/100;
 
-                        if(y1>=height*3/4-(int)(h1*pixelsPerMeter))
+                        if(y1>=height*3/4-(int)(h1*pixelsPerMeter)-20)
                         {
                             vx=Math.sqrt(vx*vx+vy*vy);
                             vy=0;
+                            y1=height*3/4-(int)(h1*pixelsPerMeter)-20;
                             Log.d("TAG","v="+vx);
-                            t.cancel();
+
+                            if(x1>width/2-20)
+                            {
+                                x1=width/2-20;
+                                ux=vx;
+                                vx=0;
+
+                                if(y2>height*3/4)
+                                {
+                                    y2=height*3/4;
+                                    ux=uy=a=0;
+                                }
+                                else if(y2==height*3/4)
+                                {
+                                    t.cancel();;
+                                }
+                            }
                         }
                     }
                 },5,5);
