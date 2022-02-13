@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -44,12 +45,12 @@ public class CollisionActivity extends AppCompatActivity
 
 class CollisionView extends SurfaceView
 {
-    double h1,h2,g,pixelsPerMeter;
+    double h1,h2,g,pixelsPerMeter,a,alpha,sin,cos,vx,vy;
     boolean started;
     SurfaceHolder surfaceHolder;
     Canvas canvas;
     Paint paint;
-    int width,height,x1,y1,x2,y2;
+    int width,height,x1,y1,x2,y2,m;
 
     public CollisionView(Context context,double h1,double h2,double g,double pixelsPerMeter)
     {
@@ -67,6 +68,14 @@ class CollisionView extends SurfaceView
         height=Resources.getSystem().getDisplayMetrics().heightPixels;
 
         y1=(int)(height*3/4-(h1+h2)*pixelsPerMeter-10);
+        m=(y1-(int)(height*3/4))/(width/3);
+        x1=(int)(y1-height*3/4+h1*pixelsPerMeter)/m;
+
+        alpha=Math.atan(h2);
+        sin=Math.sin(alpha);
+        cos=Math.cos(alpha);
+        a=g*Math.sin(alpha);
+        vx=vy=0;
 
         x2=width/2-10;
         y2=height*3/4-(int)(h1*pixelsPerMeter);
@@ -94,8 +103,17 @@ class CollisionView extends SurfaceView
                         canvas.drawRect(new Rect(0,height*3/4-(int)(h1*pixelsPerMeter),width/2,height*3/4),paint);
                         paint.setColor(Color.rgb(0,0,33));
                         canvas.drawLine(width/3,(float)(height*3/4-h1*pixelsPerMeter),0,(float)(height*3/4-(h1+h2)*pixelsPerMeter-50),paint);
+                        paint.setColor(Color.RED);
+                        canvas.drawCircle(x1-20,y1,20,paint);
 
                         surfaceHolder.unlockCanvasAndPost(canvas);
+
+                        vy+=a*sin/100;
+                        vx+=a*cos/100;
+                        Log.d("TAG","vx="+vx+" vy="+vy+" x1="+x1);
+
+                        x1+=vx*pixelsPerMeter/100;
+                        y1+=vy*pixelsPerMeter/100;
                     }
                 },5,5);
             }
