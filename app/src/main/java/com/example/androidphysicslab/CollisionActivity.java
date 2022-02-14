@@ -72,7 +72,7 @@ class CollisionView extends SurfaceView
         m=((int)y1-(int)(height*3/4))/(width/3);
         x1=(int)(y1-height*3/4+h1*pixelsPerMeter)/m;
 
-        alpha=Math.atan(h2);
+        alpha=Math.atan(h2/(width/3/pixelsPerMeter));
         sin=Math.sin(alpha);
         cos=Math.cos(alpha);
         a=g*Math.sin(alpha);
