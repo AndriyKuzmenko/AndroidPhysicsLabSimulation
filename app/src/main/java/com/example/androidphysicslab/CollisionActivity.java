@@ -36,6 +36,7 @@ public class CollisionActivity extends AppCompatActivity
 
         double maxHeight=2*(h1+h2);
         double pixlsPerMeter=(double) Resources.getSystem().getDisplayMetrics().heightPixels/maxHeight;
+        Log.d("pixelspermeter=",""+pixlsPerMeter);
 
         super.onCreate(savedInstanceState);
         collisionView=new CollisionView(this,h1,h2,g,pixlsPerMeter);
@@ -45,12 +46,12 @@ public class CollisionActivity extends AppCompatActivity
 
 class CollisionView extends SurfaceView
 {
-    double h1,h2,g,pixelsPerMeter,a,alpha,sin,cos,vx,vy,ux,uy;
+    double h1,h2,g,pixelsPerMeter,a,alpha,sin,cos,vx,vy,ux,uy,x1,y1,x2,y2;
     boolean started;
     SurfaceHolder surfaceHolder;
     Canvas canvas;
     Paint paint;
-    int width,height,x1,y1,x2,y2,m;
+    int width,height,m;
 
     public CollisionView(Context context,double h1,double h2,double g,double pixelsPerMeter)
     {
@@ -68,7 +69,7 @@ class CollisionView extends SurfaceView
         height=Resources.getSystem().getDisplayMetrics().heightPixels;
 
         y1=(int)(height*3/4-(h1+h2)*pixelsPerMeter-10);
-        m=(y1-(int)(height*3/4))/(width/3);
+        m=((int)y1-(int)(height*3/4))/(width/3);
         x1=(int)(y1-height*3/4+h1*pixelsPerMeter)/m;
 
         alpha=Math.atan(h2);
@@ -104,18 +105,18 @@ class CollisionView extends SurfaceView
                         paint.setColor(Color.rgb(0,0,33));
                         canvas.drawLine(width/3,(float)(height*3/4-h1*pixelsPerMeter),0,(float)(height*3/4-(h1+h2)*pixelsPerMeter-50),paint);
                         paint.setColor(Color.RED);
-                        canvas.drawCircle(x1-20,y1,20,paint);
-                        canvas.drawCircle(x2,y2-20,20,paint);
+                        canvas.drawCircle((int)x1-20,(int)y1,20,paint);
+                        canvas.drawCircle((int)x2,(int)y2-20,20,paint);
 
                         surfaceHolder.unlockCanvasAndPost(canvas);
 
                         vy+=a*sin/100;
                         vx+=a*cos/100;
-                        if(x1>=width/2-20)
+                        if(x1>=width/2-20 && y2<height*3/4)
                         {
                             uy+=g/100;
                         }
-                        Log.d("TAG","vx="+vx+" vy="+vy+" x1="+x1+" ux="+ux);
+                        Log.d("TAG","vx="+vx+" vy="+vy+" x1="+x1+" ux="+ux+" x2="+x2);
 
                         x1+=vx*pixelsPerMeter/100;
                         y1+=vy*pixelsPerMeter/100;
@@ -133,12 +134,12 @@ class CollisionView extends SurfaceView
                             {
                                 x1=width/2-20;
                                 ux=vx;
-                                vx=0;
+                                vx=a=0;
 
                                 if(y2>height*3/4)
                                 {
                                     y2=height*3/4;
-                                    ux=uy=a=0;
+                                    ux=uy=0;
                                 }
                                 else if(y2==height*3/4)
                                 {
