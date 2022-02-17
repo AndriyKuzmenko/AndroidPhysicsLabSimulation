@@ -46,12 +46,12 @@ public class CollisionActivity extends AppCompatActivity
 
 class CollisionView extends SurfaceView
 {
-    double h1,h2,g,pixelsPerMeter,a,alpha,sin,cos,vx,vy,ux,uy,x1,y1,x2,y2;
+    double h1,h2,g,pixelsPerMeter,a,alpha,sin,cos,vx,vy,ux,uy,x1,y1,x2,y2,m;
     boolean started;
     SurfaceHolder surfaceHolder;
     Canvas canvas;
     Paint paint;
-    int width,height,m;
+    int width,height;
 
     public CollisionView(Context context,double h1,double h2,double g,double pixelsPerMeter)
     {
@@ -69,10 +69,11 @@ class CollisionView extends SurfaceView
         height=Resources.getSystem().getDisplayMetrics().heightPixels;
 
         y1=(int)(height*3/4-(h1+h2)*pixelsPerMeter-10);
-        m=((int)y1-(int)(height*3/4))/(width/3);
-        x1=(int)(y1-height*3/4+h1*pixelsPerMeter)/m;
+        m=(h2)/(width/3/pixelsPerMeter);
+        Log.d("TAG","m="+m+" h2="+h2);
+        x1=(int)(y1-(height*3/4-h1*pixelsPerMeter)+m*width/3)/(m)+70;
 
-        alpha=Math.atan(h2/(width/3/pixelsPerMeter));
+        alpha=Math.atan(m);
         sin=Math.sin(alpha);
         cos=Math.cos(alpha);
         a=g*Math.sin(alpha);
