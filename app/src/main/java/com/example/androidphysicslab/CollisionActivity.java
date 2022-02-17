@@ -19,7 +19,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class CollisionActivity extends AppCompatActivity
-{
+{//comment
     CollisionView collisionView;
     double h1,h2,g;
     int planet;
