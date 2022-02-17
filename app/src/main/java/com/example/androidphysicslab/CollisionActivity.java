@@ -8,13 +8,17 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -42,16 +46,63 @@ public class CollisionActivity extends AppCompatActivity
         collisionView=new CollisionView(this,h1,h2,g,pixlsPerMeter);
         setContentView(collisionView);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        menu.add(Languages.results);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if (collisionView.ended)
+        {
+            CollisionObject results=new CollisionObject(h1,h2,collisionView.v,collisionView.u,g);
+            saveResults(results);
+
+            Intent si=new Intent(this,VoltageResults.class);
+            /*
+            double[] rList=new double[results.getRList().size()];
+            double[] vList=new double[results.getVList().size()];
+            double[] iList=new double[results.getIList().size()];
+
+            for(int i=0; i<rList.length; i++)
+            {
+                rList[i]=results.getRList().get(i);
+                vList[i]=results.getVList().get(i);
+                iList[i]=results.getIList().get(i);
+            }
+
+            si.putExtra("rList",rList);
+            si.putExtra("vList",vList);
+            si.putExtra("iList",iList);
+            si.putExtra("epsilon",epsilon);
+            si.putExtra("internalR",internalR);
+            si.putExtra("maxR",maxR);
+            startActivity(si);*/
+        }
+        return true;
+    }
+
+    public void saveResults(CollisionObject results)
+    {
+        Log.d("TAG",results.getName());
+        FBRef.myRef.child("Collision").child(results.getName()).setValue(results);
+    }
 }
 
 class CollisionView extends SurfaceView
 {
-    double h1,h2,g,pixelsPerMeter,a,alpha,sin,cos,vx,vy,ux,uy,x1,y1,x2,y2,m;
+    double h1,h2,g,pixelsPerMeter,a,alpha,sin,cos,vx,vy,ux,uy,x1,y1,x2,y2,m,v,u;
     boolean started;
     SurfaceHolder surfaceHolder;
     Canvas canvas;
     Paint paint;
     int width,height;
+    String name;
+    boolean ended;
 
     public CollisionView(Context context,double h1,double h2,double g,double pixelsPerMeter)
     {
@@ -81,6 +132,8 @@ class CollisionView extends SurfaceView
 
         x2=width/2;
         y2=height*3/4-(int)(h1*pixelsPerMeter);
+        name="Collision "+ SystemClock.uptimeMillis();
+        ended=false;
     }
 
     @Override
@@ -126,7 +179,7 @@ class CollisionView extends SurfaceView
 
                         if(y1>=height*3/4-(int)(h1*pixelsPerMeter)-20)
                         {
-                            vx=Math.sqrt(vx*vx+vy*vy);
+                            v=vx=Math.sqrt(vx*vx+vy*vy);
                             vy=0;
                             y1=height*3/4-(int)(h1*pixelsPerMeter)-20;
                             Log.d("TAG","v="+vx);
@@ -134,16 +187,15 @@ class CollisionView extends SurfaceView
                             if(x1>width/2-20)
                             {
                                 x1=width/2-20;
-                                ux=vx;
+                                u=ux=vx;
                                 vx=a=0;
 
-                                if(y2>height*3/4)
+                                if(y2>=height*3/4)
                                 {
                                     y2=height*3/4;
                                     ux=uy=0;
-                                }
-                                else if(y2==height*3/4)
-                                {
+                                    ended=true;
+                                    Log.d("ENDED","ENDED");
                                     t.cancel();;
                                 }
                             }
