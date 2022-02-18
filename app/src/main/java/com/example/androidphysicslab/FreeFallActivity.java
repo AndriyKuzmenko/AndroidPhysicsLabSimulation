@@ -95,6 +95,7 @@ public class FreeFallActivity extends AppCompatActivity
     public void saveResults(FreeFallObject results)
     {
         FBRef.myRef.child("Free Fall").child(results.getName()).setValue(results);
+        Log.d("saved","results");
     }
 }
 

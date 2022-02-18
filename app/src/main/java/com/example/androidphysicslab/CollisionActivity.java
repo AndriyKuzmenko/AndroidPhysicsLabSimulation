@@ -41,6 +41,8 @@ public class CollisionActivity extends AppCompatActivity
         double maxHeight=2*(h1+h2);
         double pixlsPerMeter=(double) Resources.getSystem().getDisplayMetrics().heightPixels/maxHeight;
         Log.d("pixelspermeter=",""+pixlsPerMeter);
+        pixlsPerMeter=Math.min(pixlsPerMeter,Resources.getSystem().getDisplayMetrics().widthPixels/maxHeight/2);
+        Log.d("pixelspermeter=",""+pixlsPerMeter);
 
         super.onCreate(savedInstanceState);
         collisionView=new CollisionView(this,h1,h2,g,pixlsPerMeter);
@@ -60,6 +62,7 @@ public class CollisionActivity extends AppCompatActivity
         if (collisionView.ended)
         {
             CollisionObject results=new CollisionObject(h1,h2,collisionView.v,collisionView.u,g);
+            results.setName(collisionView.name);
             saveResults(results);
 
             Intent si=new Intent(this,VoltageResults.class);
@@ -179,7 +182,8 @@ class CollisionView extends SurfaceView
 
                         if(y1>=height*3/4-(int)(h1*pixelsPerMeter)-20)
                         {
-                            v=vx=Math.sqrt(vx*vx+vy*vy);
+                            if(y1>height*3/4-(int)(h1*pixelsPerMeter)-20)
+                                v=vx=Math.sqrt(vx*vx+vy*vy);
                             vy=0;
                             y1=height*3/4-(int)(h1*pixelsPerMeter)-20;
                             Log.d("TAG","v="+vx);
@@ -189,15 +193,14 @@ class CollisionView extends SurfaceView
                                 x1=width/2-20;
                                 u=ux=vx;
                                 vx=a=0;
-
-                                if(y2>=height*3/4)
-                                {
-                                    y2=height*3/4;
-                                    ux=uy=0;
-                                    ended=true;
-                                    Log.d("ENDED","ENDED");
-                                    t.cancel();;
-                                }
+                            }
+                            else if(y2>=height*3/4)
+                            {
+                                y2=height*3/4;
+                                ux=uy=0;
+                                ended=true;
+                                Log.d("ENDED","ENDED");
+                                t.cancel();;
                             }
                         }
                     }
