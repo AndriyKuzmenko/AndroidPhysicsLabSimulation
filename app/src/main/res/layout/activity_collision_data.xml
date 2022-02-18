@@ -89,6 +89,20 @@
             android:layout_height="0px"
             android:layout_weight="1" />
 
+        <ToggleButton
+            android:id="@+id/wideTallToggle"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:text="ToggleButton"
+            android:textOff="wide"
+            android:textOn="tall" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/startCollisionButton"
             android:layout_width="match_parent"

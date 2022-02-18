@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
     EditText railHeightET,tableHeightET;
     Spinner planetCollisionSpinner;
     Button startCollisionButton;
+    ToggleButton wideTallToggle;
     AlertDialog.Builder adb;
     int planet;
 
@@ -38,6 +40,7 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
         tableHeightET=(EditText) findViewById(R.id.tableHeightET);
         planetCollisionSpinner=(Spinner) findViewById(R.id.planetCollisionSpinner);
         startCollisionButton=(Button)findViewById(R.id.startCollisionButton);
+        wideTallToggle=(ToggleButton)findViewById(R.id.wideTallToggle);
 
         changeLanguage();
         planet=0;
@@ -129,6 +132,8 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
         if(b) si.putExtra("planet",-1);
         else     si.putExtra("planet",planet);
 
+        si.putExtra("tall",wideTallToggle.isChecked());
+
         startActivity(si);
     }
 
@@ -163,5 +168,13 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
     public void onNothingSelected(AdapterView<?> parent)
     {
 
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
     }
 }

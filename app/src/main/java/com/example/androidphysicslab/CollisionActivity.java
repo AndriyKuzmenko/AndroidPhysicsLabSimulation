@@ -23,10 +23,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class CollisionActivity extends AppCompatActivity
-{//comment
+{
     CollisionView collisionView;
     double h1,h2,g;
     int planet;
+    boolean tall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,12 +38,16 @@ public class CollisionActivity extends AppCompatActivity
         planet=gi.getIntExtra("planet",0);
         if(planet==-1) g=10;
         else g=Languages.gravity[planet];
+        tall=gi.getBooleanExtra("tall",false);
 
         double maxHeight=2*(h1+h2);
         double pixlsPerMeter=(double) Resources.getSystem().getDisplayMetrics().heightPixels/maxHeight;
         Log.d("pixelspermeter=",""+pixlsPerMeter);
-        pixlsPerMeter=Math.min(pixlsPerMeter,Resources.getSystem().getDisplayMetrics().widthPixels/maxHeight/2);
-        Log.d("pixelspermeter=",""+pixlsPerMeter);
+        if(!tall)
+        {
+            pixlsPerMeter = Math.min(pixlsPerMeter, Resources.getSystem().getDisplayMetrics().widthPixels / maxHeight / 2);
+            Log.d("pixelspermeter=", "" + pixlsPerMeter);
+        }
 
         super.onCreate(savedInstanceState);
         collisionView=new CollisionView(this,h1,h2,g,pixlsPerMeter);
@@ -65,26 +70,14 @@ public class CollisionActivity extends AppCompatActivity
             results.setName(collisionView.name);
             saveResults(results);
 
-            Intent si=new Intent(this,VoltageResults.class);
-            /*
-            double[] rList=new double[results.getRList().size()];
-            double[] vList=new double[results.getVList().size()];
-            double[] iList=new double[results.getIList().size()];
+            Intent si=new Intent(this,CollisionResults.class);
 
-            for(int i=0; i<rList.length; i++)
-            {
-                rList[i]=results.getRList().get(i);
-                vList[i]=results.getVList().get(i);
-                iList[i]=results.getIList().get(i);
-            }
-
-            si.putExtra("rList",rList);
-            si.putExtra("vList",vList);
-            si.putExtra("iList",iList);
-            si.putExtra("epsilon",epsilon);
-            si.putExtra("internalR",internalR);
-            si.putExtra("maxR",maxR);
-            startActivity(si);*/
+            si.putExtra("h1",h1);
+            si.putExtra("h2",h2);
+            si.putExtra("v",results.getV());
+            si.putExtra("u",results.getU());
+            si.putExtra("g",g);
+            startActivity(si);
         }
         return true;
     }
@@ -93,6 +86,14 @@ public class CollisionActivity extends AppCompatActivity
     {
         Log.d("TAG",results.getName());
         FBRef.myRef.child("Collision").child(results.getName()).setValue(results);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
     }
 }
 
