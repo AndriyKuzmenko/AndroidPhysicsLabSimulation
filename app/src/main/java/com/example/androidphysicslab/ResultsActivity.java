@@ -44,115 +44,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         experimentsLV.setOnItemClickListener(this);
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-        FBRef.myRef.child("Free Fall").addListenerForSingleValueEvent(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dS)
-            {
-                freeFallStart=experimentsList.size();
-                for(DataSnapshot data : dS.getChildren())
-                {
-                    String name=data.getKey();
-                    experimentsList.add(name);
-
-                    freeFallList.add(data.getValue(FreeFallObject.class));
-                    Log.d("g=",freeFallList.get(freeFallList.size()-1).getG()+"");
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-
-            }
-        });
-
-        FBRef.myRef.child("Spring").addListenerForSingleValueEvent(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dS)
-            {
-                springStart=experimentsList.size();
-                for(DataSnapshot data : dS.getChildren())
-                {
-                    String name=data.getKey();
-                    experimentsList.add(name);
-
-                    voltageList.add(data.getValue(VoltageObject.class));
-                }
-                displayList();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-
-            }
-        });
-
-        FBRef.myRef.child("Newton").addListenerForSingleValueEvent(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dS)
-            {
-                newtonStart=experimentsList.size();
-                for(DataSnapshot data : dS.getChildren())
-                {
-                    String name=data.getKey();
-                    experimentsList.add(name);
-
-                    newtonList.add(data.getValue(NewtonObject.class));
-                }
-                displayList();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-
-            }
-        });
-
-        FBRef.myRef.child("Voltage").addListenerForSingleValueEvent(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dS)
-            {
-                voltageStart=experimentsList.size();
-                for(DataSnapshot data : dS.getChildren())
-                {
-                    String name=data.getKey();
-                    experimentsList.add(name);
-
-                    voltageList.add(data.getValue(VoltageObject.class));
-                }
-                displayList();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-
-            }
-        });
-
-        FBRef.myRef.child("Disc").addListenerForSingleValueEvent(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dS)
-            {
-                discStart=experimentsList.size();
-                for(DataSnapshot data : dS.getChildren())
-                {
-                    String name=data.getKey();
-                    experimentsList.add(name);
-
-                    discList.add(data.getValue(DiscObject.class));
-                }
-                displayList();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-
-            }
-        });
+        showFreeFall();
     }
 
     public void displayList()
@@ -304,5 +196,131 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         super.onPause();
 
         finish();
+    }
+
+    public void showFreeFall()
+    {
+        FBRef.myRef.child("Free Fall").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                freeFallStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    freeFallList.add(data.getValue(FreeFallObject.class));
+                    Log.d("g=",freeFallList.get(freeFallList.size()-1).getG()+"");
+                    showSpring();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+    public void showSpring()
+    {
+        FBRef.myRef.child("Spring").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                springStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    voltageList.add(data.getValue(VoltageObject.class));
+                }
+                showNewton();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+    public void showNewton()
+    {
+        FBRef.myRef.child("Newton").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                newtonStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    newtonList.add(data.getValue(NewtonObject.class));
+                }
+                showVoltage();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+    public void showVoltage()
+    {
+        FBRef.myRef.child("Voltage").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                voltageStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    voltageList.add(data.getValue(VoltageObject.class));
+                }
+                showDisc();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+    public void showDisc()
+    {
+        FBRef.myRef.child("Disc").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                discStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    discList.add(data.getValue(DiscObject.class));
+                }
+                displayList();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
     }
 }
