@@ -25,8 +25,9 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
     ArrayList<NewtonObject> newtonList;
     ArrayList<VoltageObject> voltageList;
     ArrayList<DiscObject> discList;
+    ArrayList<CollisionObject> collisionList;
     ListView experimentsLV;
-    int freeFallStart,springStart,newtonStart,voltageStart,discStart;
+    int freeFallStart,springStart,newtonStart,voltageStart,discStart,collisionStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +41,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         newtonList=new ArrayList<>();
         voltageList=new ArrayList<>();
         discList=new ArrayList<>();
+        collisionList=new ArrayList<>();
         experimentsLV=(ListView)findViewById(R.id.experimentsLV);
         experimentsLV.setOnItemClickListener(this);
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -188,6 +190,18 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("deltax",results.getDeltax());
             startActivity(si);
         }
+        else if(experimentsList.get(position).startsWith("Collision"))
+        {
+            CollisionObject results=collisionList.get(position-collisionStart);
+
+            Intent si=new Intent(this,CollisionResults.class);
+            si.putExtra("g",results.getG());
+            si.putExtra("v",results.getV());
+            si.putExtra("u",results.getU());
+            si.putExtra("h1",results.getH1());
+            si.putExtra("h2",results.getH2());
+            startActivity(si);
+        }
     }
 
     @Override
@@ -313,6 +327,31 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                     experimentsList.add(name);
 
                     discList.add(data.getValue(DiscObject.class));
+                }
+                showCollision();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+    public void showCollision()
+    {
+        FBRef.myRef.child("Collision").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                collisionStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    collisionList.add(data.getValue(CollisionObject.class));
                 }
                 displayList();
             }
