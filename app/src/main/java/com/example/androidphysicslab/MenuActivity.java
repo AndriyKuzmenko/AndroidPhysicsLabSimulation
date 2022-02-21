@@ -146,4 +146,10 @@ public class MenuActivity extends AppCompatActivity
         Intent si=new Intent(this, CollisionData.class);
         startActivity(si);
     }
+
+    public void galvanometer(View view)
+    {
+        Intent si=new Intent(this, GalvanometerData.class);
+        startActivity(si);
+    }
 }

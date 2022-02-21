@@ -196,6 +196,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="10px" />
 
+                <Button
+                    android:id="@+id/galvanometerButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:onClick="galvanometer"
+                    android:text="Tangent Galvanometer"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10px" />
+
                 <TextView
                     android:id="@+id/otherLabel"
                     android:layout_width="match_parent"

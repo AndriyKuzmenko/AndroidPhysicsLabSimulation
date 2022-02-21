@@ -68,6 +68,7 @@ public class Languages
     public static String distanceTime;
     public static String railHeight;
     public static String tableHeight;
+    public static String galvanometer;
 
     public static void toEnglish()
     {
@@ -136,6 +137,7 @@ public class Languages
         distanceTime="Distance as a function of time";
         railHeight="Rail height (m)";
         tableHeight="Table height (m)";
+        galvanometer="Tangent Galvanometer";
     }
 
     public static void toHebrew()
@@ -186,7 +188,7 @@ public class Languages
         springConstant="קבוע הקפיץ (ניוטון/מטר)";
         aTime="תאוצה כפונקציה של זמן";
         xTime="אורך כפונקציה של זמן";
-        secondNewtonsLaw="חוק שני של ניוטון";
+        secondNewtonsLaw="החוק השני של ניוטון";
         mass1="מסה על שולחן (קילוגרם)";
         mass2="מסה באוויר (קילוגרם)";
         friction="מקדם חיכוך";
@@ -203,8 +205,8 @@ public class Languages
         shiftDistance="מרחק הסתה (מטר)";
         collision="התנגשות בשני מימדים";
         distanceTime="מרחק כפונקציה של זמן";
-
         railHeight="גובה מסילה (מטר)";
         tableHeight="גובה שולחן (מטר)";
+        galvanometer="גלוונומטר טנגטי";
     }
 }
