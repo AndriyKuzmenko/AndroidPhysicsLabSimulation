@@ -40,7 +40,7 @@
             android:layout_height="0px"
             android:layout_weight="3"
             android:fontFamily="serif"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:textColor="#06073E"
             android:textSize="20sp"
             android:textStyle="bold" />

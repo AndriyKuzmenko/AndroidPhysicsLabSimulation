@@ -74,6 +74,24 @@ public class GalvanometerData extends AppCompatActivity
     public void start(View view)
     {
         Intent si=new Intent(this,GalvanometerActivity.class);
+
+        double epsilon=Double.parseDouble(epsilonET.getText().toString());
+        double maxR=Double.parseDouble(rET.getText().toString());
+        int n=Integer.parseInt(nET.getText().toString());
+        double a=Double.parseDouble(aET.getText().toString());
+
+        si.putExtra("epsilon",epsilon);
+        si.putExtra("maxR",maxR);
+        si.putExtra("n",n);
+        si.putExtra("a",a);
         startActivity(si);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
     }
 }
