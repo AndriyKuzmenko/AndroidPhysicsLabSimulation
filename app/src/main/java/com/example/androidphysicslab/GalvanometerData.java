@@ -1,16 +1,15 @@
 package com.example.androidphysicslab;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
 
 public class GalvanometerData extends AppCompatActivity
 {
@@ -70,5 +69,11 @@ public class GalvanometerData extends AppCompatActivity
         epsionLabel.setText(Languages.epsilon);
         rLabel.setText(Languages.maxR);
         startButton.setText(Languages.start);
+    }
+
+    public void start(View view)
+    {
+        Intent si=new Intent(this,GalvanometerActivity.class);
+        startActivity(si);
     }
 }
