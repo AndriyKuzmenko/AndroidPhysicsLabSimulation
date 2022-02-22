@@ -69,6 +69,8 @@ public class Languages
     public static String railHeight;
     public static String tableHeight;
     public static String galvanometer;
+    public static String n;
+    public static String area;
 
     public static void toEnglish()
     {
@@ -138,6 +140,8 @@ public class Languages
         railHeight="Rail height (m)";
         tableHeight="Table height (m)";
         galvanometer="Tangent Galvanometer";
+        n="Number of windings";
+        area="Area (m^2)";
     }
 
     public static void toHebrew()
@@ -208,5 +212,7 @@ public class Languages
         railHeight="גובה מסילה (מטר)";
         tableHeight="גובה שולחן (מטר)";
         galvanometer="גלוונומטר טנגטי";
+        n="מספר ליפופים";
+        area="שטח (מ^2)";
     }
 }

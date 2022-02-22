@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity
 {
-    Button freeFallButton,springButton,newtonButton,resultsButton,creditsButton,logOutButton,voltageButton,discButton,collisionButton;
+    Button freeFallButton,springButton,newtonButton,resultsButton,creditsButton,logOutButton,voltageButton,discButton,collisionButton,galvanometerButton;
     TextView emailTV,experimentsLabel,otherLabel,bonusLabel;
 
     @Override
@@ -35,6 +35,7 @@ public class MenuActivity extends AppCompatActivity
         experimentsLabel=(TextView)findViewById(R.id.experimentsLabel);
         otherLabel=(TextView)findViewById(R.id.otherLabel);
         collisionButton=(Button)findViewById(R.id.collisionButton);
+        galvanometerButton=(Button)findViewById(R.id.galvanometerButton);
 
         changeLanguage();
         emailTV.setText(FBRef.mUser.getEmail());
@@ -86,6 +87,7 @@ public class MenuActivity extends AppCompatActivity
         voltageButton.setText(Languages.voltageExperiment);
         discButton.setText(Languages.discExperiment);
         collisionButton.setText(Languages.collision);
+        galvanometerButton.setText(Languages.galvanometer);
     }
 
     @Override

@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="Mass (kg)"
+            android:text="Number of windings"
             android:textColor="#06073E"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -57,7 +57,7 @@
             android:layout_weight="1"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="Height (m)"
+            android:text="Area (m^2)"
             android:textColor="#06073E"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -79,13 +79,13 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/epsionLabel"
+            android:id="@+id/epsilonLabel"
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="Height (m)"
+            android:text="Electromotive Force (Volt)"
             android:textColor="#06073E"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -107,19 +107,19 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/iLabel"
+            android:id="@+id/rLabel"
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="Height (m)"
+            android:text="Maximum resistance (Ohm)"
             android:textColor="#06073E"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/iET"
+            android:id="@+id/rET"
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
