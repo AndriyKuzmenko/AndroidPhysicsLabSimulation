@@ -3,6 +3,7 @@ package com.example.androidphysicslab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -47,7 +48,7 @@ public class GalvanometerResults extends AppCompatActivity
         for(int i=1; i<rList.length+1; i++)
         {
             String t=" ";
-            String r=String.valueOf((double)(i-1)/100);
+            String r=String.valueOf((double)(rList[i-1]));
             int dot=r.indexOf('.');
             if(r.length()>dot+digitsAfterDot+1)
             {
@@ -114,5 +115,19 @@ public class GalvanometerResults extends AppCompatActivity
 
         ArrayAdapter<String> adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,list);
         resultsLV.setAdapter(adp);
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
     }
 }
