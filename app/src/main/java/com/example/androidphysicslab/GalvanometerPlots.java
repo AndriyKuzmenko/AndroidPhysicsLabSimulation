@@ -3,7 +3,11 @@ package com.example.androidphysicslab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +22,8 @@ public class GalvanometerPlots extends AppCompatActivity
     double[] rList,iList,thetaList,tgList;
     double hEarthMagneticField,epsilon,a,n;
     DataPoint[] tgPlot;
+    TextView tgITV;
+    Button backGalvanometerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,6 +32,10 @@ public class GalvanometerPlots extends AppCompatActivity
         setContentView(R.layout.activity_galvanometer_plots);
 
         tgIGraph=(GraphView)findViewById(R.id.tgIGraph);
+        tgITV=(TextView)findViewById(R.id.tgITV);
+        backGalvanometerButton=(Button)findViewById(R.id.backGalvanometerButton);
+
+        changeLanguage();
 
         Intent gi=getIntent();
         rList=gi.getDoubleArrayExtra("rList");
@@ -75,5 +85,37 @@ public class GalvanometerPlots extends AppCompatActivity
         si.putExtra("n",n);
         si.putExtra("hEarthMagneticField",hEarthMagneticField);
         startActivity(si);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.English)
+        {
+            Languages.toEnglish();
+        }
+        else if(id==R.id.Hebrew)
+        {
+            Languages.toHebrew();
+        }
+
+        changeLanguage();
+
+        return true;
+    }
+
+    public void changeLanguage()
+    {
+        tgITV.setText(Languages.tgI);
+        backGalvanometerButton.setText(Languages.back);
     }
 }

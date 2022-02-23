@@ -3,6 +3,8 @@ package com.example.androidphysicslab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -43,6 +45,7 @@ public class GalvanometerResults extends AppCompatActivity
         n=gi.getDoubleExtra("n",0);
 
         dataTV.setText("Bh="+hEarthMagneticField+" T ϵ="+epsilon+" V A="+a+" m^2 N="+n);
+        changeLanguage();
 
         String[] list=new String[11];
         list[0]="R(Ohm)    I(A)    θ(deg)    tg(θ)";
@@ -145,5 +148,37 @@ public class GalvanometerResults extends AppCompatActivity
         si.putExtra("n",n);
         si.putExtra("hEarthMagneticField",hEarthMagneticField);
         startActivity(si);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.English)
+        {
+            Languages.toEnglish();
+        }
+        else if(id==R.id.Hebrew)
+        {
+            Languages.toHebrew();
+        }
+
+        changeLanguage();
+
+        return true;
+    }
+
+    public void changeLanguage()
+    {
+        plotsButton.setText(Languages.plots);
+        menuButton.setText(Languages.backToMenu);
     }
 }

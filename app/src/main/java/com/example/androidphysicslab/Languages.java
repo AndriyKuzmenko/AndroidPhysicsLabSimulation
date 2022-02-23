@@ -71,6 +71,7 @@ public class Languages
     public static String galvanometer;
     public static String n;
     public static String area;
+    public static String tgI;
 
     public static void toEnglish()
     {
@@ -142,6 +143,7 @@ public class Languages
         galvanometer="Tangent Galvanometer";
         n="Number of windings";
         area="Area (m^2)";
+        tgI="tg(θ) as function of current";
     }
 
     public static void toHebrew()
@@ -214,5 +216,6 @@ public class Languages
         galvanometer="גלוונומטר טנגטי";
         n="מספר ליפופים";
         area="שטח (מ^2)";
+        tgI="tg(θ) כפונקציה של זרם";
     }
 }

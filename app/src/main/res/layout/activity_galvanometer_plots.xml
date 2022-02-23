@@ -21,7 +21,7 @@
                 android:layout_height="50px" />
 
             <TextView
-                android:id="@+id/vAsI"
+                android:id="@+id/tgITV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
@@ -37,7 +37,7 @@
                 android:layout_height="800px" />
 
             <Button
-                android:id="@+id/backVoltageButton"
+                android:id="@+id/backGalvanometerButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="back"
