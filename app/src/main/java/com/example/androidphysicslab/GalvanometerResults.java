@@ -43,7 +43,7 @@ public class GalvanometerResults extends AppCompatActivity
         n=gi.getDoubleExtra("n",0);
 
         String[] list=new String[11];
-        list[0]="R(Ohm)    I(A)    θ(deg)  tg(θ)";
+        list[0]="R(Ohm)    I(A)    θ(deg)    tg(θ)";
 
         for(int i=1; i<rList.length+1; i++)
         {
