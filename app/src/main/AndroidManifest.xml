@@ -38,6 +38,7 @@
         <activity android:name=".GalvanometerData" />
         <activity android:name=".GalvanometerActivity" />
         <activity android:name=".GalvanometerResults" />
+        <activity android:name=".GalvanometerPlots" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -42,6 +42,8 @@ public class GalvanometerResults extends AppCompatActivity
         a=gi.getDoubleExtra("a",0);
         n=gi.getDoubleExtra("n",0);
 
+        dataTV.setText("Bh="+hEarthMagneticField+" T ϵ="+epsilon+" V A="+a+" m^2 N="+n);
+
         String[] list=new String[11];
         list[0]="R(Ohm)    I(A)    θ(deg)    tg(θ)";
 
@@ -129,5 +131,19 @@ public class GalvanometerResults extends AppCompatActivity
         super.onPause();
 
         finish();
+    }
+
+    public void plots(View view)
+    {
+        Intent si=new Intent(this,GalvanometerPlots.class);
+        si.putExtra("rList",rList);
+        si.putExtra("iList",iList);
+        si.putExtra("thetaList",thetaList);
+        si.putExtra("tgList",tgList);
+        si.putExtra("epsilon",epsilon);
+        si.putExtra("a",a);
+        si.putExtra("n",n);
+        si.putExtra("hEarthMagneticField",hEarthMagneticField);
+        startActivity(si);
     }
 }

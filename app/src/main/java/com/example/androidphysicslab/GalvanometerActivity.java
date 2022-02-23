@@ -166,23 +166,17 @@ class GalvanometerView extends SurfaceView
                         canvas.drawLine(width*4/5,height/5,width*4/5,height/2,paint);
                         canvas.drawLine(width*4/5,height/2,arrowX,height/2,paint);
                         canvas.drawLine(arrowX,height/2,arrowX,height*7/10,paint);
-                        //voltmeter
-                        canvas.drawLine(width/2-90,height/5,width/2-90,height/5-150,paint);
-                        canvas.drawLine(width/2+90,height/5,width/2+90,height/5-150,paint);
-                        canvas.drawLine(width/2-90,height/5-150,width/2+90,height/5-150,paint);
 
                         paint.setStrokeWidth(70);
                         canvas.drawLine(width*2/5,height*7/10,width*3/5,height*7/10,paint);
 
                         paint.setColor(Color.BLUE);
                         canvas.drawCircle(width/5,height/2,50,paint);
-                        canvas.drawCircle(width/2,height/5-150,50,paint);
                         canvas.drawCircle(width*4/5,height/3,50,paint);
 
                         paint.setColor(Color.WHITE);
                         paint.setTextSize(100);
                         canvas.drawText("A",width/5-36,height/2+36,paint);
-                        canvas.drawText("V",width/2-36,height/5-114,paint);
                         paint.setTextSize(70);
                         canvas.drawText("TG",width*4/5-40,height/3+30,paint);
 
