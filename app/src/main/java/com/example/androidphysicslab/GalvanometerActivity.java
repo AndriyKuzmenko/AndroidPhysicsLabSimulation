@@ -66,24 +66,29 @@ public class GalvanometerActivity extends AppCompatActivity
             results.setName(galvanometerView.name);
             saveResults(results);
 
-            /*Intent si=new Intent(this,VoltageResults.class);
+            Intent si=new Intent(this,GalvanometerResults.class);
             double[] rList=new double[results.getRList().size()];
-            double[] vList=new double[results.getVList().size()];
             double[] iList=new double[results.getIList().size()];
+            double[] thetaList=new double[results.getThetaList().size()];
+            double[] tgList=new double[results.getTgList().size()];
 
             for(int i=0; i<rList.length; i++)
             {
                 rList[i]=results.getRList().get(i);
-                vList[i]=results.getVList().get(i);
                 iList[i]=results.getIList().get(i);
+                thetaList[i]=results.getIList().get(i);
+                tgList[i]=results.getTgList().get(i);
             }
 
             si.putExtra("rList",rList);
-            si.putExtra("vList",vList);
             si.putExtra("iList",iList);
+            si.putExtra("thetaList",thetaList);
+            si.putExtra("tgList",tgList);
             si.putExtra("epsilon",epsilon);
             si.putExtra("maxR",maxR);
-            startActivity(si);*/
+            si.putExtra("a",a);
+            si.putExtra("n",n);
+            startActivity(si);
         }
         return true;
     }
