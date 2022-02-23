@@ -76,7 +76,7 @@ public class GalvanometerActivity extends AppCompatActivity
             {
                 rList[i]=results.getRList().get(i);
                 iList[i]=results.getIList().get(i);
-                thetaList[i]=results.getIList().get(i);
+                thetaList[i]=results.getThetaList().get(i);
                 tgList[i]=results.getTgList().get(i);
             }
 
@@ -85,9 +85,9 @@ public class GalvanometerActivity extends AppCompatActivity
             si.putExtra("thetaList",thetaList);
             si.putExtra("tgList",tgList);
             si.putExtra("epsilon",epsilon);
-            si.putExtra("maxR",maxR);
             si.putExtra("a",a);
             si.putExtra("n",n);
+            si.putExtra("hEarthMagneticField",hEarthMagneticField);
             startActivity(si);
         }
         return true;
