@@ -26,8 +26,9 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
     ArrayList<VoltageObject> voltageList;
     ArrayList<DiscObject> discList;
     ArrayList<CollisionObject> collisionList;
+    ArrayList<GalvanometerObject> galvanometerList;
     ListView experimentsLV;
-    int freeFallStart,springStart,newtonStart,voltageStart,discStart,collisionStart;
+    int freeFallStart,springStart,newtonStart,voltageStart,discStart,collisionStart,galvanometerStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,6 +43,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         voltageList=new ArrayList<>();
         discList=new ArrayList<>();
         collisionList=new ArrayList<>();
+        galvanometerList=new ArrayList<>();
         experimentsLV=(ListView)findViewById(R.id.experimentsLV);
         experimentsLV.setOnItemClickListener(this);
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -202,6 +204,35 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("h2",results.getH2());
             startActivity(si);
         }
+        else if(experimentsList.get(position).startsWith("Tangent Galvanometer"))
+        {
+            GalvanometerObject results=galvanometerList.get(position-galvanometerStart);
+
+            Intent si=new Intent(this,GalvanometerResults.class);
+            double[] rList=new double[results.getRList().size()];
+            double[] iList=new double[results.getIList().size()];
+            double[] thetaList=new double[results.getThetaList().size()];
+            double[] tgList=new double[results.getTgList().size()];
+
+            for(int i=0; i<rList.length; i++)
+            {
+                rList[i]=results.getRList().get(i);
+                iList[i]=results.getIList().get(i);
+                thetaList[i]=results.getThetaList().get(i);
+                tgList[i]=results.getTgList().get(i);
+            }
+
+            si.putExtra("rList",rList);
+            si.putExtra("iList",iList);
+            si.putExtra("thetaList",thetaList);
+            si.putExtra("tgList",tgList);
+            si.putExtra("epsilon",results.getEpsilon());
+            si.putExtra("a",results.getArea());
+            si.putExtra("n",results.getN());
+            si.putExtra("hEarthMagneticField",results.getHEarthMagenticField());
+            startActivity(si);
+            startActivity(si);
+        }
     }
 
     @Override
@@ -352,6 +383,31 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                     experimentsList.add(name);
 
                     collisionList.add(data.getValue(CollisionObject.class));
+                }
+                showGalvanometer();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+    public void showGalvanometer()
+    {
+        FBRef.myRef.child("Galvanometer").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dS)
+            {
+                galvanometerStart=experimentsList.size();
+                for(DataSnapshot data : dS.getChildren())
+                {
+                    String name=data.getKey();
+                    experimentsList.add(name);
+
+                    galvanometerList.add(data.getValue(GalvanometerObject.class));
                 }
                 displayList();
             }
