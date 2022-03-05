@@ -75,7 +75,7 @@ public class Languages
 
     public static void toEnglish()
     {
-        logIn="Log In";
+        logIn="Sign In";
         freeFall="Free Fall";
         start="Start";
         mass="Mass (kg)";
@@ -113,7 +113,7 @@ public class Languages
         back="Back";
         emailAddress="Email address";
         password="Password";
-        signIn="Sign In";
+        signIn="Log In";
         spring="Spring";
         results="Results";
         credits="Credits";
