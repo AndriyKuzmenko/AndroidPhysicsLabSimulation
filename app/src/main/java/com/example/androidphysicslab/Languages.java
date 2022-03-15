@@ -72,6 +72,7 @@ public class Languages
     public static String n;
     public static String area;
     public static String tgI;
+    public static String backToAnimation;
 
     public static void toEnglish()
     {
@@ -144,6 +145,7 @@ public class Languages
         n="Number of windings";
         area="Area (m^2)";
         tgI="tg(θ) as function of current";
+        backToAnimation="Back to animation";
     }
 
     public static void toHebrew()
@@ -217,5 +219,6 @@ public class Languages
         n="מספר ליפופים";
         area="שטח (מ^2)";
         tgI="tg(θ) כפונקציה של זרם";
+        backToAnimation="חזור לאנימציה";
     }
 }

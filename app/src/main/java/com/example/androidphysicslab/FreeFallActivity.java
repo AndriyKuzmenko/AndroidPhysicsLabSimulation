@@ -28,6 +28,7 @@ import java.util.TimerTask;
 public class FreeFallActivity extends AppCompatActivity
 {
     double mass,height,gravity,accelaration;
+    boolean rerun;
     DrawingView drawingView;
 
     @Override
@@ -41,6 +42,7 @@ public class FreeFallActivity extends AppCompatActivity
         else gravity=10;
         double meter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height*1.3);
         accelaration=gravity*meter/100;
+        rerun=gi.getBooleanExtra("rerun",false);
         Log.w("TAG","a="+accelaration+" meter="+meter+" g="+gravity+" h="+height);
 
         super.onCreate(savedInstanceState);
@@ -66,21 +68,22 @@ public class FreeFallActivity extends AppCompatActivity
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if(drawingView.vList.contains(-1.0))
-        {
+        if(drawingView.vList.contains(-1.0)) {
             drawingView.vList.remove(-1.0);
-            Intent si=new Intent(this,FreeFallResults.class);
-            Log.w("TAG",""+drawingView.hList.size()+" "+drawingView.vList.size());
-            double[] hList=new double[drawingView.hList.size()];
-            double[] vList=new double[drawingView.vList.size()];
+            Intent si = new Intent(this, FreeFallResults.class);
+            Log.w("TAG", "" + drawingView.hList.size() + " " + drawingView.vList.size());
+            double[] hList = new double[drawingView.hList.size()];
+            double[] vList = new double[drawingView.vList.size()];
 
-            for(int i=0; i<hList.length; i++)
-            {
-                hList[i]=drawingView.hList.get(i);
-                vList[i]=drawingView.vList.get(i);
+            for (int i = 0; i < hList.length; i++) {
+                hList[i] = drawingView.hList.get(i);
+                vList[i] = drawingView.vList.get(i);
             }
 
-            saveResults(new FreeFallObject(drawingView.hList,drawingView.vList,drawingView.name,gravity,mass));
+            if (!rerun)
+            {
+                saveResults(new FreeFallObject(drawingView.hList, drawingView.vList, drawingView.name, gravity, mass));
+            }
 
             si.putExtra("hList",hList);
             si.putExtra("vList",vList);

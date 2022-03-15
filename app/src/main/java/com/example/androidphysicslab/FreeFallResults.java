@@ -20,7 +20,7 @@ public class FreeFallResults extends AppCompatActivity
 {
     ListView results;
     TextView mgView;
-    Button plotsButton,menuButton;
+    Button plotsButton,menuButton,animationButton;
 
     double[] hList,vList;
     double m,g;
@@ -36,6 +36,7 @@ public class FreeFallResults extends AppCompatActivity
         results=(ListView)findViewById(R.id.results);
         plotsButton=(Button)findViewById(R.id.plotsButton);
         menuButton=(Button)findViewById(R.id.menuButton);
+        animationButton=(Button)findViewById(R.id.animationButton);
         mgView=(TextView)findViewById(R.id.mgView);
         changeLanguage();
 
@@ -157,6 +158,7 @@ public class FreeFallResults extends AppCompatActivity
     {
         plotsButton.setText(Languages.plots);
         menuButton.setText(Languages.backToMenu);
+        animationButton.setText(Languages.backToAnimation);
     }
 
     @Override
@@ -165,5 +167,31 @@ public class FreeFallResults extends AppCompatActivity
         super.onPause();
 
         finish();
+    }
+
+    public void animation(View view)
+    {
+        Intent si=new Intent(this, FreeFallActivity.class);
+
+        si.putExtra("mass",m);
+        si.putExtra("height",hList[0]);
+        si.putExtra("rerun",true);
+        if(g==-1) si.putExtra("planet",-1);
+        else     si.putExtra("planet",findPlanet(g));
+
+        startActivity(si);
+    }
+
+    public int findPlanet(double g)
+    {
+        int n=-1;
+        for(int i=0;i<Languages.gravity.length;i++)
+        {
+            if(Languages.gravity[i]==g)
+            {
+                n=i;
+            }
+        }
+        return n;
     }
 }
