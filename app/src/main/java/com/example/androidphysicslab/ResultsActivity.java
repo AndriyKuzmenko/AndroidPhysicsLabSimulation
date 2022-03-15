@@ -258,8 +258,8 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
 
                     freeFallList.add(data.getValue(FreeFallObject.class));
                     Log.d("g=",freeFallList.get(freeFallList.size()-1).getG()+"");
-                    showSpring();
                 }
+                showSpring();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError)
