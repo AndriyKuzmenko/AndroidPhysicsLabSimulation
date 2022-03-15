@@ -26,6 +26,7 @@ public class SpringActivity extends AppCompatActivity
 {
     SpringView springView;
     double m,g,k,pixelsPerMeter;
+    boolean rerun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,6 +37,7 @@ public class SpringActivity extends AppCompatActivity
         if(planet==-1) g=10;
         else g=Languages.gravity[planet];
         k=gi.getDoubleExtra("k",0);
+        rerun=gi.getBooleanExtra("rerun",false);
 
         double height=3.3*m*g/k;
         pixelsPerMeter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height);
@@ -70,9 +72,14 @@ public class SpringActivity extends AppCompatActivity
         {
             Log.i("TAG","here");
             springView.xList.remove(-1.1);
-            SpringObject results=new SpringObject(springView.xList,springView.vList,springView.aList,springView.m,springView.g,springView.k);
-            results.setName(springView.name);
-            saveResults(results);
+
+            SpringObject results = new SpringObject(springView.xList, springView.vList, springView.aList, springView.m, springView.g, springView.k);
+
+            if(!rerun)
+            {
+                results.setName(springView.name);
+                saveResults(results);
+            }
 
             Intent si=new Intent(this,SpringResults.class);
             double[] xList=new double[results.getXList().size()];

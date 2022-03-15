@@ -19,7 +19,7 @@ public class SpringResults extends AppCompatActivity
 {
     TextView mgkView;
     ListView resultsSpringLV;
-    Button plotsSpringButton,menuSpringButton;
+    Button plotsSpringButton,menuSpringButton,animationSpringButton;
     double[] xList,vList,aList;
     double m,g,k;
 
@@ -35,6 +35,7 @@ public class SpringResults extends AppCompatActivity
         resultsSpringLV=(ListView) findViewById(R.id.resultsSpringLV);
         plotsSpringButton=(Button)findViewById(R.id.plotsSpringButton);
         menuSpringButton=(Button)findViewById(R.id.menuSpringButton);
+        animationSpringButton=(Button)findViewById(R.id.animationSpringButton);
         changeLanguage();
 
         Intent gi=getIntent();
@@ -126,6 +127,7 @@ public class SpringResults extends AppCompatActivity
     {
         plotsSpringButton.setText(Languages.plots);
         menuSpringButton.setText(Languages.backToMenu);
+        animationSpringButton.setText(Languages.backToAnimation);
     }
 
     public void back(View view)
@@ -180,5 +182,30 @@ public class SpringResults extends AppCompatActivity
         si.putExtra("k",k);
 
         startActivity(si);
+    }
+
+    public void animation(View view)
+    {
+        Intent si=new Intent(this, SpringActivity.class);
+
+        si.putExtra("mass",m);
+        si.putExtra("k",k);
+        if(g==10) si.putExtra("planet",-1);
+        else     si.putExtra("planet",findPlanet(g));
+        si.putExtra("rerun",true);
+        startActivity(si);
+    }
+
+    public int findPlanet(double g)
+    {
+        int n=-1;
+        for(int i=0;i<Languages.gravity.length;i++)
+        {
+            if(Languages.gravity[i]==g)
+            {
+                n=i;
+            }
+        }
+        return n;
     }
 }
