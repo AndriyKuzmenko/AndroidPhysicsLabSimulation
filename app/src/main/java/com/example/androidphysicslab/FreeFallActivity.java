@@ -41,7 +41,7 @@ public class FreeFallActivity extends AppCompatActivity
         if(planet>=0) gravity=Languages.gravity[planet];
         else gravity=10;
         double meter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height*1.3);
-        accelaration=gravity*meter/100;
+        accelaration=gravity*meter;
         rerun=gi.getBooleanExtra("rerun",false);
         Log.w("TAG","a="+accelaration+" meter="+meter+" g="+gravity+" h="+height);
 
@@ -181,11 +181,9 @@ class DrawingView extends SurfaceView
                         paint.setColor(Color.BLUE);
                         canvas.drawRect(new Rect(0,(int)h+61,Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels),paint);
                         surfaceHolder.unlockCanvasAndPost(canvas);
-                        y+=vy;
+                        y+=vy/100;
 
-                        vy+=accelaration;
-
-                        if(y>=Resources.getSystem().getDisplayMetrics().heightPixels ||y<=0) t.cancel();
+                        vy+=accelaration/100;
                     }
                 }, 5, 5);
             }
