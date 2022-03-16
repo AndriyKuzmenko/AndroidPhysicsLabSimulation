@@ -17,7 +17,7 @@ public class NewtonResults extends AppCompatActivity
 {
     TextView m1m2gaView;
     ListView resultsNewtonLV;
-    Button plotsNewtonButton,menuNewtonButton;
+    Button plotsNewtonButton,menuNewtonButton,animationNewtonButton;
 
     double[] xList,vList;
     double m1,m2,g,mu;
@@ -34,6 +34,7 @@ public class NewtonResults extends AppCompatActivity
         resultsNewtonLV=(ListView)findViewById(R.id.resultsNewtonLV);
         plotsNewtonButton=(Button)findViewById(R.id.plotsNewtonButton);
         menuNewtonButton=(Button)findViewById(R.id.menuNewtonButton);
+        animationNewtonButton=(Button)findViewById(R.id.animationNewtonButton);
         changeLanguage();
 
         Intent gi=getIntent();
@@ -113,6 +114,7 @@ public class NewtonResults extends AppCompatActivity
     {
         plotsNewtonButton.setText(Languages.plots);
         menuNewtonButton.setText(Languages.backToMenu);
+        animationNewtonButton.setText(Languages.backToAnimation);
     }
 
     @Override
@@ -167,5 +169,33 @@ public class NewtonResults extends AppCompatActivity
         si.putExtra("mu",mu);
 
         startActivity(si);
+    }
+
+    public void animation(View view)
+    {
+        Intent si=new Intent(this,NewtonActivity.class);
+
+        si.putExtra("m1",m1);
+        si.putExtra("m2",m2);
+        si.putExtra("mu",mu);
+        if(g==-10) si.putExtra("planet",-1);
+        else     si.putExtra("planet",findPlanet(g));
+        si.putExtra("rerun",true);
+        Log.w("TAG","m1= "+m1+" m2="+m2+" mu="+mu);
+
+        startActivity(si);
+    }
+
+    public int findPlanet(double g)
+    {
+        int n=-1;
+        for(int i=0;i<Languages.gravity.length;i++)
+        {
+            if(Languages.gravity[i]==g)
+            {
+                n=i;
+            }
+        }
+        return n;
     }
 }

@@ -29,6 +29,7 @@ public class NewtonActivity extends AppCompatActivity
     int planet;
     double m1,m2,g,mu,pixelsPerMeter,a,maxLength;
     final int seconds=5;
+    boolean rerun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +41,7 @@ public class NewtonActivity extends AppCompatActivity
         planet=gi.getIntExtra("planet",-2);
         if(planet==-1) g=10;
         else g=Languages.gravity[planet];
+        rerun=gi.getBooleanExtra("rerun",false);
 
         Log.d("m1","="+m1);
         Log.d("m2","="+m2);
@@ -90,9 +92,12 @@ public class NewtonActivity extends AppCompatActivity
         if (newtonView.xList.contains(-1.1))
         {
             newtonView.xList.remove(-1.1);
-            NewtonObject results=new NewtonObject(m1,m2,g,mu,newtonView.xList,newtonView.vList);
-            results.setName(newtonView.name);
-            saveResults(results);
+            if(!rerun)
+            {
+                NewtonObject results = new NewtonObject(m1, m2, g, mu, newtonView.xList, newtonView.vList);
+                results.setName(newtonView.name);
+                saveResults(results);
+            }
             Intent si=new Intent(this,NewtonResults.class);
             double[] xList=new double[newtonView.xList.size()];
             double[] vList=new double[newtonView.vList.size()];
