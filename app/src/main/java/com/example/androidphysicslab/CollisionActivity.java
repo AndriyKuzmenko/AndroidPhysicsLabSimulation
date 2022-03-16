@@ -27,7 +27,7 @@ public class CollisionActivity extends AppCompatActivity
     CollisionView collisionView;
     double h1,h2,g;
     int planet;
-    boolean tall;
+    boolean tall,rerun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,6 +39,7 @@ public class CollisionActivity extends AppCompatActivity
         if(planet==-1) g=10;
         else g=Languages.gravity[planet];
         tall=gi.getBooleanExtra("tall",false);
+        rerun=gi.getBooleanExtra("rerun",false);
 
         double maxHeight=2*(h1+h2);
         double pixlsPerMeter=(double) Resources.getSystem().getDisplayMetrics().heightPixels/maxHeight;
@@ -66,9 +67,12 @@ public class CollisionActivity extends AppCompatActivity
     {
         if (collisionView.ended)
         {
-            CollisionObject results=new CollisionObject(h1,h2,collisionView.v,collisionView.u,g);
-            results.setName(collisionView.name);
-            saveResults(results);
+            CollisionObject results=new CollisionObject(h1,h2,collisionView.v,collisionView.u,g,tall);
+            if(!rerun)
+            {
+                results.setName(collisionView.name);
+                saveResults(results);
+            }
 
             Intent si=new Intent(this,CollisionResults.class);
 
@@ -77,6 +81,7 @@ public class CollisionActivity extends AppCompatActivity
             si.putExtra("v",results.getV());
             si.putExtra("u",results.getU());
             si.putExtra("g",g);
+            si.putExtra("tall",tall);
             startActivity(si);
         }
         return true;

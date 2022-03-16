@@ -202,6 +202,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("u",results.getU());
             si.putExtra("h1",results.getH1());
             si.putExtra("h2",results.getH2());
+            si.putExtra("tall",results.getTall());
             startActivity(si);
         }
         else if(experimentsList.get(position).startsWith("Tangent Galvanometer"))
