@@ -2,6 +2,7 @@ package com.example.androidphysicslab;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +17,7 @@ public class DiscResults extends AppCompatActivity
 {
     TextView mgkDiscView;
     ListView resultsDiscLV;
-    Button plotsDiscButton,menuDiscButton;
+    Button plotsDiscButton,menuDiscButton,animationDiscButton;
     double[] lList,vList;
     double m,mu,g,k,deltax,v0,l0;
 
@@ -32,6 +33,7 @@ public class DiscResults extends AppCompatActivity
         resultsDiscLV=(ListView)findViewById(R.id.resultsDiscLV);
         plotsDiscButton=(Button)findViewById(R.id.plotsDiscButton);
         menuDiscButton=(Button)findViewById(R.id.menuDiscButton);
+        animationDiscButton=(Button)findViewById(R.id.animationDiscButton);
 
         Intent gi=getIntent();
         lList=gi.getDoubleArrayExtra("lList");
@@ -167,5 +169,33 @@ public class DiscResults extends AppCompatActivity
     {
         plotsDiscButton.setText(Languages.plots);
         menuDiscButton.setText(Languages.backToMenu);
+        animationDiscButton.setText(Languages.backToAnimation);
+    }
+
+    public void animation(View view)
+    {
+        Intent si=new Intent(this,DiscActivity.class);
+
+        si.putExtra("m",m);
+        si.putExtra("mu",mu);
+        si.putExtra("k",k);
+        si.putExtra("shift",deltax);
+        if(g==10) si.putExtra("planet",-1);
+        else     si.putExtra("planet",findPlanet(g));
+        si.putExtra("rerun",true);
+        startActivity(si);
+    }
+
+    public int findPlanet(double g)
+    {
+        int n=-1;
+        for(int i=0;i<Languages.gravity.length;i++)
+        {
+            if(Languages.gravity[i]==g)
+            {
+                n=i;
+            }
+        }
+        return n;
     }
 }

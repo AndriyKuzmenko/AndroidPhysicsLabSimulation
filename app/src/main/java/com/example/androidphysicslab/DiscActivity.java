@@ -26,6 +26,7 @@ public class DiscActivity extends AppCompatActivity
     DiscView discView;
     double m,mu,k,shift,g,v0,a,t,l0;
     int planet;
+    boolean rerun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,6 +39,7 @@ public class DiscActivity extends AppCompatActivity
         planet=gi.getIntExtra("planet",-2);
         if(planet==-1) g=10;
         else g=Languages.gravity[planet];
+        rerun=gi.getBooleanExtra("rerun",false);
 
         v0=Math.sqrt(k*shift*shift/m);
         a=mu*g;
@@ -77,9 +79,12 @@ public class DiscActivity extends AppCompatActivity
                 vList[i]=discView.vList.get(i);
             }
 
-            DiscObject results=new DiscObject(m,mu,g,k,v0,l0,shift,discView.lList,discView.vList);
-            results.setName(discView.name);
-            saveResults(results);
+            if(!rerun)
+            {
+                DiscObject results = new DiscObject(m, mu, g, k, v0, l0, shift, discView.lList, discView.vList);
+                results.setName(discView.name);
+                saveResults(results);
+            }
 
             si.putExtra("lList",lList);
             si.putExtra("vList",vList);
