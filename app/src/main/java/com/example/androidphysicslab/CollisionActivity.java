@@ -68,7 +68,7 @@ public class CollisionActivity extends AppCompatActivity
         if (collisionView.ended)
         {
             CollisionObject results=new CollisionObject(h1,h2,collisionView.v,collisionView.u,g,tall);
-            if(!rerun)
+            if(!(rerun||FBRef.mUser==null))
             {
                 results.setName(collisionView.name);
                 saveResults(results);

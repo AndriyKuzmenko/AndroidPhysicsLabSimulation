@@ -68,19 +68,21 @@ public class FreeFallActivity extends AppCompatActivity
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if(drawingView.vList.contains(-1.0)) {
+        if(drawingView.vList.contains(-1.0))
+        {
             drawingView.vList.remove(-1.0);
             Intent si = new Intent(this, FreeFallResults.class);
             Log.w("TAG", "" + drawingView.hList.size() + " " + drawingView.vList.size());
             double[] hList = new double[drawingView.hList.size()];
             double[] vList = new double[drawingView.vList.size()];
 
-            for (int i = 0; i < hList.length; i++) {
+            for (int i = 0; i < hList.length; i++)
+            {
                 hList[i] = drawingView.hList.get(i);
                 vList[i] = drawingView.vList.get(i);
             }
 
-            if (!rerun)
+            if(!(rerun||FBRef.mUser==null))
             {
                 saveResults(new FreeFallObject(drawingView.hList, drawingView.vList, drawingView.name, gravity, mass));
             }

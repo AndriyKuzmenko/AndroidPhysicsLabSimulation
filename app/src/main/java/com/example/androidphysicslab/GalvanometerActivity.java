@@ -64,7 +64,9 @@ public class GalvanometerActivity extends AppCompatActivity
         {
             GalvanometerObject results=new GalvanometerObject(epsilon,a,n,hEarthMagneticField,galvanometerView.iList,galvanometerView.rList,galvanometerView.tgList,galvanometerView.thetaList);
             results.setName(galvanometerView.name);
-            saveResults(results);
+
+            if(FBRef.mUser!=null)
+                saveResults(results);
 
             Intent si=new Intent(this,GalvanometerResults.class);
             double[] rList=new double[results.getRList().size()];

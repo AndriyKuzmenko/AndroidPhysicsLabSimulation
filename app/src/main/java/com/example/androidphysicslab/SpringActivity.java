@@ -75,7 +75,7 @@ public class SpringActivity extends AppCompatActivity
 
             SpringObject results = new SpringObject(springView.xList, springView.vList, springView.aList, springView.m, springView.g, springView.k);
 
-            if(!rerun)
+            if(!(rerun||FBRef.mUser==null))
             {
                 results.setName(springView.name);
                 saveResults(results);

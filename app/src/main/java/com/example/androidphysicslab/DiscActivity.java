@@ -79,7 +79,7 @@ public class DiscActivity extends AppCompatActivity
                 vList[i]=discView.vList.get(i);
             }
 
-            if(!rerun)
+            if(!(rerun||FBRef.mUser==null))
             {
                 DiscObject results = new DiscObject(m, mu, g, k, v0, l0, shift, discView.lList, discView.vList);
                 results.setName(discView.name);

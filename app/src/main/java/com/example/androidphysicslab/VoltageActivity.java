@@ -53,7 +53,9 @@ public class VoltageActivity extends AppCompatActivity
         {
             VoltageObject results=new VoltageObject(voltageView.rList,voltageView.iList,voltageView.vList,epsilon,internalR,maxR);
             results.setName(voltageView.name);
-            saveResults(results);
+
+            if(FBRef.mUser!=null)
+                saveResults(results);
 
             Intent si=new Intent(this,VoltageResults.class);
             double[] rList=new double[results.getRList().size()];

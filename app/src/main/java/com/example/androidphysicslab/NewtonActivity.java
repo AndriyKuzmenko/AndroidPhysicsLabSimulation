@@ -92,7 +92,7 @@ public class NewtonActivity extends AppCompatActivity
         if (newtonView.xList.contains(-1.1))
         {
             newtonView.xList.remove(-1.1);
-            if(!rerun)
+            if(!(rerun||FBRef.mUser==null))
             {
                 NewtonObject results = new NewtonObject(m1, m2, g, mu, newtonView.xList, newtonView.vList);
                 results.setName(newtonView.name);
