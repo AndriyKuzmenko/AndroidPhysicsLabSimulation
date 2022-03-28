@@ -17,7 +17,7 @@ public class VoltageData extends AppCompatActivity
 {
     TextView epsilonLabel,internalRLabel,maxRLabel;
     EditText epsilonET,internalRET,maxRET;
-    Button startVoltageButton;
+    Button startVoltageButton,backToMenuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,6 +32,7 @@ public class VoltageData extends AppCompatActivity
         internalRET=(EditText)findViewById(R.id.internalRET);
         maxRET=(EditText)findViewById(R.id.maxRET);
         startVoltageButton=(Button)findViewById(R.id.startVoltageButton);
+        backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
 
         changeLanguage();
     }
@@ -42,6 +43,7 @@ public class VoltageData extends AppCompatActivity
         internalRLabel.setText(Languages.internalR);
         maxRLabel.setText(Languages.maxR);
         startVoltageButton.setText(Languages.start);
+        backToMenuButton.setText(Languages.back);
     }
 
     @Override
@@ -91,5 +93,11 @@ public class VoltageData extends AppCompatActivity
         super.onPause();
 
         finish();
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
     }
 }

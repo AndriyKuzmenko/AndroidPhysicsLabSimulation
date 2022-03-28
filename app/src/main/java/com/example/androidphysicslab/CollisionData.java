@@ -23,7 +23,7 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
     TextView railHeightLabel,tableHeightLabel;
     EditText railHeightET,tableHeightET;
     Spinner planetCollisionSpinner;
-    Button startCollisionButton;
+    Button startCollisionButton,backToMenuButton;
     ToggleButton wideTallToggle;
     AlertDialog.Builder adb;
     int planet;
@@ -40,6 +40,7 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
         tableHeightET=(EditText) findViewById(R.id.tableHeightET);
         planetCollisionSpinner=(Spinner) findViewById(R.id.planetCollisionSpinner);
         startCollisionButton=(Button)findViewById(R.id.startCollisionButton);
+        backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
         wideTallToggle=(ToggleButton)findViewById(R.id.wideTallToggle);
 
         changeLanguage();
@@ -78,6 +79,7 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
         railHeightLabel.setText(Languages.railHeight);
         tableHeightLabel.setText(Languages.tableHeight);
         startCollisionButton.setText(Languages.start);
+        backToMenuButton.setText(Languages.back);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
@@ -176,5 +178,11 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
         super.onPause();
 
         finish();
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
     }
 }

@@ -15,7 +15,7 @@ public class GalvanometerData extends AppCompatActivity
 {
     TextView nLabel,aLabel,epsionLabel,rLabel;
     EditText nET,aET,epsilonET,rET;
-    Button startButton;
+    Button startButton,backToMenuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,6 +32,7 @@ public class GalvanometerData extends AppCompatActivity
         epsilonET=(EditText)findViewById(R.id.epsilonET);
         rET=(EditText)findViewById(R.id.rET);
         startButton=(Button)findViewById(R.id.startButton);
+        backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
 
         changeLanguage();
     }
@@ -69,6 +70,7 @@ public class GalvanometerData extends AppCompatActivity
         epsionLabel.setText(Languages.epsilon);
         rLabel.setText(Languages.maxR);
         startButton.setText(Languages.start);
+        backToMenuButton.setText(Languages.back);
     }
 
     public void start(View view)
@@ -93,5 +95,11 @@ public class GalvanometerData extends AppCompatActivity
         super.onPause();
 
         finish();
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
     }
 }

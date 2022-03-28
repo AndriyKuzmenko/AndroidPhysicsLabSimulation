@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,7 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SpringData extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
-    TextView massSpringLabel,kLabel,startSpringButton;
+    TextView massSpringLabel,kLabel;
+    Button startSpringButton,backToMenuButton;
     EditText massSpringET, kET;
     Spinner planetSpringSpinner;
     AlertDialog.Builder adb;
@@ -32,7 +34,8 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
 
         massSpringLabel=(TextView)findViewById(R.id.massSpringLabel);
         kLabel=(TextView)findViewById(R.id.kLabel);
-        startSpringButton=(TextView)findViewById(R.id.startSpringButton);
+        startSpringButton=(Button)findViewById(R.id.startSpringButton);
+        backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
         planetSpringSpinner=(Spinner)findViewById(R.id.planetSpringSpinner);
         massSpringET=(EditText)findViewById(R.id.massSpringET);
         kET=(EditText)findViewById(R.id.kET);
@@ -74,6 +77,7 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
         massSpringLabel.setText(Languages.mass);
         kLabel.setText(Languages.springConstant);
         startSpringButton.setText(Languages.start);
+        backToMenuButton.setText(Languages.back);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
@@ -172,5 +176,11 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
         super.onPause();
 
         finish();
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
     }
 }

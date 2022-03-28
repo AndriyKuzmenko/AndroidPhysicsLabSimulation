@@ -22,7 +22,7 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
     TextView mass1Label,mass2Label,frictionLabel;
     EditText mass1ET,mass2ET,frictionET;
     Spinner planetNewtonSpinner;
-    Button startNewtonButton;
+    Button startNewtonButton,backToMenuButton;
     int planet;
     AlertDialog.Builder adb;
 
@@ -40,6 +40,7 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
         frictionET=(EditText)findViewById(R.id.frictionET);
         planetNewtonSpinner=(Spinner)findViewById(R.id.planetNewtonSpinner);
         startNewtonButton=(Button)findViewById(R.id.startNewtonButton);
+        backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
 
         changeLanguage();
         planet=0;
@@ -52,6 +53,7 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
         mass2Label.setText(Languages.mass2);
         frictionLabel.setText(Languages.friction);
         startNewtonButton.setText(Languages.start);
+        backToMenuButton.setText(Languages.back);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
@@ -178,5 +180,11 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
         super.onPause();
 
         finish();
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
     }
 }
