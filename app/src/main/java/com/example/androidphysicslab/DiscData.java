@@ -22,7 +22,7 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
     TextView massDiscLabel,muDiscLabel,kDiscLabel,shiftDiscLabel;
     EditText massDiscET,muDiscET,kDiscET,shiftDiscET;
     Spinner planetDiscSpinner;
-    Button startButton;
+    Button startButton,backToMenuButton;
     AlertDialog.Builder adb;
     int planet;
 
@@ -42,6 +42,7 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
         startButton=(Button)findViewById(R.id.startButton);
         shiftDiscLabel=(TextView)findViewById(R.id.shiftDiscLabel);
         shiftDiscET=(EditText)findViewById(R.id.shiftDiscET);
+        backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
         planet=0;
         planetDiscSpinner.setOnItemSelectedListener(this);
 
@@ -81,6 +82,7 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
         kDiscLabel.setText(Languages.elasticConstant);
         startButton.setText(Languages.start);
         shiftDiscLabel.setText(Languages.shiftDistance);
+        backToMenuButton.setText(Languages.back);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
@@ -182,5 +184,11 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
         super.onPause();
 
         finish();
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
     }
 }

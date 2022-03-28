@@ -26,7 +26,7 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
     int planet;
     AlertDialog.Builder adb;
     EditText massET, heightET;
-    Button startButton;
+    Button startButton,backToMenuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +40,7 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
         massET=(EditText)findViewById(R.id.massET);
         heightET=(EditText)findViewById(R.id.heightET);
         startButton=(Button)findViewById(R.id.startButton);
+        backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
@@ -133,6 +134,7 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
         massLabel.setText(Languages.mass);
         heightLabel.setText(Languages.height);
         startButton.setText(Languages.start);
+        backToMenuButton.setText(Languages.back);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
@@ -178,5 +180,11 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
         super.onPause();
 
         finish();
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
     }
 }
