@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MenuActivity extends AppCompatActivity
 {
     Button freeFallButton,springButton,newtonButton,resultsButton,creditsButton,logOutButton,voltageButton,discButton,collisionButton,galvanometerButton;
-    TextView emailTV,experimentsLabel,otherLabel,bonusLabel;
+    TextView emailTV,experimentsLabel,otherLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class MenuActivity extends AppCompatActivity
         else
         {
             emailTV.setText(Languages.guest);
+            resultsButton.setEnabled(false);
         }
     }
 
