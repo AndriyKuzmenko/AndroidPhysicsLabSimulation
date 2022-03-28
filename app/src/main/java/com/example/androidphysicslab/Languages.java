@@ -133,7 +133,7 @@ public class Languages
         epsilon="Electromotive Force (Volt)";
         internalR="Internal Resistannce (Ohm)";
         maxR="Maximum resistance (Ohm)";
-        iVPlot="Voltage ad a function of Current";
+        iVPlot="Voltage as a function of Current";
         discExperiment="Disc Experiment";
         elasticConstant="Elastic Constant (N/m)";
         shiftDistance="Shift Distance (m)";
