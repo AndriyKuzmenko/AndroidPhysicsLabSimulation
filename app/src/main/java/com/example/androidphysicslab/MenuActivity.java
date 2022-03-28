@@ -18,28 +18,34 @@ public class MenuActivity extends AppCompatActivity
     TextView emailTV,experimentsLabel,otherLabel,bonusLabel;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        freeFallButton=(Button)findViewById(R.id.freeFallButton);
-        springButton=(Button)findViewById(R.id.springButton);
-        newtonButton=(Button)findViewById(R.id.newtonButton);
-        resultsButton=(Button)findViewById(R.id.resultsButton);
-        creditsButton=(Button)findViewById(R.id.creditsButton);
-        discButton=(Button)findViewById(R.id.discButton);
-        logOutButton=(Button)findViewById(R.id.logOutButton);
-        voltageButton=(Button)findViewById(R.id.voltageButton);
-        emailTV=(TextView)findViewById(R.id.emailTV);
-        experimentsLabel=(TextView)findViewById(R.id.experimentsLabel);
-        otherLabel=(TextView)findViewById(R.id.otherLabel);
-        collisionButton=(Button)findViewById(R.id.collisionButton);
-        galvanometerButton=(Button)findViewById(R.id.galvanometerButton);
+        freeFallButton = (Button) findViewById(R.id.freeFallButton);
+        springButton = (Button) findViewById(R.id.springButton);
+        newtonButton = (Button) findViewById(R.id.newtonButton);
+        resultsButton = (Button) findViewById(R.id.resultsButton);
+        creditsButton = (Button) findViewById(R.id.creditsButton);
+        discButton = (Button) findViewById(R.id.discButton);
+        logOutButton = (Button) findViewById(R.id.logOutButton);
+        voltageButton = (Button) findViewById(R.id.voltageButton);
+        emailTV = (TextView) findViewById(R.id.emailTV);
+        experimentsLabel = (TextView) findViewById(R.id.experimentsLabel);
+        otherLabel = (TextView) findViewById(R.id.otherLabel);
+        collisionButton = (Button) findViewById(R.id.collisionButton);
+        galvanometerButton = (Button) findViewById(R.id.galvanometerButton);
 
         changeLanguage();
-        emailTV.setText(FBRef.mUser.getEmail());
-        FBRef.myRef=FBRef.database.getReference(FBRef.mUser.getUid());
+        if (FBRef.mUser != null)
+        {
+            emailTV.setText(FBRef.mUser.getEmail());
+            FBRef.myRef=FBRef.database.getReference(FBRef.mUser.getUid());
+        }
+        else
+        {
+            emailTV.setText(Languages.guest);
+        }
     }
 
     public void freeFall(View view)

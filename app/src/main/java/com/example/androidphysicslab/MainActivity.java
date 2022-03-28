@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity
 {
-    Button logInButton,signInButton;
+    Button logInButton,signInButton,guestButton;
     EditText emailET,passwordET;
 
     @Override
@@ -44,12 +44,12 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        emailET=(EditText)findViewById(R.id.emailET);
-        passwordET=(EditText)findViewById(R.id.passwordET);
-        logInButton=(Button)findViewById(R.id.logInButton);
-        signInButton=(Button)findViewById(R.id.signInButton);
-
-        if(Languages.signIn==null)
+        emailET = (EditText) findViewById(R.id.emailET);
+        passwordET = (EditText) findViewById(R.id.passwordET);
+        logInButton = (Button) findViewById(R.id.logInButton);
+        signInButton = (Button) findViewById(R.id.signInButton);
+        guestButton=(Button)findViewById(R.id.guestButton);
+        if (Languages.signIn == null)
         {
             Languages.toEnglish();
         }
@@ -61,18 +61,18 @@ public class MainActivity extends AppCompatActivity
     {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FBRef.mUser=FBRef.mAuth.getCurrentUser();
-        if(FBRef.mUser!=null)
+        FBRef.mUser = FBRef.mAuth.getCurrentUser();
+        if (FBRef.mUser != null)
         {
-            Log.i("TAG","A user is registered");
+            Log.i("TAG", "A user is registered");
             nextActivity();
         }
     }
 
     public void logIn(View view)
     {
-        String email=emailET.getText().toString();
-        String password=passwordET.getText().toString();
+        String email = emailET.getText().toString();
+        String password = passwordET.getText().toString();
 
         FBRef.mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
                         {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "createUserWithEmail:success");
-                            FBRef.mUser=FBRef.mAuth.getCurrentUser();
+                            FBRef.mUser = FBRef.mAuth.getCurrentUser();
                             nextActivity();
                         }
                         else
@@ -100,20 +100,20 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        getMenuInflater().inflate(R.menu.main,menu);
+        getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        int id=item.getItemId();
+        int id = item.getItemId();
 
-        if(id==R.id.English)
+        if (id == R.id.English)
         {
             Languages.toEnglish();
         }
-        else if(id==R.id.Hebrew)
+        else if (id == R.id.Hebrew)
         {
             Languages.toHebrew();
         }
@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity
         emailET.setHint(Languages.emailAddress);
         passwordET.setHint(Languages.password);
         signInButton.setText(Languages.signIn);
+        guestButton.setText(Languages.enterAsGuest);
     }
 
     @Override
@@ -141,14 +142,14 @@ public class MainActivity extends AppCompatActivity
 
     public void nextActivity()
     {
-        Intent si=new Intent(this, MenuActivity.class);
+        Intent si = new Intent(this, MenuActivity.class);
         startActivity(si);
     }
 
     public void signIn(View view)
     {
-        String email=emailET.getText().toString();
-        String password=passwordET.getText().toString();
+        String email = emailET.getText().toString();
+        String password = passwordET.getText().toString();
 
         FBRef.mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
@@ -160,7 +161,7 @@ public class MainActivity extends AppCompatActivity
                         {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithEmail:success");
-                            FBRef.mUser=FBRef.mAuth.getCurrentUser();
+                            FBRef.mUser = FBRef.mAuth.getCurrentUser();
                             nextActivity();
                         }
                         else
@@ -172,5 +173,11 @@ public class MainActivity extends AppCompatActivity
                         }
                     }
                 });
+    }
+
+    public void guest(View view)
+    {
+        FBRef.mUser=null;
+        nextActivity();
     }
 }

@@ -73,6 +73,8 @@ public class Languages
     public static String area;
     public static String tgI;
     public static String backToAnimation;
+    public static String enterAsGuest;
+    public static String guest;
 
     public static void toEnglish()
     {
@@ -146,6 +148,8 @@ public class Languages
         area="Area (m^2)";
         tgI="tg(θ) as function of current";
         backToAnimation="Back to animation";
+        enterAsGuest="Enter as guest";
+        guest="Guest";
     }
 
     public static void toHebrew()
@@ -220,5 +224,7 @@ public class Languages
         area="שטח (מ^2)";
         tgI="tg(θ) כפונקציה של זרם";
         backToAnimation="חזור לאנימציה";
+        enterAsGuest="כניסה בתור אורח";
+        guest="אורח";
     }
 }
