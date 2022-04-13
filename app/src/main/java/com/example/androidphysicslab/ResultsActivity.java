@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
     ArrayList<CollisionObject> collisionList;
     ArrayList<GalvanometerObject> galvanometerList;
     ListView experimentsLV;
+    Button backButton;
     int freeFallStart,springStart,newtonStart,voltageStart,discStart,collisionStart,galvanometerStart;
 
     @Override
@@ -44,9 +46,12 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         discList=new ArrayList<>();
         collisionList=new ArrayList<>();
         galvanometerList=new ArrayList<>();
+
         experimentsLV=(ListView)findViewById(R.id.experimentsLV);
         experimentsLV.setOnItemClickListener(this);
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        backButton=(Button)findViewById(R.id.backButton);
+        backButton.setText(Languages.back);
 
         showFreeFall();
     }
@@ -418,5 +423,11 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
 
             }
         });
+    }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
     }
 }
