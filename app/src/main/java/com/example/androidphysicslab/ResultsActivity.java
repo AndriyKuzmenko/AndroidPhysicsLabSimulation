@@ -288,7 +288,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
                     String name=data.getKey();
                     experimentsList.add(name);
 
-                    voltageList.add(data.getValue(VoltageObject.class));
+                    springList.add(data.getValue(SpringObject.class));
                 }
                 showNewton();
             }

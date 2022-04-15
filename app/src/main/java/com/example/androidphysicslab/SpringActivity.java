@@ -120,8 +120,8 @@ class SpringView extends SurfaceView
     Rect ceiling;
     double drawingPosition,deltaX,a,v;
     int middle,left,right;
-    boolean started,a0;
-    int counter;
+    boolean started;
+    int counter,time;
     public ArrayList<Double> xList,vList,aList;
     public String name;
 
@@ -144,7 +144,7 @@ class SpringView extends SurfaceView
         started=false;
         deltaX=a=v=0;
         counter=0;
-        a0=false;
+        time=(int)(500*Math.PI*Math.sqrt(m/k));
 
         xList=new ArrayList<>();
         vList=new ArrayList<>();
@@ -214,21 +214,11 @@ class SpringView extends SurfaceView
                         deltaX+=v*0.01;
                         drawingPosition=deltaX*pixelsPerMeter+ceiling.bottom+100;
 
-                        if((int)a==0 && !a0)
+                        counter++;
+                        if(counter>=time)
                         {
-                            counter++;
-                            a0=true;
-                            Log.d("counter",counter+"");
-
-                            if(counter==10)
-                            {
-                                t.cancel();
-                                xList.add(-1.1);
-                            }
-                        }
-                        else if ((int)a!=0)
-                        {
-                            a0=false;
+                            t.cancel();
+                            xList.add(-1.1);
                         }
                     }
                 },5,5);
