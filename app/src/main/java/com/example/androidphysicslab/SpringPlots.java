@@ -97,7 +97,8 @@ public class SpringPlots extends AppCompatActivity
         si.putExtra("k",k);
         si.putExtra("amplitude",amplitude);
         si.putExtra("periods",periods);
-
+        Log.d("ampl","="+amplitude);
+        Log.d("peri","="+periods);
         startActivity(si);
     }
 
