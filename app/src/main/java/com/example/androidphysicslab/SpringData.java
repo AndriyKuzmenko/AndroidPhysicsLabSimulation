@@ -19,9 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SpringData extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
-    TextView massSpringLabel,kLabel;
+    TextView massSpringLabel,kLabel,amplitudeLabel,periodsLabel;
     Button startSpringButton,backToMenuButton;
-    EditText massSpringET, kET;
+    EditText massSpringET,kET,amplitudeET,periodsET;
     Spinner planetSpringSpinner;
     AlertDialog.Builder adb;
     int planet;
@@ -39,6 +39,10 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
         planetSpringSpinner=(Spinner)findViewById(R.id.planetSpringSpinner);
         massSpringET=(EditText)findViewById(R.id.massSpringET);
         kET=(EditText)findViewById(R.id.kET);
+        amplitudeLabel=(TextView)findViewById(R.id.amplitudeLabel);
+        periodsLabel=(TextView)findViewById(R.id.periodsLabel);
+        amplitudeET=(EditText)findViewById(R.id.amplitudeET);
+        periodsET=(EditText)findViewById(R.id.periodsET);
 
         planet=0;
         planetSpringSpinner.setOnItemSelectedListener(this);
@@ -78,6 +82,8 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
         kLabel.setText(Languages.springConstant);
         startSpringButton.setText(Languages.start);
         backToMenuButton.setText(Languages.back);
+        amplitudeLabel.setText(Languages.amplitude);
+        periodsLabel.setText(Languages.periods);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);

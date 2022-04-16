@@ -75,6 +75,8 @@ public class Languages
     public static String backToAnimation;
     public static String enterAsGuest;
     public static String guest;
+    public static String amplitude;
+    public static String periods;
 
     public static void toEnglish()
     {
@@ -150,6 +152,8 @@ public class Languages
         backToAnimation="Back to animation";
         enterAsGuest="Enter as guest";
         guest="Guest";
+        amplitude="Amplitude";
+        periods="Periods";
     }
 
     public static void toHebrew()
@@ -226,5 +230,7 @@ public class Languages
         backToAnimation="חזור לאנימציה";
         enterAsGuest="כניסה בתור אורח";
         guest="אורח";
+        amplitude="אמפליטודה";
+        periods="מחזורים";
     }
 }
