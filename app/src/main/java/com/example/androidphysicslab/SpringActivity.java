@@ -25,7 +25,7 @@ import java.util.TimerTask;
 public class SpringActivity extends AppCompatActivity
 {
     SpringView springView;
-    double m,g,k,pixelsPerMeter;
+    double m,g,k,amplit,periods,pixelsPerMeter;
     boolean rerun;
 
     @Override
@@ -37,6 +37,8 @@ public class SpringActivity extends AppCompatActivity
         if(planet==-1) g=10;
         else g=Languages.gravity[planet];
         k=gi.getDoubleExtra("k",0);
+        amplit=gi.getDoubleExtra("amplitude",0);
+        periods=gi.getDoubleExtra("periods",0);
         rerun=gi.getBooleanExtra("rerun",false);
 
         double height=3.3*m*g/k;
@@ -46,7 +48,7 @@ public class SpringActivity extends AppCompatActivity
         Log.d("values","h="+height+"   meter="+pixelsPerMeter);
 
         super.onCreate(savedInstanceState);
-        springView=new SpringView(this,m,g,k,pixelsPerMeter);
+        springView=new SpringView(this,m,g,k,amplit,periods,pixelsPerMeter);
         setContentView(springView);
     }
 
@@ -118,14 +120,14 @@ class SpringView extends SurfaceView
     Paint paint;
     double m,g,k,pixelsPerMeter;
     Rect ceiling;
-    double drawingPosition,deltaX,a,v;
+    double drawingPosition,deltaX,a,v,periods;
     int middle,left,right;
     boolean started;
     int counter,time;
     public ArrayList<Double> xList,vList,aList;
     public String name;
 
-    public SpringView(Context context, double m, double g, double k, double pixelsPerMeter)
+    public SpringView(Context context, double m, double g, double k, double amplit, double periods, double pixelsPerMeter)
     {
         super(context);
         surfaceHolder=getHolder();
@@ -135,16 +137,19 @@ class SpringView extends SurfaceView
         this.m=m;
         this.g=g;
         this.k=k;
+        this.periods=periods;
         this.pixelsPerMeter=pixelsPerMeter;
+
         ceiling=new Rect(0,0,Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels/20);
         drawingPosition=ceiling.bottom+100;
         middle=Resources.getSystem().getDisplayMetrics().widthPixels/2;
         left=(int)(middle*0.8);
         right=(int)(middle*1.2);
         started=false;
-        deltaX=a=v=0;
+        a=v=0;
+        deltaX=amplit;
         counter=0;
-        time=(int)(500*Math.PI*Math.sqrt(m/k));
+        time=(int)(periods*200*Math.PI*Math.sqrt(m/k));
 
         xList=new ArrayList<>();
         vList=new ArrayList<>();
@@ -172,7 +177,7 @@ class SpringView extends SurfaceView
                         canvas.drawColor(Color.YELLOW);
                         started=true;
 
-                        int difference=(int)(drawingPosition-ceiling.bottom)/14;
+                        int difference=(int)(drawingPosition-ceiling.bottom)/16;
                         int x1=middle;
                         int x2=right;
                         int y1=ceiling.bottom;
@@ -182,7 +187,7 @@ class SpringView extends SurfaceView
                         canvas.drawRect(ceiling,paint);
 
                         paint.setColor(Color.rgb(0,0,33));
-                        for(int i=0;i<14;i++)
+                        for(int i=0;i<16;i++)
                         {
                             canvas.drawLine(x1,y1,x2,y2,paint);
                             y1+=difference;

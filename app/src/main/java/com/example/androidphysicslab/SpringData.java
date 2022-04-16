@@ -132,9 +132,13 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
 
         double m=Double.parseDouble(massSpringET.getText().toString());
         double k=Double.parseDouble(kET.getText().toString());
+        double a=Double.parseDouble(amplitudeET.getText().toString());
+        double p=Double.parseDouble(periodsET.getText().toString());
 
         si.putExtra("mass",m);
         si.putExtra("k",k);
+        si.putExtra("amplitude",a);
+        si.putExtra("periods",p);
         if(b) si.putExtra("planet",-1);
         else     si.putExtra("planet",planet);
         Log.w("TAG","m= "+m+" k="+k);
