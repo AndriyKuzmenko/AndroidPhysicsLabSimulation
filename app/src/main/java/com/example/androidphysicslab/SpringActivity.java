@@ -75,7 +75,7 @@ public class SpringActivity extends AppCompatActivity
             Log.i("TAG","here");
             springView.xList.remove(-1.1);
 
-            SpringObject results = new SpringObject(springView.xList, springView.vList, springView.aList, springView.m, springView.g, springView.k);
+            SpringObject results = new SpringObject(springView.xList, springView.vList, springView.aList, springView.m, springView.g, springView.k,amplit,periods);
 
             if(!(rerun||FBRef.mUser==null))
             {
@@ -192,7 +192,7 @@ class SpringView extends SurfaceView
                             canvas.drawLine(x1,y1,x2,y2,paint);
                             y1+=difference;
                             y2+=difference;
-                            if(i==12)
+                            if(i==14)
                             {
                                 x1=right;
                                 x2=middle;

@@ -7,11 +7,11 @@ public class SpringObject extends Experiment
     private ArrayList<Double> xList;
     private ArrayList<Double> vList;
     private ArrayList<Double> aList;
-    private double m,g,k;
+    private double m,g,k,amplitude,periods;
 
     public SpringObject() { }
 
-    public SpringObject(ArrayList<Double> xList, ArrayList<Double> vList, ArrayList<Double> aList, double m, double g, double k)
+    public SpringObject(ArrayList<Double> xList, ArrayList<Double> vList, ArrayList<Double> aList, double m, double g, double k, double amplitude, double periods)
     {
         this.xList=xList;
         this.vList=vList;
@@ -19,6 +19,8 @@ public class SpringObject extends Experiment
         this.m=m;
         this.g=g;
         this.k=k;
+        this.amplitude=amplitude;
+        this.periods=periods;
     }
 
     public ArrayList<Double> getXList()
@@ -51,6 +53,16 @@ public class SpringObject extends Experiment
         return k;
     }
 
+    public double getAmplitude()
+    {
+        return amplitude;
+    }
+
+    public double getPeriods()
+    {
+        return periods;
+    }
+
     public void setXList(ArrayList<Double> xList)
     {
         this.xList=xList;
@@ -79,5 +91,15 @@ public class SpringObject extends Experiment
     public void setK(double k)
     {
         this.k=k;
+    }
+
+    public void setAmplitude(double amplitude)
+    {
+        this.amplitude=amplitude;
+    }
+
+    public void setPeriods(double periods)
+    {
+        this.periods=periods;
     }
 }
