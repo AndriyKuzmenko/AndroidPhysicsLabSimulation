@@ -101,6 +101,8 @@ public class SpringActivity extends AppCompatActivity
             si.putExtra("g",g);
             si.putExtra("m",m);
             si.putExtra("k",k);
+            si.putExtra("amplitude",amplit);
+            si.putExtra("periods",periods);
             startActivity(si);
         }
         return true;

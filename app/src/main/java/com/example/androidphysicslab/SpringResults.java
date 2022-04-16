@@ -21,7 +21,7 @@ public class SpringResults extends AppCompatActivity
     ListView resultsSpringLV;
     Button plotsSpringButton,menuSpringButton,animationSpringButton;
     double[] xList,vList,aList;
-    double m,g,k;
+    double m,g,k,amplitude,periods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,6 +45,8 @@ public class SpringResults extends AppCompatActivity
         m=gi.getDoubleExtra("m",0);
         g=gi.getDoubleExtra("g",0);
         k=gi.getDoubleExtra("k",0);
+        amplitude=gi.getDoubleExtra("amplitude",0);
+        periods=gi.getDoubleExtra("periods",0);
         mgkView.setText("m="+m+" kg     "+"g="+g+" m/(sec^2)\nk="+k+" N/m");
 
         String[] list=new String[xList.length+1];
@@ -180,6 +182,8 @@ public class SpringResults extends AppCompatActivity
         si.putExtra("g",g);
         si.putExtra("m",m);
         si.putExtra("k",k);
+        si.putExtra("amplitude",amplitude);
+        si.putExtra("periods",periods);
 
         startActivity(si);
     }
@@ -190,6 +194,8 @@ public class SpringResults extends AppCompatActivity
 
         si.putExtra("mass",m);
         si.putExtra("k",k);
+        si.putExtra("amplitude",amplitude);
+        si.putExtra("periods",periods);
         if(g==10) si.putExtra("planet",-1);
         else     si.putExtra("planet",findPlanet(g));
         si.putExtra("rerun",true);

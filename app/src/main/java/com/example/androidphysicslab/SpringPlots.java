@@ -23,7 +23,7 @@ public class SpringPlots extends AppCompatActivity
     TextView deltaXTime, velocitySpringTime,aTime;
     GraphView velocitySpringGraph,deltaXGraph,aSpringGraph;
     Button backSpringButton;
-    double g,m,k;
+    double g,m,k,amplitude,periods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,6 +46,8 @@ public class SpringPlots extends AppCompatActivity
         aList=gi.getDoubleArrayExtra("aList");
         g=gi.getDoubleExtra("g",0);
         m=gi.getDoubleExtra("m",0);
+        amplitude=gi.getDoubleExtra("amplitude",0);
+        periods=gi.getDoubleExtra("periods",0);
 
         vPlot=new DataPoint[vList.length];
         xPlot=new DataPoint[vList.length];
@@ -93,6 +95,8 @@ public class SpringPlots extends AppCompatActivity
         si.putExtra("g",g);
         si.putExtra("m",m);
         si.putExtra("k",k);
+        si.putExtra("amplitude",amplitude);
+        si.putExtra("periods",periods);
 
         startActivity(si);
     }
