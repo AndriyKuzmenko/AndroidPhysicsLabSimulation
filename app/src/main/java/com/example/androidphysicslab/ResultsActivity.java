@@ -125,6 +125,8 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("m",results.getM());
             si.putExtra("g",results.getG());
             si.putExtra("k",results.getK());
+            si.putExtra("amplitude",results.getAmplitude());
+            si.putExtra("periods",results.getPeriods());
             startActivity(si);
         }
         else if(experimentsList.get(position).startsWith("Second Newton's Law"))

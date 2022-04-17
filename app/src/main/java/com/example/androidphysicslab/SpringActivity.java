@@ -44,7 +44,7 @@ public class SpringActivity extends AppCompatActivity
         double height=3.3*m*g/k;
         pixelsPerMeter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height);
 
-        Log.d("values","m="+m+"  k="+k+"  g="+g);
+        Log.d("values","m="+m+"  k="+k+"  g="+g+"     ampl="+amplit+"     "+periods+" periods");
         Log.d("values","h="+height+"   meter="+pixelsPerMeter);
 
         super.onCreate(savedInstanceState);
@@ -143,13 +143,14 @@ class SpringView extends SurfaceView
         this.pixelsPerMeter=pixelsPerMeter;
 
         ceiling=new Rect(0,0,Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels/20);
-        drawingPosition=ceiling.bottom+100;
         middle=Resources.getSystem().getDisplayMetrics().widthPixels/2;
         left=(int)(middle*0.8);
         right=(int)(middle*1.2);
         started=false;
-        a=v=0;
+        v=0;
         deltaX=amplit;
+        drawingPosition=deltaX*pixelsPerMeter+ceiling.bottom+100;
+        a=g-(k*deltaX)/m;
         counter=0;
         time=(int)(periods*200*Math.PI*Math.sqrt(m/k));
 

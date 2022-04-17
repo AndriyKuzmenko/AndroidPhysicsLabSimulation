@@ -46,6 +46,7 @@ public class SpringPlots extends AppCompatActivity
         aList=gi.getDoubleArrayExtra("aList");
         g=gi.getDoubleExtra("g",0);
         m=gi.getDoubleExtra("m",0);
+        k=gi.getDoubleExtra("k",0);
         amplitude=gi.getDoubleExtra("amplitude",0);
         periods=gi.getDoubleExtra("periods",0);
 

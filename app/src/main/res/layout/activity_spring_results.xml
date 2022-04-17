@@ -20,13 +20,12 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="1" />
+            android:layout_weight="0.5" />
 
         <TextView
             android:id="@+id/mgkView"
             android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="2"
+            android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:gravity="center"
             android:text="TextView"
@@ -37,7 +36,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="1" />
+            android:layout_weight="0.5" />
 
         <ListView
             android:id="@+id/resultsSpringLV"
@@ -48,7 +47,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="1" />
+            android:layout_weight="0.5" />
 
         <Button
             android:id="@+id/plotsSpringButton"
@@ -61,7 +60,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="1" />
+            android:layout_weight="0.5" />
 
         <Button
             android:id="@+id/animationSpringButton"
@@ -74,7 +73,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="1" />
+            android:layout_weight="0.5" />
 
         <Button
             android:id="@+id/menuSpringButton"
@@ -87,7 +86,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="1" />
+            android:layout_weight="0.5" />
     </LinearLayout>
 
     <Space
