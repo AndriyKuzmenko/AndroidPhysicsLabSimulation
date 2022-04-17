@@ -152,7 +152,7 @@ public class Languages
         backToAnimation="Back to animation";
         enterAsGuest="Enter as guest";
         guest="Guest";
-        amplitude="Amplitude";
+        amplitude="Amplitude (meter)";
         periods="Periods";
     }
 
@@ -230,7 +230,7 @@ public class Languages
         backToAnimation="חזור לאנימציה";
         enterAsGuest="כניסה בתור אורח";
         guest="אורח";
-        amplitude="אמפליטודה";
+        amplitude="אמפליטודה (מטר)";
         periods="מחזורים";
     }
 }
