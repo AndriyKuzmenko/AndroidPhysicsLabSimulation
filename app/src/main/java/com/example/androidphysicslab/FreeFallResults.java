@@ -45,7 +45,7 @@ public class FreeFallResults extends AppCompatActivity
         vList=gi.getDoubleArrayExtra("vList");
         m=gi.getDoubleExtra("m",0);
         g=gi.getDoubleExtra("g",0);
-        mgView.setText("m="+m+" kg     "+"g="+g+"m/(sec^2)");
+        mgView.setText("m="+m+" kg     "+"g="+g+" m/(sec^2)");
 
         Log.w("Tag",String.valueOf(hList==null));
         Log.w("TAG"," l="+hList.length);
