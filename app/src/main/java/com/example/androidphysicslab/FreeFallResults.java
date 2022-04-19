@@ -271,7 +271,7 @@ public class FreeFallResults extends AppCompatActivity
 
         if(filePath.exists())
         {
-            Toast.makeText(this,filePath.getName()+" exists",Toast.LENGTH_LONG);
+            Toast.makeText(this,filePath.getName()+" exists",Toast.LENGTH_LONG).show();
         }
         else
         {
@@ -286,6 +286,7 @@ public class FreeFallResults extends AppCompatActivity
                     fos.flush();
                     fos.close();
                 }
+                Toast.makeText(this,filePath.getName()+" was created",Toast.LENGTH_LONG).show();
             }
             catch (IOException e)
             {
