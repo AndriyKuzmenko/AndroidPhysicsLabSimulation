@@ -2,6 +2,7 @@ package com.example.androidphysicslab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ public class FreeFallResults extends AppCompatActivity
     ListView results;
     TextView mgView;
     Button plotsButton,menuButton,animationButton;
+    AlertDialog.Builder adb;
 
     double[] hList,vList;
     double m,g;
@@ -198,5 +200,13 @@ public class FreeFallResults extends AppCompatActivity
     public void createExcel(View view)
     {
 
+    }
+
+    public String getFileName()
+    {
+        adb=new AlertDialog.Builder(this);
+        adb.setTitle("Chose file name:");
+
+        return "";
     }
 }

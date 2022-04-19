@@ -77,6 +77,8 @@ public class Languages
     public static String guest;
     public static String amplitude;
     public static String periods;
+    public static String createExcel;
+    public static String choseFileName;
 
     public static void toEnglish()
     {
@@ -154,6 +156,8 @@ public class Languages
         guest="Guest";
         amplitude="Amplitude (meter)";
         periods="Periods";
+        createExcel="Create Excel";
+        choseFileName="Chose File Name:";
     }
 
     public static void toHebrew()
@@ -232,5 +236,7 @@ public class Languages
         guest="אורח";
         amplitude="אמפליטודה (מטר)";
         periods="מחזורים";
+        createExcel="יצירת קובץ אקסאל";
+        choseFileName="בחר שם קובץ:";
     }
 }
