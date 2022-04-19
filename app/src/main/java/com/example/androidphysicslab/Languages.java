@@ -79,6 +79,8 @@ public class Languages
     public static String periods;
     public static String createExcel;
     public static String choseFileName;
+    public static String save;
+    public static String cancel;
 
     public static void toEnglish()
     {
@@ -158,6 +160,8 @@ public class Languages
         periods="Periods";
         createExcel="Create Excel";
         choseFileName="Chose File Name:";
+        save="Save";
+        cancel="Cancel";
     }
 
     public static void toHebrew()
@@ -238,5 +242,7 @@ public class Languages
         periods="מחזורים";
         createExcel="יצירת קובץ אקסאל";
         choseFileName="בחר שם קובץ:";
+        save="שמירה";
+        cancel="ביטול";
     }
 }
