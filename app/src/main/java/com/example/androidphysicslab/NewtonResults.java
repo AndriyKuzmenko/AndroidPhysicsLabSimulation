@@ -42,6 +42,7 @@ public class NewtonResults extends AppCompatActivity
         vList=gi.getDoubleArrayExtra("vList");
         m1=gi.getDoubleExtra("m1",0);
         m2=gi.getDoubleExtra("m2",0);
+        mu=gi.getDoubleExtra("mu",0);
         g=gi.getDoubleExtra("g",0);
         m1m2gaView.setText("m1="+m1+" m2="+m2+" g="+g+" mu="+mu);
 
