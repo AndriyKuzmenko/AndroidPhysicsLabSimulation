@@ -63,7 +63,7 @@ public class DiscResults extends AppCompatActivity
         v0=gi.getDoubleExtra("v0",0);
         l0=gi.getDoubleExtra("l0",0);
 
-        mgkDiscView.setText("m="+m+" kg  mu="+mu+"  g="+g+" m/sec^2  k="+k+" N/m  Δx="+deltax+" m  l0="+l0+" m    v0"+v0+" m/sec");
+        mgkDiscView.setText("m="+m+" kg  mu="+mu+"  g="+g+" m/sec^2  k="+k+" N/m  Δx="+deltax+" m  l0="+FBRef.df.format(l0)+" m    v0="+FBRef.df.format(v0)+" m/sec");
 
         String[] list=new String[lList.length+1];
         list[0]="t(sec)    l(m)    v(m/sec)";
