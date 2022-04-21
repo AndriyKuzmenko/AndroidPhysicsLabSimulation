@@ -1,17 +1,33 @@
 package com.example.androidphysicslab;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class GalvanometerResults extends AppCompatActivity
 {
@@ -20,6 +36,7 @@ public class GalvanometerResults extends AppCompatActivity
     Button plotsButton,menuButton;
     double[] rList,iList,thetaList,tgList;
     double hEarthMagneticField,epsilon,a,n;
+    AlertDialog.Builder adb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -180,5 +197,91 @@ public class GalvanometerResults extends AppCompatActivity
     {
         plotsButton.setText(Languages.plots);
         menuButton.setText(Languages.backToMenu);
+    }
+
+    public void createExcel(View view)
+    {
+        adb=new AlertDialog.Builder(this);
+        adb.setTitle(Languages.choseFileName);
+
+        final EditText et=new EditText(this);
+        adb.setView(et);
+
+        adb.setPositiveButton(Languages.save, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                String str=et.getText().toString();
+                if(!str.equals(""))
+                {
+                    createFile(str);
+                }
+            }
+        });
+
+        adb.setNeutralButton(Languages.cancel, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+
+            }
+        });
+
+        AlertDialog ad=adb.create();
+        ad.show();
+    }
+
+    public void createFile(String name)
+    {
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+
+        HSSFWorkbook file=new HSSFWorkbook();
+        HSSFSheet sheet=file.createSheet();
+
+        HSSFRow firstRow=sheet.createRow(0);
+        firstRow.createCell(0).setCellValue("R (Ohm)");
+        firstRow.createCell(1).setCellValue("I (A)");
+        firstRow.createCell(2).setCellValue("θ (deg)");
+        firstRow.createCell(3).setCellValue("tgθ");
+
+        firstRow.createCell(6).setCellValue("Bh="+hEarthMagneticField+" T ϵ="+epsilon+" V A="+a+" m^2 N="+n);
+
+        for(int i=0;i<rList.length;i++)
+        {
+            HSSFRow row=sheet.createRow(i+1);
+            row.createCell(0).setCellValue(rList[i]);
+            row.createCell(1).setCellValue(iList[i]);
+            row.createCell(2).setCellValue(thetaList[i]);
+            row.createCell(3).setCellValue(tgList[i]);
+        }
+
+        File filePath=new File(Environment.getExternalStorageDirectory()+"/"+name+".xls");
+
+        if(filePath.exists())
+        {
+            Toast.makeText(this,filePath.getName()+" exists",Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            try
+            {
+                filePath.createNewFile();
+                FileOutputStream fos=new FileOutputStream(filePath);
+                file.write(fos);
+
+                if(fos!=null)
+                {
+                    fos.flush();
+                    fos.close();
+                }
+                Toast.makeText(this,filePath.getName()+" was created",Toast.LENGTH_LONG).show();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 }
