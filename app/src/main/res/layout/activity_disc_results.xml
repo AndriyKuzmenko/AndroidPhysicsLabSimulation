@@ -25,8 +25,7 @@
         <TextView
             android:id="@+id/mgkDiscView"
             android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="3"
+            android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:gravity="center"
             android:text="TextView"
@@ -43,51 +42,69 @@
             android:id="@+id/resultsDiscLV"
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="7" />
+            android:layout_weight="20" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/plotsDiscButton"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="2"
-            android:onClick="plots"
-            android:text="Plots" />
+            android:layout_weight="11">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/animationDiscButton"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="2"
-            android:onClick="animation"
-            android:text="Back to animation" />
+                <Button
+                    android:id="@+id/plotsDiscButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="plots"
+                    android:text="Plots" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
 
-        <Button
-            android:id="@+id/menuDiscButton"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="2"
-            android:onClick="back"
-            android:text="Back to menu" />
+                <Button
+                    android:id="@+id/xlButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="createExcel"
+                    android:text="Create Excel" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
+
+                <Button
+                    android:id="@+id/animationDiscButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="animation"
+                    android:text="Back to animation" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
+
+                <Button
+                    android:id="@+id/menuDiscButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="back"
+                    android:text="Back to menu" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 
     <Space
