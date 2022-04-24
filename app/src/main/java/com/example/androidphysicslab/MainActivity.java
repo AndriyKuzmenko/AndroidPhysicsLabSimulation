@@ -64,8 +64,16 @@ public class MainActivity extends AppCompatActivity
         FBRef.mUser = FBRef.mAuth.getCurrentUser();
         if (FBRef.mUser != null)
         {
-            Log.i("TAG", "A user is registered");
-            nextActivity();
+            if(FBRef.mUser.getEmail().toString().toLowerCase().contains("putin"))
+            {
+                FirebaseAuth.getInstance().signOut();
+                FBRef.myRef=null;
+                Toast.makeText(this,"Your username is inappropriate",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                nextActivity();
+            }
         }
     }
 
@@ -73,6 +81,11 @@ public class MainActivity extends AppCompatActivity
     {
         String email = emailET.getText().toString();
         String password = passwordET.getText().toString();
+
+        if(email.toLowerCase().contains("putin"))
+        {
+            return;
+        }
 
         FBRef.mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
@@ -150,6 +163,11 @@ public class MainActivity extends AppCompatActivity
     {
         String email = emailET.getText().toString();
         String password = passwordET.getText().toString();
+
+        if(email.toLowerCase().contains("putin"))
+        {
+            return;
+        }
 
         FBRef.mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
