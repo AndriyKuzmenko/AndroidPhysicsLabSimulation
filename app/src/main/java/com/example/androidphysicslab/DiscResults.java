@@ -71,7 +71,7 @@ public class DiscResults extends AppCompatActivity
         for(int i=1; i<lList.length+1; i++)
         {
             String t=" ";
-            String time=FBRef.df.format((double)i/100);
+            String time=FBRef.df.format((double)(i-1)/100);
             t+=time+"      ";
 
             String l=FBRef.df.format(lList[i-1]);

@@ -42,8 +42,6 @@ public class VoltageResults extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        final int digitsAfterDot = 2;
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voltage_results);
 
@@ -68,49 +66,13 @@ public class VoltageResults extends AppCompatActivity
         for(int j=1; j<11; j++)
         {
             String t=" ";
-            String r=rList[j-1]+"";
-            int dot=r.indexOf('.');
-            if(r.length()>dot+digitsAfterDot+1)
-            {
-                r=r.substring(0,dot+digitsAfterDot+1);
-            }
-            else
-            {
-                while(r.length()<=dot+digitsAfterDot+1)
-                {
-                    r+=" ";
-                }
-            }
+            String r=FBRef.df.format(rList[j-1]);
             t+=r+"      ";
 
-            String i=String.valueOf(iList[j-1]);
-            dot=i.indexOf('.');
-            if(i.length()>dot+digitsAfterDot+1)
-            {
-                i=i.substring(0,dot+digitsAfterDot+1);
-            }
-            else
-            {
-                while(i.length()<=dot+digitsAfterDot+1)
-                {
-                    i+=" ";
-                }
-            }
+            String i=FBRef.df.format(iList[j-1]);
             t+=i+"      ";
 
-            String v=String.valueOf(vList[j-1]);
-            dot=v.indexOf('.');
-            if(v.length()>dot+digitsAfterDot+1)
-            {
-                v=v.substring(0,dot+digitsAfterDot+1);
-            }
-            else
-            {
-                while(v.length()<=dot+digitsAfterDot+1)
-                {
-                    v+=" ";
-                }
-            }
+            String v=FBRef.df.format(vList[j-1]);
             t+=v;
 
             list[j]=t;

@@ -73,7 +73,7 @@ public class FreeFallResults extends AppCompatActivity
         for(int i=1; i<hList.length+1; i++)
         {
             String t=" ";
-            String time=FBRef.df.format((double)i/100);
+            String time=FBRef.df.format((double)(i-1)/100);
             t+=time+"      ";
 
             String h=FBRef.df.format(hList[i-1]);

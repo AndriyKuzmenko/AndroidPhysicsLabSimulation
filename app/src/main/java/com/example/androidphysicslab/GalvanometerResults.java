@@ -35,7 +35,8 @@ public class GalvanometerResults extends AppCompatActivity
     ListView resultsLV;
     Button plotsButton,menuButton;
     double[] rList,iList,thetaList,tgList;
-    double hEarthMagneticField,epsilon,a,n;
+    double hEarthMagneticField,epsilon,a;
+    int n;
     AlertDialog.Builder adb;
 
     @Override
@@ -59,7 +60,7 @@ public class GalvanometerResults extends AppCompatActivity
         hEarthMagneticField=gi.getDoubleExtra("hEarthMagneticField",0);
         epsilon=gi.getDoubleExtra("epsilon",0);
         a=gi.getDoubleExtra("a",0);
-        n=gi.getDoubleExtra("n",0);
+        n=gi.getIntExtra("n",0);
 
         dataTV.setText("Bh="+hEarthMagneticField+" T ϵ="+epsilon+" V A="+a+" m^2 N="+n);
         changeLanguage();
@@ -70,67 +71,17 @@ public class GalvanometerResults extends AppCompatActivity
         for(int i=1; i<rList.length+1; i++)
         {
             String t=" ";
-            String r=String.valueOf((double)(rList[i-1]));
-            int dot=r.indexOf('.');
-            if(r.length()>dot+digitsAfterDot+1)
-            {
-                r=r.substring(0,dot+digitsAfterDot+1);
-            }
-            else
-            {
-                while(r.length()<=dot+digitsAfterDot+1)
-                {
-                    r+=" ";
-                }
-                if(i%10==0)r+="  ";
-            }
+            String r=FBRef.df.format(rList[i-1]);
             t+=r+"      ";
 
-            String iStr=String.valueOf(iList[i-1]);
-            dot=iStr.indexOf('.');
-            if(iStr.length()>dot+digitsAfterDot+1)
-            {
-                iStr=iStr.substring(0,dot+digitsAfterDot+1);
-            }
-            else
-            {
-                while(iStr.length()<=dot+digitsAfterDot+1)
-                {
-                    iStr+=" ";
-                }
-            }
+            String iStr=FBRef.df.format(iList[i-1]);
             t+=iStr+"      ";
 
-            String theta=String.valueOf(thetaList[i-1]);
-            dot=theta.indexOf('.');
-            if(theta.length()>dot+digitsAfterDot+1)
-            {
-                theta=theta.substring(0,dot+digitsAfterDot+1);
-            }
-            else
-            {
-                while(theta.length()<=dot+digitsAfterDot+1)
-                {
-                    theta+=" ";
-                }
-            }
+            String theta=FBRef.df.format(thetaList[i-1]);
             t+=theta+"        ";
 
-            String tg=String.valueOf(tgList[i-1]);
-            dot=tg.indexOf('.');
-            if(tg.length()>dot+digitsAfterDot+1)
-            {
-                tg=tg.substring(0,dot+digitsAfterDot+1);
-            }
-            else
-            {
-                while(tg.length()<=dot+digitsAfterDot+1)
-                {
-                    tg+=" ";
-                }
-            }
+            String tg=FBRef.df.format(tgList[i-1]);
             t+=tg;
-            Log.w("t=",t);
 
             list[i]=t;
         }
