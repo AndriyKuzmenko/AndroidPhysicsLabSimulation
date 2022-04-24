@@ -71,51 +71,13 @@ public class DiscResults extends AppCompatActivity
         for(int i=1; i<lList.length+1; i++)
         {
             String t=" ";
-            String time=String.valueOf((double)(i-1)/100);
-            int dot=time.indexOf('.');
-            if(time.length()>dot+digitsAfterDot+1)
-            {
-                time=time.substring(0,dot+digitsAfterDot+1);
-            }
-            else
-            {
-                while(time.length()<=dot+digitsAfterDot+1)
-                {
-                    time+=" ";
-                }
-                if(i%10==0)time+="  ";
-            }
+            String time=FBRef.df.format((double)i/100);
             t+=time+"      ";
 
-            String l=String.valueOf(lList[i-1]);
-            dot=l.indexOf('.');
-            if(l.length()>dot+digitsAfterDot+1)
-            {
-                l=l.substring(0,dot+digitsAfterDot+1);
-            }
-            else
-            {
-                while(l.length()<=dot+digitsAfterDot+1)
-                {
-                    l+=" ";
-                }
-            }
+            String l=FBRef.df.format(lList[i-1]);
             t+=l+"      ";
 
-            String v=String.valueOf(vList[i-1]);
-            dot=v.indexOf('.');
-            if(v.length()>dot+digitsAfterDot+3 && !v.contains("E"))
-            {
-                v=v.substring(0,dot+digitsAfterDot+3);
-            }
-            else
-            {
-                while(v.length()<=dot+digitsAfterDot+1)
-                {
-                    v+=" ";
-                }
-            }
-
+            String v=FBRef.df.format(vList[i-1]);
             t+=v;
 
             list[i]=t;
