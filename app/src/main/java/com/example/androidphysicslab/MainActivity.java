@@ -32,6 +32,8 @@ import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -64,11 +66,11 @@ public class MainActivity extends AppCompatActivity
         FBRef.mUser = FBRef.mAuth.getCurrentUser();
         if (FBRef.mUser != null)
         {
-            if(FBRef.mUser.getEmail().toString().toLowerCase().contains("putin"))
+            String email=FBRef.mUser.getEmail().toString().toLowerCase();
+            if(email.contains("putin") || notEmail(email))
             {
                 FirebaseAuth.getInstance().signOut();
                 FBRef.myRef=null;
-                Toast.makeText(this,"Your username is inappropriate",Toast.LENGTH_LONG).show();
             }
             else
             {
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity
         String email = emailET.getText().toString();
         String password = passwordET.getText().toString();
 
-        if(email.toLowerCase().contains("putin"))
+        if(email.toLowerCase().contains("putin") || notEmail(email))
         {
             return;
         }
@@ -164,7 +166,7 @@ public class MainActivity extends AppCompatActivity
         String email = emailET.getText().toString();
         String password = passwordET.getText().toString();
 
-        if(email.toLowerCase().contains("putin"))
+        if(email.toLowerCase().contains("putin") || notEmail(email))
         {
             return;
         }
@@ -197,5 +199,13 @@ public class MainActivity extends AppCompatActivity
     {
         FBRef.mUser=null;
         nextActivity();
+    }
+
+    public boolean notEmail(String str)
+    {
+        Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+        Matcher mat = pattern.matcher(str);
+
+        return !mat.matches();
     }
 }
