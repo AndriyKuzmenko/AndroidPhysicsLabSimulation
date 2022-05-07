@@ -130,10 +130,20 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
 
         Log.i("TAG","planet="+planet+", g="+Languages.gravity[planet]);
 
-        double m=Double.parseDouble(massSpringET.getText().toString());
-        double k=Double.parseDouble(kET.getText().toString());
-        double a=Double.parseDouble(amplitudeET.getText().toString());
-        double p=Double.parseDouble(periodsET.getText().toString());
+        String mStr=massSpringET.getText().toString();
+        String kStr=kET.getText().toString();
+        String aStr=amplitudeET.getText().toString();
+        String pStr=periodsET.getText().toString();
+
+        if(mStr.equals("") || kStr.equals("") || aStr.equals("") || pStr.equals(""))
+        {
+            return;
+        }
+
+        double m=Double.parseDouble(mStr);
+        double k=Double.parseDouble(kStr);
+        double a=Double.parseDouble(aStr);
+        double p=Double.parseDouble(pStr);
 
         si.putExtra("mass",m);
         si.putExtra("k",k);

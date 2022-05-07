@@ -126,9 +126,18 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
 
         Log.i("TAG","planet="+planet+", g="+Languages.gravity[planet]);
 
-        double m1=Double.parseDouble(mass1ET.getText().toString());
-        double m2=Double.parseDouble(mass2ET.getText().toString());
-        double mu=Double.parseDouble(frictionET.getText().toString());
+        String m1Str=mass1ET.getText().toString();
+        String m2Str=mass2ET.getText().toString();
+        String muStr=frictionET.getText().toString();
+
+        if (m1Str.equals("") || m2Str.equals("") || muStr.equals(""))
+        {
+            return;
+        }
+
+        double m1=Double.parseDouble(m1Str);
+        double m2=Double.parseDouble(m2Str);
+        double mu=Double.parseDouble(muStr);
 
         si.putExtra("m1",m1);
         si.putExtra("m2",m2);
