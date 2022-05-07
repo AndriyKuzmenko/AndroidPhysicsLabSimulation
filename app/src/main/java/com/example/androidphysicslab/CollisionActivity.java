@@ -55,6 +55,12 @@ public class CollisionActivity extends AppCompatActivity
         setContentView(collisionView);
     }
 
+    /**
+     *
+     * @param menu - the menu
+     * @return dispays an OptionsMenu with the option to go to the results screen
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -62,6 +68,12 @@ public class CollisionActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     *
+     * @param item - the selected item from the menu
+     * @return - sends the user to the results screen and if necessary saves the results to firebase.
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -87,11 +99,21 @@ public class CollisionActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     *
+     * @param results - an object that stores the results of the experiment
+     * @return - saves the results to firebase.
+     */
+
     public void saveResults(CollisionObject results)
     {
         Log.d("TAG",results.getName());
         FBRef.myRef.child("Collision").child(results.getName()).setValue(results);
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()
