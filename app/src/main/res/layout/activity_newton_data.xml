@@ -111,8 +111,12 @@
                 android:id="@+id/startNewtonButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="serif"
                 android:onClick="start"
-                android:text="Start" />
+                android:text="Start"
+                android:textColor="#06073E"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -123,7 +127,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="back"
-                android:text="Back" />
+                android:fontFamily="serif"
+                android:text="Back"
+                android:textColor="#06073E"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <Space
                 android:layout_width="match_parent"

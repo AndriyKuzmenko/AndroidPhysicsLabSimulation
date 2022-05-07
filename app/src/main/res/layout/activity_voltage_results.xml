@@ -67,8 +67,10 @@
                     android:id="@+id/plotsVoltageButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
                     android:onClick="plots"
-                    android:text="Plots" />
+                    android:text="Plots"
+                    />
 
                 <Space
                     android:layout_width="match_parent"

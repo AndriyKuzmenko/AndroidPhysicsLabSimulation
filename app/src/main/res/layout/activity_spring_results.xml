@@ -67,8 +67,12 @@
                     android:id="@+id/plotsSpringButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
                     android:onClick="plots"
-                    android:text="Plots" />
+                    android:text="Plots"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -78,8 +82,12 @@
                     android:id="@+id/xlButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
                     android:onClick="createExcel"
-                    android:text="Create Excel" />
+                    android:text="Create Excel"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -89,8 +97,12 @@
                     android:id="@+id/animationSpringButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
                     android:onClick="animation"
-                    android:text="Back to animation" />
+                    android:text="Back to animation"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -100,8 +112,12 @@
                     android:id="@+id/menuSpringButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
                     android:onClick="back"
-                    android:text="Back to menu" />
+                    android:text="Back to menu"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
                 <Space
                     android:layout_width="match_parent"
