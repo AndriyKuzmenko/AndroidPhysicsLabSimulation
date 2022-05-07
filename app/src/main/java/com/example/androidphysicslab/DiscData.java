@@ -129,10 +129,20 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
 
         Log.i("TAG","planet="+planet+", g="+Languages.gravity[planet]);
 
-        double m=Double.parseDouble(massDiscET.getText().toString());
-        double mu=Double.parseDouble(muDiscET.getText().toString());
-        double k=Double.parseDouble(kDiscET.getText().toString());
-        double shift=Double.parseDouble(shiftDiscET.getText().toString());
+        String mStr=massDiscET.getText().toString();
+        String muStr=muDiscET.getText().toString();
+        String kStr=kDiscET.getText().toString();
+        String shiftStr=shiftDiscET.getText().toString();
+
+        if(mStr.equals("") || muStr.equals("") || kStr.equals("") || shiftStr.equals(""))
+        {
+            return;
+        }
+
+        double m=Double.parseDouble(mStr);
+        double mu=Double.parseDouble(muStr);
+        double k=Double.parseDouble(kStr);
+        double shift=Double.parseDouble(shiftStr);
 
         si.putExtra("m",m);
         si.putExtra("mu",mu);

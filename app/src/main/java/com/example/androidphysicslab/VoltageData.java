@@ -76,9 +76,18 @@ public class VoltageData extends AppCompatActivity
     {
         Intent si=new Intent(this,VoltageActivity.class);
 
-        double epsilon=Double.parseDouble(epsilonET.getText().toString());
-        double internalR=Double.parseDouble(internalRET.getText().toString());
-        double maxR=Double.parseDouble(maxRET.getText().toString());
+        String epsilonStr=epsilonET.getText().toString();
+        String internalRStr=internalRET.getText().toString();
+        String maxRStr=maxRET.getText().toString();
+
+        if(epsilonStr.equals("") || internalRStr.equals("") || maxRStr.equals(""))
+        {
+            return;
+        }
+
+        double epsilon=Double.parseDouble(epsilonStr);
+        double internalR=Double.parseDouble(internalRStr);
+        double maxR=Double.parseDouble(maxRStr);
 
         si.putExtra("epsilon",epsilon);
         si.putExtra("internalR",internalR);

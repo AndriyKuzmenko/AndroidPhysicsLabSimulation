@@ -124,10 +124,16 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
     {
         Intent si=new Intent(this, CollisionActivity.class);
 
-        Log.i("TAG","planet="+planet+", g="+Languages.gravity[planet]);
+        String h2Str=railHeightET.getText().toString();
+        String h1Str=tableHeightET.getText().toString();
 
-        double h2=Double.parseDouble(railHeightET.getText().toString());
-        double h1=Double.parseDouble(tableHeightET.getText().toString());
+        if(h1Str.equals("") || h2Str.equals(""))
+        {
+            return;
+        }
+
+        double h2=Double.parseDouble(h2Str);
+        double h1=Double.parseDouble(h1Str);
 
         si.putExtra("h2",h2);
         si.putExtra("h1",h1);
