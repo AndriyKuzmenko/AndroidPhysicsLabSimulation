@@ -7,6 +7,15 @@ public class CollisionObject extends Experiment
 
     public CollisionObject() { }
 
+    /**
+     * @param h1 - the rail heigh in meters
+     * @parm v - the velocity of the first ball before it hit the second one
+     * @param u - the velocity of the second ball after it was hit by the first one
+     * @param h2 - the table height in meters
+     * @param g - the gravity acceleration of the Earth (m/sec^2)
+     * @param tall
+     */
+
     public CollisionObject(double h1,double h2,double v,double u,double g,boolean tall)
     {
         this.h1=h1;
