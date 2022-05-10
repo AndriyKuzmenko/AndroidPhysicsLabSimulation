@@ -14,6 +14,7 @@ public class CollisionObject extends Experiment
      * @param u - the velocity of the second ball after it was hit by the first one (m/sec)
      * @param g - the gravity acceleration of the Earth (m/sec^2)
      * @param tall - if true the animnation should be tall, else it should be wide.
+     * @return - Creates an object that stores all the given data.
      */
 
     public CollisionObject(double h1,double h2,double v,double u,double g,boolean tall)

@@ -19,6 +19,7 @@ public class DiscObject extends Experiment
      * @param deltax - The distance the ruler was stretched (m)
      * @param lList - An arrayList that stores the distance the disc was from the ruler every 0.01 sec
      * @param vList - An arrayList that stores the velocity of the disc every 0.01 sec
+     * @return - Creates an object that stores all the given data.
      */
 
     public DiscObject(double m,double mu,double g,double k,double v0,double l0,double deltax,ArrayList<Double> lList,ArrayList<Double> vList)
