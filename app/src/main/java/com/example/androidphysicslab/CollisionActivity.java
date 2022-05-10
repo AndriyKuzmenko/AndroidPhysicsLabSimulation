@@ -167,6 +167,11 @@ class CollisionView extends SurfaceView
         ended=false;
     }
 
+    /**
+     * @param event - the screen event that was triggered.
+     * @return - if the screen was pressed, and the animation hasn't started yet, starts the animation. Does all the calculations for the drawing routines and saves the results in ArrayLists for Firebase.
+     */
+
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
