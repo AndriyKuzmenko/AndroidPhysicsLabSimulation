@@ -48,6 +48,11 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
         planetCollisionSpinner.setOnItemSelectedListener(this);
     }
 
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -55,6 +60,11 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -74,6 +84,10 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
         return true;
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         railHeightLabel.setText(Languages.railHeight);
@@ -85,6 +99,11 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
         planetCollisionSpinner.setAdapter(adp);
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - if the user selected a planet other than Earth, calls method startAnimation with parameter false. Else, the app asks the user does he want to use g=10 or 9=9.807. If the user chose 10, calls method startAnimation was parameter true. Otherwise calls it with parameter false.
+     */
 
     public void start(View view)
     {
@@ -119,6 +138,11 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
             startAnimation(false);
         }
     }
+
+    /**
+     * @param b - true if the user wanted g=10. Falso if the user wants the accurate g of the selected planet.
+     * @return Checks if the user entered all the necessary details. If he did, starts the animation.
+     */
 
     public void startAnimation(boolean b)
     {
@@ -158,6 +182,7 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
      * @param view     The view within the AdapterView that was clicked
      * @param position The position of the view in the adapter
      * @param id       The row id of the item that is selected
+     * @return updates the variable planet which stores the index of the selected planet.
      */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
@@ -178,6 +203,10 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
 
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {
@@ -185,6 +214,11 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
 
         finish();
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - finishes the activity
+     */
 
     public void back(View view)
     {
