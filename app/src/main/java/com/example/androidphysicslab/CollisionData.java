@@ -217,7 +217,7 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
 
     /**
      * @param view - the button pressed
-     * @return - finishes the activity
+     * @return - goes back to the main menu
      */
 
     public void back(View view)

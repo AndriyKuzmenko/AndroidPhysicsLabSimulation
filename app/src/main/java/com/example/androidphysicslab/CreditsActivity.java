@@ -15,11 +15,20 @@ public class CreditsActivity extends AppCompatActivity
         setContentView(R.layout.activity_credits);
     }
 
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the main menu
+     */
+
     public void back(View view)
     {
         Intent si=new Intent(this,MenuActivity.class);
         startActivity(si);
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()

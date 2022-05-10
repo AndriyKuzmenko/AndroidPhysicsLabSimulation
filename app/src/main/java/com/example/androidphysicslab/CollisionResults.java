@@ -41,6 +41,10 @@ public class CollisionResults extends AppCompatActivity
         dataCollisionView.setText("h1="+h1+" m\nh2="+h2+" m\nv="+v+" m/sec\nu="+u+" m/sec g="+g+" m/sec^2");
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {
@@ -49,11 +53,21 @@ public class CollisionResults extends AppCompatActivity
         finish();
     }
 
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the main menu
+     */
+
     public void back(View view)
     {
         Intent si=new Intent(this,MenuActivity.class);
         startActivity(si);
     }
+
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -62,6 +76,11 @@ public class CollisionResults extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -81,11 +100,20 @@ public class CollisionResults extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         menuCollisionButton.setText(Languages.backToMenu);
         animationCollisionButton.setText(Languages.backToAnimation);
     }
+
+    /**
+     * @param view - the button that the user pressed
+     * @return - sends all the necessary data to the animation activity where the user can view the animation again.
+     */
 
     public void animation(View view)
     {
@@ -100,6 +128,11 @@ public class CollisionResults extends AppCompatActivity
         si.putExtra("rerun",true);
         startActivity(si);
     }
+
+    /**
+     * @param g - the gravity acceleation of a planet in the solar system
+     * @return - returns which planet has the specified gravity acceleration. If none has, returns -1 which later on will mean g=10
+     */
 
     public int findPlanet(double g)
     {
