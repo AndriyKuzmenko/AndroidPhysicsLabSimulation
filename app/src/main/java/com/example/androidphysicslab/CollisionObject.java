@@ -10,8 +10,8 @@ public class CollisionObject extends Experiment
     /**
      * @param h1 - the rail heigh in meters
      * @param h2 - the table height in meters
-     * @param v - the velocity of the first ball before it hit the second one
-     * @param u - the velocity of the second ball after it was hit by the first one
+     * @param v - the velocity of the first ball before it hit the second one (m/sec)
+     * @param u - the velocity of the second ball after it was hit by the first one (m/sec)
      * @param g - the gravity acceleration of the Earth (m/sec^2)
      * @param tall - if true the animnation should be tall, else it should be wide.
      */

@@ -9,6 +9,18 @@ public class DiscObject extends Experiment
 
     public DiscObject() { }
 
+    /**
+     * @param m - the mass of the disc (kg)
+     * @param mu - the coefficient of friction between the surface and the disc
+     * @param g - gravity acceleration (m/sec^2)
+     * @param k - Elastic constant of the ruler (N/m)
+     * @param v0 - Initial velocity of the disc (m/sec)
+     * @param l0 - The distance the disc passed (m)
+     * @param deltax - The distance the ruler was stretched (m)
+     * @param lList - An arrayList that stores the distance the disc was from the ruler every 0.01 sec
+     * @param vList - An arrayList that stores the velocity of the disc every 0.01 sec
+     */
+
     public DiscObject(double m,double mu,double g,double k,double v0,double l0,double deltax,ArrayList<Double> lList,ArrayList<Double> vList)
     {
         this.m=m;
