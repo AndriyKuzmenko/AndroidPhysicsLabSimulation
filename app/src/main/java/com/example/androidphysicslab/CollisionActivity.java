@@ -56,7 +56,6 @@ public class CollisionActivity extends AppCompatActivity
     }
 
     /**
-     *
      * @param menu - the menu
      * @return dispays an OptionsMenu with the option to go to the results screen
      */
@@ -70,9 +69,8 @@ public class CollisionActivity extends AppCompatActivity
     }
 
     /**
-     *
      * @param item - the selected item from the menu
-     * @return - sends the user to the results screen and if necessary saves the results to firebase.
+     * @return - If the animation is over, sends the user to the results screen and if necessary saves the results to firebase.
      */
 
     public boolean onOptionsItemSelected(MenuItem item)
@@ -100,7 +98,6 @@ public class CollisionActivity extends AppCompatActivity
     }
 
     /**
-     *
      * @param results - an object that stores the results of the experiment
      * @return - saves the results to firebase.
      */

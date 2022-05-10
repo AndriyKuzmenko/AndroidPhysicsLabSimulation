@@ -56,6 +56,11 @@ public class DiscActivity extends AppCompatActivity
         setContentView(discView);
     }
 
+    /**
+     * @param menu - the menu
+     * @return dispays an OptionsMenu with the option to go to the results screen
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -63,6 +68,11 @@ public class DiscActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the selected item from the menu
+     * @return - If the animation is over, sends the user to the results screen and if necessary saves the results to firebase.
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -102,10 +112,19 @@ public class DiscActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @param results - an object that stores the results of the experiment
+     * @return - saves the results to firebase.
+     */
+
     public void saveResults(DiscObject results)
     {
         FBRef.myRef.child("Disc").child(results.getName()).setValue(results);
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()
@@ -126,6 +145,15 @@ class DiscView extends SurfaceView
     Paint paint;
     ArrayList<Double> lList,vList;
     String name;
+
+    /**
+     * @param context - the activity
+     * @param shift - the distance that the ruler was shifted
+     * @param v0 - the initial velocitty of the disc after it was hit by the ruler
+     * @param a - the acceleration of the disc
+     * @param pixelsPerMeter - the amount of pixels that represent one meter in the drawing routine.
+     * @return - Sets the inital values of all the variables.
+     */
 
     public DiscView(Context context,double shift,double v0,double a,double pixelsPerMeter)
     {
@@ -150,6 +178,11 @@ class DiscView extends SurfaceView
         vList=new ArrayList<>();
         name="Disc "+ SystemClock.uptimeMillis();
     }
+
+    /**
+     * @param event - the screen event that was triggered.
+     * @return - if the screen was pressed, and the animation hasn't started yet, starts the animation. Does all the calculations for the drawing routines and saves the results in ArrayLists for Firebase.
+     */
 
     @Override
     public boolean onTouchEvent(MotionEvent event)
