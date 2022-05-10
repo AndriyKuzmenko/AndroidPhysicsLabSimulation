@@ -135,6 +135,16 @@ class CollisionView extends SurfaceView
     String name;
     boolean ended;
 
+    /**
+     *
+     * @param context - the activity
+     * @param h1 - the rail heigh in meters
+     * @param h2 - the table height in meters
+     * @param g - the gravity acceleration of the Earth (m/sec^2)
+     * @param pixelsPerMeter - the amount of pixels that represent one meter in the drawing routine.
+     * @return - Sets the inital values of all the variables.
+     */
+
     public CollisionView(Context context,double h1,double h2,double g,double pixelsPerMeter)
     {
         super(context);
