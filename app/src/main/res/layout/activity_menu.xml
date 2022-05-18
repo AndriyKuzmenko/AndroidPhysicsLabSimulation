@@ -195,7 +195,7 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="10px" />
+                    android:layout_height="15px" />
 
                 <TextView
                     android:id="@+id/otherLabel"
