@@ -35,7 +35,7 @@ public class GalvanometerActivity extends AppCompatActivity
         maxR=gi.getDoubleExtra("maxR",0);
         a=gi.getDoubleExtra("a",0);
         n=gi.getIntExtra("n",0);
-        hEarthMagneticField=50*Math.pow(10,-6)*Math.cos(Math.toRadians(31.253));
+        hEarthMagneticField=50*Math.pow(10,-6);
 
         super.onCreate(savedInstanceState);
         galvanometerView=new GalvanometerView(this,epsilon,maxR,n,hEarthMagneticField,a);
