@@ -126,6 +126,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="30px" />
 
+            <TextView
+                android:id="@+id/magneticFieldLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Earth's Magnetic Field (Tesla)"
+                android:textColor="#06073E"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/magneticFieldET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:hint="50*10^-6"
+                android:inputType="numberDecimal"
+                android:textColor="#06073E"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15px" />
+
             <Button
                 android:id="@+id/startButton"
                 android:layout_width="match_parent"

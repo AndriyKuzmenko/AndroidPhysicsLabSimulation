@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GalvanometerData extends AppCompatActivity
 {
-    TextView nLabel,aLabel,epsionLabel,rLabel;
-    EditText nET,aET,epsilonET,rET;
+    TextView nLabel,aLabel,epsionLabel,rLabel,magneticFieldLabel;
+    EditText nET,aET,epsilonET,rET,magenticFielsET;
     Button startButton,backToMenuButton;
 
     @Override
@@ -27,10 +27,12 @@ public class GalvanometerData extends AppCompatActivity
         aLabel=(TextView)findViewById(R.id.aLabel);
         epsionLabel=(TextView)findViewById(R.id.epsilonLabel);
         rLabel=(TextView)findViewById(R.id.rLabel);
+        magneticFieldLabel=(TextView) findViewById(R.id.magneticFieldLabel);
         nET=(EditText)findViewById(R.id.nET);
         aET=(EditText)findViewById(R.id.aET);
         epsilonET=(EditText)findViewById(R.id.epsilonET);
         rET=(EditText)findViewById(R.id.rET);
+        magenticFielsET=(EditText)findViewById(R.id.magneticFieldET);
         startButton=(Button)findViewById(R.id.startButton);
         backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
 
@@ -81,10 +83,21 @@ public class GalvanometerData extends AppCompatActivity
         String maxRStr=rET.getText().toString();
         String nStr=nET.getText().toString();
         String aStr=aET.getText().toString();
+        String hEarthMagneticFieldStr=magenticFielsET.getText().toString();
 
         if(epsilonStr.equals("") || maxRStr.equals("") || nStr.equals("") || aStr.equals(""))
         {
             return;
+        }
+
+        double hEarthMagneticField;
+        if(hEarthMagneticFieldStr.equals(""))
+        {
+            hEarthMagneticField=50*Math.pow(10,-6);
+        }
+        else
+        {
+            hEarthMagneticField=Double.parseDouble(hEarthMagneticFieldStr);
         }
 
         double epsilon=Double.parseDouble(epsilonStr);
@@ -96,6 +109,7 @@ public class GalvanometerData extends AppCompatActivity
         si.putExtra("maxR",maxR);
         si.putExtra("n",n);
         si.putExtra("a",a);
+        si.putExtra("hEarthMagneticField",hEarthMagneticField);
         startActivity(si);
     }
 
