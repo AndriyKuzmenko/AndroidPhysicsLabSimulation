@@ -40,8 +40,12 @@
                 android:id="@+id/backVoltageButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="serif"
                 android:onClick="back"
-                android:text="Back" />
+                android:text="Back"
+                android:textColor="#03071B"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <Space
                 android:layout_width="match_parent"
