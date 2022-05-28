@@ -27,7 +27,7 @@
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:text="Height as a function of time"
-                android:textColor="#000022"
+                android:textColor="#03071B"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:text="Velocity as a function of time"
-                android:textColor="#000022"
+                android:textColor="#03071B"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -67,7 +67,7 @@
                 android:fontFamily="serif"
                 android:onClick="back"
                 android:text="Back"
-                android:textColor="#000022"
+                android:textColor="#03071B"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
