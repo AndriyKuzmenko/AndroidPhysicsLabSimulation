@@ -27,7 +27,7 @@
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:text="tg(θ) as function of current"
-                android:textColor="#000022"
+                android:textColor="#03071B"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -41,7 +41,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="back"
-                android:text="Back" />
+                android:text="Back"
+                android:fontFamily="serif"
+                android:textColor="#03071B"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <Space
                 android:layout_width="match_parent"

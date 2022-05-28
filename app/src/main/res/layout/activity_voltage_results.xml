@@ -70,7 +70,7 @@
                     android:fontFamily="serif"
                     android:onClick="plots"
                     android:text="Plots"
-                    android:textColor="#03071B"
+                    android:textColor="#06073E"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
@@ -85,7 +85,7 @@
                     android:onClick="createExcel"
                     android:text="Create Excel"
                     android:fontFamily="serif"
-                    android:textColor="#03071B"
+                    android:textColor="#06073E"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
@@ -100,7 +100,7 @@
                     android:onClick="back"
                     android:text="Back to menu"
                     android:fontFamily="serif"
-                    android:textColor="#03071B"
+                    android:textColor="#06073E"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
