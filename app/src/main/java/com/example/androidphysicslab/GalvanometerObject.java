@@ -37,7 +37,7 @@ public class GalvanometerObject extends Experiment
         this.n=n;
     }
 
-    public void setHEarthMagneticField(double hEarthMagneticField)
+    public void sethearthMagneticField(double hEarthMagneticField)
     {
         this.hEarthMagneticField=hEarthMagneticField;
     }

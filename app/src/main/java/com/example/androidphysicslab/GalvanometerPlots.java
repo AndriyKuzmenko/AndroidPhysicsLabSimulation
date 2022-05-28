@@ -20,7 +20,8 @@ public class GalvanometerPlots extends AppCompatActivity
 {
     GraphView tgIGraph;
     double[] rList,iList,thetaList,tgList;
-    double hEarthMagneticField,epsilon,a,n;
+    double hEarthMagneticField,epsilon,a;
+    int n;
     DataPoint[] tgPlot;
     TextView tgITV;
     Button backGalvanometerButton;
@@ -45,7 +46,7 @@ public class GalvanometerPlots extends AppCompatActivity
         hEarthMagneticField=gi.getDoubleExtra("hEarthMagneticField",0);
         epsilon=gi.getDoubleExtra("epsilon",0);
         a=gi.getDoubleExtra("a",0);
-        n=gi.getDoubleExtra("n",0);
+        n=gi.getIntExtra("n",0);
 
         tgPlot=new DataPoint[10];
 
