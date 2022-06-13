@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AlertDialog;
@@ -153,6 +154,7 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
 
         if(h1Str.equals("") || h2Str.equals(""))
         {
+            Toast.makeText(CollisionData.this, Languages.missingField, Toast.LENGTH_SHORT).show();
             return;
         }
 

@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -54,6 +55,8 @@ public class DiscActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         discView=new DiscView(this,shift,v0,a,pixlsPerMeter);
         setContentView(discView);
+
+        Toast.makeText(DiscActivity.this, Languages.clickToStart, Toast.LENGTH_SHORT).show();
     }
 
     /**

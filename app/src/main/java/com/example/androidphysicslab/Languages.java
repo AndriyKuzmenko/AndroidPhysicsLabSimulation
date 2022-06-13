@@ -82,6 +82,7 @@ public class Languages
     public static String save;
     public static String cancel;
     public static String clickToStart;
+    public static String missingField;
 
     public static void toEnglish()
     {
@@ -164,6 +165,7 @@ public class Languages
         save="Save";
         cancel="Cancel";
         clickToStart="Press on the screen to start the animation";
+        missingField="At least one field is empty";
     }
 
     public static void toHebrew()
@@ -247,5 +249,6 @@ public class Languages
         save="שמירה";
         cancel="ביטול";
         clickToStart="לחץ על המסך על מנת להתחיל את האנימציה";
+        missingField="לפחות שדה אחד ריק";
     }
 }

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -160,6 +161,7 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
 
         if(mStr.equals("") || muStr.equals("") || kStr.equals("") || shiftStr.equals(""))
         {
+            Toast.makeText(DiscData.this, Languages.missingField, Toast.LENGTH_SHORT).show();
             return;
         }
 
