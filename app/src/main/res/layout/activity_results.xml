@@ -36,7 +36,11 @@
             android:layout_height="0px"
             android:layout_weight="1"
             android:onClick="back"
-            android:text="Back" />
+            android:text="Back"
+            android:fontFamily="serif"
+            android:textColor="#06073E"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <Space
             android:layout_width="match_parent"

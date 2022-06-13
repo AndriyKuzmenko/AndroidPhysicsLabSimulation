@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,6 +54,8 @@ public class CollisionActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         collisionView=new CollisionView(this,h1,h2,g,pixlsPerMeter);
         setContentView(collisionView);
+
+        Toast.makeText(CollisionActivity.this, Languages.clickToStart, Toast.LENGTH_SHORT).show();
     }
 
     /**
