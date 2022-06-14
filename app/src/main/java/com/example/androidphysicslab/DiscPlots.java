@@ -78,6 +78,11 @@ public class DiscPlots extends AppCompatActivity
         }
     }
 
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the results screen
+     */
+
     public void back(View view)
     {
         Intent si=new Intent(this,DiscResults.class);
@@ -101,11 +106,20 @@ public class DiscPlots extends AppCompatActivity
         finish();
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         vTime.setText(Languages.velocityTime);
         lTime.setText(Languages.distanceTime);
     }
+
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -114,6 +128,11 @@ public class DiscPlots extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
