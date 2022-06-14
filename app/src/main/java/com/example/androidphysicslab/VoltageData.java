@@ -37,6 +37,10 @@ public class VoltageData extends AppCompatActivity
         changeLanguage();
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         epsilonLabel.setText(Languages.epsilon);
@@ -46,6 +50,11 @@ public class VoltageData extends AppCompatActivity
         backToMenuButton.setText(Languages.back);
     }
 
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -53,6 +62,11 @@ public class VoltageData extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -71,6 +85,11 @@ public class VoltageData extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param view - the button pressed
+     * @return Checks if the user entered all the necessary details. If he did, starts the animation.
+     */
 
     public void start(View view)
     {
@@ -96,6 +115,10 @@ public class VoltageData extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {
@@ -103,6 +126,11 @@ public class VoltageData extends AppCompatActivity
 
         finish();
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the main menu
+     */
 
     public void back(View view)
     {

@@ -39,6 +39,11 @@ public class VoltageActivity extends AppCompatActivity
         setContentView(voltageView);
     }
 
+    /**
+     * @param menu - the menu
+     * @return dispays an OptionsMenu with the option to go to the results screen
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -46,6 +51,11 @@ public class VoltageActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the selected item from the menu
+     * @return - If the animation is over, sends the user to the results screen and if necessary saves the results to firebase.
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -80,11 +90,20 @@ public class VoltageActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @param results - an object that stores the results of the experiment
+     * @return - saves the results to firebase.
+     */
+
     public void saveResults(VoltageObject results)
     {
         Log.d("TAG",results.getName());
         FBRef.myRef.child("Voltage").child(results.getName()).setValue(results);
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()
@@ -107,6 +126,14 @@ class VoltageView extends SurfaceView
     double epsilon,internalR,maxR;
     ArrayList<Double> rList,iList,vList;
 
+    /**
+     *
+     * @param context - the activity
+     * @param epsilon - the electromotive force of the battery
+     * @param internalR - the internal resistance of the battery
+     * @param maxR - the maximum resistance of the battery
+     */
+
     public VoltageView(Context context,double epsilon,double internalR,double maxR)
     {
         super(context);
@@ -124,6 +151,11 @@ class VoltageView extends SurfaceView
         iList=new ArrayList<>();
         vList=new ArrayList<>();
     }
+
+    /**
+     * @param event - the screen event that was triggered.
+     * @return - if the screen was pressed, and the animation hasn't started yet, starts the animation. Does all the calculations for the drawing routines and saves the results in ArrayLists for Firebase.
+     */
 
     @Override
     public boolean onTouchEvent(MotionEvent event)

@@ -66,6 +66,11 @@ public class VoltagePlots extends AppCompatActivity
         }
     }
 
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the results screen
+     */
+
     public void back(View view)
     {
         Intent si=new Intent(this,VoltageResults.class);
@@ -80,11 +85,20 @@ public class VoltagePlots extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         backVoltageButton.setText(Languages.back);
         vAsI.setText(Languages.iVPlot);
     }
+
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -93,6 +107,11 @@ public class VoltagePlots extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -111,6 +130,10 @@ public class VoltagePlots extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()
