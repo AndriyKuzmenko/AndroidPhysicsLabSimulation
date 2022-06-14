@@ -134,6 +134,10 @@ public class GalvanometerData extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {
@@ -141,6 +145,11 @@ public class GalvanometerData extends AppCompatActivity
 
         finish();
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the main menu
+     */
 
     public void back(View view)
     {

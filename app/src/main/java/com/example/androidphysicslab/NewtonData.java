@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +48,10 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
         planetNewtonSpinner.setOnItemSelectedListener(this);
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         mass1Label.setText(Languages.mass1);
@@ -60,6 +65,11 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
         planetNewtonSpinner.setAdapter(adp);
     }
 
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -67,6 +77,11 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -85,6 +100,11 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
 
         return true;
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - if the user selected a planet other than Earth, calls method startAnimation with parameter false. Else, the app asks the user does he want to use g=10 or 9=9.807. If the user chose 10, calls method startAnimation was parameter true. Otherwise calls it with parameter false.
+     */
 
     public void start(View view)
     {
@@ -120,6 +140,11 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
         }
     }
 
+    /**
+     * @param b - true if the user wanted g=10. Falso if the user wants the accurate g of the selected planet.
+     * @return Checks if the user entered all the necessary details. If he did, starts the animation.
+     */
+
     public void startAnimation(boolean b)
     {
         Intent si=new Intent(this,NewtonActivity.class);
@@ -132,6 +157,7 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
 
         if (m1Str.equals("") || m2Str.equals("") || muStr.equals(""))
         {
+            Toast.makeText(NewtonData.this, Languages.missingField, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -162,6 +188,7 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
      * @param view     The view within the AdapterView that was clicked
      * @param position The position of the view in the adapter
      * @param id       The row id of the item that is selected
+     * @return updates the variable planet which stores the index of the selected planet.
      */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
@@ -183,6 +210,10 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
 
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {
@@ -190,6 +221,11 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
 
         finish();
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the main menu
+     */
 
     public void back(View view)
     {

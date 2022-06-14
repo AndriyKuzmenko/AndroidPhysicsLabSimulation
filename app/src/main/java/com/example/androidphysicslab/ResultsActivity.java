@@ -56,6 +56,10 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         showFreeFall();
     }
 
+    /**
+     * Displays the list of experimemts on the listView
+     */
+
     public void displayList()
     {
         ArrayAdapter<String> adp=new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, experimentsList);
@@ -75,6 +79,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
      *                 will be a view provided by the adapter)
      * @param position The position of the view in the adapter.
      * @param id       The row id of the item that was clicked.
+     * @return Checks which experiment was pressed and sends the user to the results activity of this specific experiment
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
@@ -243,6 +248,10 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         }
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {
@@ -250,6 +259,10 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
 
         finish();
     }
+
+    /**
+     * @return Reads all the data for free fall experiment
+     */
 
     public void showFreeFall()
     {
@@ -277,6 +290,10 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         });
     }
 
+    /**
+     * @return Reads all the data for spring experiment
+     */
+
     public void showSpring()
     {
         FBRef.myRef.child("Spring").addListenerForSingleValueEvent(new ValueEventListener()
@@ -301,6 +318,10 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             }
         });
     }
+
+    /**
+     * @return Reads all the data for Second Newton's Law experiment
+     */
 
     public void showNewton()
     {
@@ -327,6 +348,10 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         });
     }
 
+    /**
+     * @return Reads all the data for voltage experiment
+     */
+
     public void showVoltage()
     {
         FBRef.myRef.child("Voltage").addListenerForSingleValueEvent(new ValueEventListener()
@@ -351,6 +376,10 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             }
         });
     }
+
+    /**
+     * @return Reads all the data for disc experiment
+     */
 
     public void showDisc()
     {
@@ -377,6 +406,10 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         });
     }
 
+    /**
+     * @return Reads all the data for collision experiment
+     */
+
     public void showCollision()
     {
         FBRef.myRef.child("Collision").addListenerForSingleValueEvent(new ValueEventListener()
@@ -402,6 +435,10 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         });
     }
 
+    /**
+     * @return Reads all the data for tangent galvanometer experiment
+     */
+
     public void showGalvanometer()
     {
         FBRef.myRef.child("Galvanometer").addListenerForSingleValueEvent(new ValueEventListener()
@@ -426,6 +463,11 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             }
         });
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the main menu
+     */
 
     public void back(View view)
     {

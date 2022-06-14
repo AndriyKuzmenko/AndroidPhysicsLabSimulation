@@ -140,9 +140,9 @@ class GalvanometerView extends SurfaceView
      * @param context - the activity
      * @param epsilon - the electromotive force of the battery
      * @param maxR - the maximum resistance of the battery
-     * @param n -
-     * @param hEarthMagneticField
-     * @param a
+     * @param n - number of windings
+     * @param hEarthMagneticField - the magentic field of the earth
+     * @param a - the area of the galvanometer
      */
 
     public GalvanometerView(Context context,double epsilon,double maxR,int n,double hEarthMagneticField,double a)

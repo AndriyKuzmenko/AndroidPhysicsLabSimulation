@@ -70,6 +70,11 @@ public class NewtonPlots extends AppCompatActivity
         }
     }
 
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -77,6 +82,11 @@ public class NewtonPlots extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -96,12 +106,20 @@ public class NewtonPlots extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         deltaXTimeNewton.setText(Languages.positionTime);
         velocityNewtonTime.setText(Languages.velocityTime);
         backNewtonButton.setText(Languages.back);
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()
@@ -110,6 +128,11 @@ public class NewtonPlots extends AppCompatActivity
 
         finish();
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the results screen
+     */
 
     public void back(View view)
     {

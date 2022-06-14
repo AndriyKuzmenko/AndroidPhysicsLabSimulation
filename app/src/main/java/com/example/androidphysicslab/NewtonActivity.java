@@ -69,7 +69,13 @@ public class NewtonActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         newtonView=new NewtonView(this,m1,m2,mu,g,a,pixelsPerMeter,maxLength,seconds);
         setContentView(newtonView);
+
+        Toast.makeText(NewtonActivity.this, Languages.clickToStart, Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()
@@ -79,6 +85,11 @@ public class NewtonActivity extends AppCompatActivity
         finish();
     }
 
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -86,6 +97,11 @@ public class NewtonActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -119,6 +135,11 @@ public class NewtonActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @param results - an object that stores the results of the experiment
+     * @return - saves the results to firebase.
+     */
+
     public void saveResults(NewtonObject results)
     {
         FBRef.myRef.child("Newton").child(results.getName()).setValue(results);
@@ -135,6 +156,19 @@ class NewtonView extends SurfaceView
     boolean started;
     ArrayList<Double> xList,vList;
     String name;
+
+    /**
+     *
+     * @param context - the activity
+     * @param m1 - the mass of the body on the desk
+     * @param m2 - the mass of the body in the air
+     * @param mu - the coefficient of friction between the desk and the body on the desk
+     * @param g - the free fall acceleration
+     * @param a - the acceleration
+     * @param pixelsPerMeter - the amount of pixels that represent one meter
+     * @param maxLength - the maximum length that the bodies move
+     * @param seconds - the amount of time the animation will run
+     */
 
     public NewtonView(Context context,double m1,double m2,double mu,double g,double a,double pixelsPerMeter,double maxLength,int seconds)
     {
@@ -165,6 +199,11 @@ class NewtonView extends SurfaceView
         xList=new ArrayList<>();
         vList=new ArrayList<>();
     }
+
+    /**
+     * @param event - the screen event that was triggered.
+     * @return - if the screen was pressed, and the animation hasn't started yet, starts the animation. Does all the calculations for the drawing routines and saves the results in ArrayLists for Firebase.
+     */
 
     @Override
     public boolean onTouchEvent(MotionEvent event)
