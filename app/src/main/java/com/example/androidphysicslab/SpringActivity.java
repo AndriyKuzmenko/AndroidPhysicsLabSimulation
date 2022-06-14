@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,7 +51,13 @@ public class SpringActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         springView=new SpringView(this,m,g,k,amplit,periods,pixelsPerMeter);
         setContentView(springView);
+
+        Toast.makeText(SpringActivity.this, Languages.clickToStart, Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()
@@ -60,6 +67,11 @@ public class SpringActivity extends AppCompatActivity
         finish();
     }
 
+    /**
+     * @param menu - the menu
+     * @return dispays an OptionsMenu with the option to go to the results screen
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -67,6 +79,11 @@ public class SpringActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the selected item from the menu
+     * @return - If the animation is over, sends the user to the results screen and if necessary saves the results to firebase.
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -108,6 +125,11 @@ public class SpringActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @param results - an object that stores the results of the experiment
+     * @return - saves the results to firebase.
+     */
+
     public void saveResults(SpringObject results)
     {
         Log.d("TAG",results.getName());
@@ -128,6 +150,17 @@ class SpringView extends SurfaceView
     int counter,time;
     public ArrayList<Double> xList,vList,aList;
     public String name;
+
+    /**
+     *
+     * @param context - the activity
+     * @param m - the mass of the body
+     * @param g - the free fall acceleration
+     * @param k - the spring constant
+     * @param amplit - the amplitude of the spring
+     * @param periods - the number of periods the animation should run
+     * @param pixelsPerMeter - the amount of pixels that represent one meter
+     */
 
     public SpringView(Context context, double m, double g, double k, double amplit, double periods, double pixelsPerMeter)
     {
@@ -158,6 +191,11 @@ class SpringView extends SurfaceView
         vList=new ArrayList<>();
         aList=new ArrayList<>();
     }
+
+    /**
+     * @param event - the screen event that was triggered.
+     * @return - if the screen was pressed, and the animation hasn't started yet, starts the animation. Does all the calculations for the drawing routines and saves the results in ArrayLists for Firebase.
+     */
 
     @Override
     public boolean onTouchEvent(MotionEvent event)

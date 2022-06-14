@@ -39,7 +39,6 @@ public class SpringPlots extends AppCompatActivity
     GraphView velocitySpringGraph,deltaXGraph,aSpringGraph;
     Button backSpringButton;
     double g,m,k,amplitude,periods;
-    AlertDialog.Builder adb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -102,6 +101,11 @@ public class SpringPlots extends AppCompatActivity
         }
     }
 
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the results screen
+     */
+
     public void back(View view)
     {
         Intent si=new Intent(this,SpringResults.class);
@@ -119,6 +123,11 @@ public class SpringPlots extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -126,6 +135,11 @@ public class SpringPlots extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -145,6 +159,10 @@ public class SpringPlots extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         deltaXTime.setText(Languages.xTime);
@@ -152,6 +170,10 @@ public class SpringPlots extends AppCompatActivity
         aTime.setText(Languages.aTime);
         backSpringButton.setText(Languages.back);
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()

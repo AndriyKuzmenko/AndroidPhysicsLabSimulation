@@ -90,6 +90,10 @@ public class SpringResults extends AppCompatActivity
         resultsSpringLV.setAdapter(adp);
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         plotsSpringButton.setText(Languages.plots);
@@ -97,11 +101,21 @@ public class SpringResults extends AppCompatActivity
         animationSpringButton.setText(Languages.backToAnimation);
     }
 
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the main menu
+     */
+
     public void back(View view)
     {
         Intent si=new Intent(this,MenuActivity.class);
         startActivity(si);
     }
+
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -110,6 +124,11 @@ public class SpringResults extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -129,6 +148,10 @@ public class SpringResults extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {
@@ -136,6 +159,11 @@ public class SpringResults extends AppCompatActivity
 
         finish();
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the plots activity
+     */
 
     public void plots(View view)
     {
@@ -153,6 +181,11 @@ public class SpringResults extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @param view - the button that the user pressed
+     * @return - sends all the necessary data to the animation activity where the user can view the animation again.
+     */
+
     public void animation(View view)
     {
         Intent si=new Intent(this, SpringActivity.class);
@@ -167,6 +200,11 @@ public class SpringResults extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @param g - the gravity acceleation of a planet in the solar system
+     * @return - returns which planet has the specified gravity acceleration. If none has, returns -1 which later on will mean g=10
+     */
+
     public int findPlanet(double g)
     {
         int n=-1;
@@ -179,6 +217,11 @@ public class SpringResults extends AppCompatActivity
         }
         return n;
     }
+
+    /**
+     * @param view - the button that the user pressed
+     * @return Asks the user to choose a file name
+     */
 
     public void createExcel(View view)
     {
@@ -213,6 +256,11 @@ public class SpringResults extends AppCompatActivity
         AlertDialog ad=adb.create();
         ad.show();
     }
+
+    /**
+     * @param name - the name of the file
+     * @return Creates an excel file with all the data
+     */
 
     public void createFile(String name)
     {
