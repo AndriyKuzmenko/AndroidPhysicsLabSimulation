@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -101,6 +102,7 @@ public class VoltageData extends AppCompatActivity
 
         if(epsilonStr.equals("") || internalRStr.equals("") || maxRStr.equals(""))
         {
+            Toast.makeText(VoltageData.this, Languages.missingField, Toast.LENGTH_SHORT).show();
             return;
         }
 

@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +38,8 @@ public class VoltageActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         voltageView=new VoltageView(this,epsilon,internalR,maxR);
         setContentView(voltageView);
+
+        Toast.makeText(VoltageActivity.this, Languages.clickToStart, Toast.LENGTH_SHORT).show();
     }
 
     /**
