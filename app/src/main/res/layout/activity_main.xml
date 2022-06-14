@@ -106,13 +106,13 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/logInButton"
+                android:id="@+id/signInButton"
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:layout_weight="7"
                 android:fontFamily="serif"
-                android:onClick="logIn"
-                android:text="Log in"
+                android:onClick="signIn"
+                android:text="Sign in"
                 android:textColor="#05133E"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -140,13 +140,13 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/signInButton"
+                android:id="@+id/logInButton"
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:layout_weight="7"
                 android:fontFamily="serif"
-                android:onClick="signIn"
-                android:text="Sign in"
+                android:onClick="logIn"
+                android:text="Log in"
                 android:textColor="#05133E"
                 android:textSize="20sp"
                 android:textStyle="bold" />

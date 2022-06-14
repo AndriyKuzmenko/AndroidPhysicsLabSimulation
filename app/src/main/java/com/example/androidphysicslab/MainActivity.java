@@ -58,6 +58,10 @@ public class MainActivity extends AppCompatActivity
         changeLanguage();
     }
 
+    /**
+     * @return checks if the user is registered, if he is and the email is valid, moves to the menu activity. If the email is invalid, logs out.
+     */
+
     @Override
     public void onStart()
     {
@@ -79,7 +83,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void logIn(View view)
+    /**
+     * @param view - the button that was pressed
+     * @return - creates an account and moves the user to the menu activity
+     */
+
+    public void signIn(View view)
     {
         String email = emailET.getText().toString();
         String password = passwordET.getText().toString();
@@ -112,6 +121,11 @@ public class MainActivity extends AppCompatActivity
                 });
     }
 
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -119,6 +133,11 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -138,6 +157,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         logInButton.setText(Languages.logIn);
@@ -147,6 +170,10 @@ public class MainActivity extends AppCompatActivity
         guestButton.setText(Languages.enterAsGuest);
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {
@@ -155,13 +182,22 @@ public class MainActivity extends AppCompatActivity
         finish();
     }
 
+    /**
+     * @return moves the user to the menu activity
+     */
+
     public void nextActivity()
     {
         Intent si = new Intent(this, MenuActivity.class);
         startActivity(si);
     }
 
-    public void signIn(View view)
+    /**
+     * @param view - the button that the user pressed
+     * @return Logs in the user and moves him to the menu activity
+     */
+
+    public void logIn(View view)
     {
         String email = emailET.getText().toString();
         String password = passwordET.getText().toString();
@@ -195,11 +231,21 @@ public class MainActivity extends AppCompatActivity
                 });
     }
 
+    /**
+     * @param view - the button that was pressed
+     * @return - moves the user to the menu activity as a guest.
+     */
+
     public void guest(View view)
     {
         FBRef.mUser=null;
         nextActivity();
     }
+
+    /**
+     * @param str - a string that should contain an email address
+     * @return - true is the string doesn't have special characters, otherwise false
+     */
 
     public boolean notEmail(String str)
     {

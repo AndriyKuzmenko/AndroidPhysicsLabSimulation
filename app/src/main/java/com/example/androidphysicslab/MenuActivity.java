@@ -18,7 +18,8 @@ public class MenuActivity extends AppCompatActivity
     TextView emailTV,experimentsLabel,otherLabel;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
@@ -49,11 +50,21 @@ public class MenuActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * @param view - the buttton that was pressed
+     * @return moves the user to the free fall input activity
+     */
+
     public void freeFall(View view)
     {
         Intent si=new Intent(this, FreeFallData.class);
         startActivity(si);
     }
+
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -62,6 +73,11 @@ public class MenuActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -81,6 +97,10 @@ public class MenuActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         freeFallButton.setText(Languages.freeFall);
@@ -97,6 +117,10 @@ public class MenuActivity extends AppCompatActivity
         galvanometerButton.setText(Languages.galvanometer);
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {
@@ -104,6 +128,11 @@ public class MenuActivity extends AppCompatActivity
 
         finish();
     }
+
+    /**
+     * @param view - the button pressed
+     * @return - logs the user out and moves to the log in activity
+     */
 
     public void logOut(View view)
     {
@@ -114,11 +143,21 @@ public class MenuActivity extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @param view - the button pressed
+     * @return - moves the user to the results activity to see a list of all previous experiments. Inactive for guests.
+     */
+
     public void results(View view)
     {
         Intent si=new Intent(this, ResultsActivity.class);
         startActivity(si);
     }
+
+    /**
+     * @param view - the buttton that was pressed
+     * @return moves the user to the spring input activity
+     */
 
     public void spring(View view)
     {
@@ -126,11 +165,21 @@ public class MenuActivity extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @param view - the buttton that was pressed
+     * @return moves the user to the Secodn Newton's Law input activity
+     */
+
     public void newton(View view)
     {
         Intent si=new Intent(this, NewtonData.class);
         startActivity(si);
     }
+
+    /**
+     * @param view - the buttton that was pressed
+     * @return moves the user to the credits activity
+     */
 
     public void credits(View view)
     {
@@ -138,11 +187,21 @@ public class MenuActivity extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @param view - the buttton that was pressed
+     * @return moves the user to the voltage input activity
+     */
+
     public void voltage(View view)
     {
         Intent si=new Intent(this, VoltageData.class);
         startActivity(si);
     }
+
+    /**
+     * @param view - the buttton that was pressed
+     * @return moves the user to the disc input activity
+     */
 
     public void disc(View view)
     {
@@ -150,11 +209,21 @@ public class MenuActivity extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @param view - the buttton that was pressed
+     * @return moves the user to the collision input activity
+     */
+
     public void collision(View view)
     {
         Intent si=new Intent(this, CollisionData.class);
         startActivity(si);
     }
+
+    /**
+     * @param view - the buttton that was pressed
+     * @return moves the user to the tangent galvanometer input activity
+     */
 
     public void galvanometer(View view)
     {
