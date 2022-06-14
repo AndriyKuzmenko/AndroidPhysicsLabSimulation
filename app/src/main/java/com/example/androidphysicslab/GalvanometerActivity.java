@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,7 +41,13 @@ public class GalvanometerActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         galvanometerView=new GalvanometerView(this,epsilon,maxR,n,hEarthMagneticField,a);
         setContentView(galvanometerView);
+
+        Toast.makeText(GalvanometerActivity.this, Languages.clickToStart, Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()
@@ -50,6 +57,11 @@ public class GalvanometerActivity extends AppCompatActivity
         finish();
     }
 
+    /**
+     * @param menu - the menu
+     * @return dispays an OptionsMenu with the option to go to the results screen
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -57,6 +69,11 @@ public class GalvanometerActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the selected item from the menu
+     * @return - If the animation is over, sends the user to the results screen and if necessary saves the results to firebase.
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -95,6 +112,11 @@ public class GalvanometerActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @param results - an object that stores the results of the experiment
+     * @return - saves the results to firebase.
+     */
+
     public void saveResults(GalvanometerObject results)
     {
         Log.d("TAG",results.getName());
@@ -112,6 +134,16 @@ class GalvanometerView extends SurfaceView
     double epsilon,maxR,n,hEarthMagneticField,a;
     ArrayList<Double> rList,iList,tgList,thetaList;
     String name;
+
+    /**
+     *
+     * @param context - the activity
+     * @param epsilon - the electromotive force of the battery
+     * @param maxR - the maximum resistance of the battery
+     * @param n -
+     * @param hEarthMagneticField
+     * @param a
+     */
 
     public GalvanometerView(Context context,double epsilon,double maxR,int n,double hEarthMagneticField,double a)
     {
@@ -135,6 +167,11 @@ class GalvanometerView extends SurfaceView
 
         name="Tangent Galvanometer "+SystemClock.uptimeMillis();
     }
+
+    /**
+     * @param event - the screen event that was triggered.
+     * @return - if the screen was pressed, and the animation hasn't started yet, starts the animation. Does all the calculations for the drawing routines and saves the results in ArrayLists for Firebase.
+     */
 
     @Override
     public boolean onTouchEvent(MotionEvent event)

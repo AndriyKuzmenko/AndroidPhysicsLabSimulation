@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,6 +40,11 @@ public class GalvanometerData extends AppCompatActivity
         changeLanguage();
     }
 
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -46,6 +52,11 @@ public class GalvanometerData extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -65,6 +76,10 @@ public class GalvanometerData extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         nLabel.setText(Languages.n);
@@ -74,6 +89,11 @@ public class GalvanometerData extends AppCompatActivity
         startButton.setText(Languages.start);
         backToMenuButton.setText(Languages.back);
     }
+
+    /**
+     * @param view - the button pressed
+     * @return Checks if the user entered all the necessary details. If he did, starts the animation.
+     */
 
     public void start(View view)
     {
@@ -87,6 +107,7 @@ public class GalvanometerData extends AppCompatActivity
 
         if(epsilonStr.equals("") || maxRStr.equals("") || nStr.equals("") || aStr.equals(""))
         {
+            Toast.makeText(GalvanometerData.this, Languages.missingField, Toast.LENGTH_SHORT).show();
             return;
         }
 
