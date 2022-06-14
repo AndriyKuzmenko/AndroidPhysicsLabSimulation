@@ -171,6 +171,12 @@ public class SpringData extends AppCompatActivity implements AdapterView.OnItemS
         double a=Double.parseDouble(aStr);
         double p=Double.parseDouble(pStr);
 
+        if(m==0||k==0||p==0)
+        {
+            Toast.makeText(SpringData.this, Languages.invalidInnput, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         si.putExtra("mass",m);
         si.putExtra("k",k);
         si.putExtra("amplitude",a);

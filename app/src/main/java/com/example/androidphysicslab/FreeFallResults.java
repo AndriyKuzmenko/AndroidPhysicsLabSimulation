@@ -33,7 +33,7 @@ public class FreeFallResults extends AppCompatActivity
 {
     ListView results;
     TextView mgView;
-    Button plotsButton,menuButton,animationButton;
+    Button plotsButton,menuButton,animationButton,xlButton;
     AlertDialog.Builder adb;
 
     double[] hList,vList;
@@ -52,6 +52,7 @@ public class FreeFallResults extends AppCompatActivity
         menuButton=(Button)findViewById(R.id.menuButton);
         animationButton=(Button)findViewById(R.id.animationButton);
         mgView=(TextView)findViewById(R.id.mgView);
+        xlButton=(Button)findViewById(R.id.xlButton);
         changeLanguage();
 
         Intent gi=getIntent();
@@ -159,6 +160,7 @@ public class FreeFallResults extends AppCompatActivity
         plotsButton.setText(Languages.plots);
         menuButton.setText(Languages.backToMenu);
         animationButton.setText(Languages.backToAnimation);
+        xlButton.setText(Languages.createExcel);
     }
 
     /**

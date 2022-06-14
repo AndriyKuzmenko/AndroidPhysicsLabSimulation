@@ -170,6 +170,12 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
         double k=Double.parseDouble(kStr);
         double shift=Double.parseDouble(shiftStr);
 
+        if(m==0||mu==0||k==0||shift==0)
+        {
+            Toast.makeText(DiscData.this, Languages.invalidInnput, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         si.putExtra("m",m);
         si.putExtra("mu",mu);
         si.putExtra("k",k);

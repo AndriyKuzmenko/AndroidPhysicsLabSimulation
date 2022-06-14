@@ -165,6 +165,12 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
         double m2=Double.parseDouble(m2Str);
         double mu=Double.parseDouble(muStr);
 
+        if(m1==0||m2==0)
+        {
+            Toast.makeText(NewtonData.this, Languages.invalidInnput, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         si.putExtra("m1",m1);
         si.putExtra("m2",m2);
         si.putExtra("mu",mu);

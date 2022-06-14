@@ -33,7 +33,7 @@ public class DiscResults extends AppCompatActivity
 {
     TextView mgkDiscView;
     ListView resultsDiscLV;
-    Button plotsDiscButton,menuDiscButton,animationDiscButton;
+    Button plotsDiscButton,menuDiscButton,animationDiscButton,xlButton;
     double[] lList,vList;
     double m,mu,g,k,deltax,v0,l0;
     AlertDialog.Builder adb;
@@ -51,6 +51,7 @@ public class DiscResults extends AppCompatActivity
         plotsDiscButton=(Button)findViewById(R.id.plotsDiscButton);
         menuDiscButton=(Button)findViewById(R.id.menuDiscButton);
         animationDiscButton=(Button)findViewById(R.id.animationDiscButton);
+        xlButton=(Button)findViewById(R.id.xlButton);
 
         Intent gi=getIntent();
         lList=gi.getDoubleArrayExtra("lList");
@@ -177,6 +178,7 @@ public class DiscResults extends AppCompatActivity
         plotsDiscButton.setText(Languages.plots);
         menuDiscButton.setText(Languages.backToMenu);
         animationDiscButton.setText(Languages.backToAnimation);
+        xlButton.setText(Languages.createExcel);
     }
 
     /**

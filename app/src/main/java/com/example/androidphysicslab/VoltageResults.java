@@ -33,7 +33,7 @@ public class VoltageResults extends AppCompatActivity
 {
     TextView voltageView;
     ListView resultsVoltageLV;
-    Button plotsVoltageButton,menuVoltageButton;
+    Button plotsVoltageButton,menuVoltageButton,xlButton;
 
     double[] rList,iList,vList;
     double epsilon,internalR,maxR;
@@ -49,6 +49,7 @@ public class VoltageResults extends AppCompatActivity
         resultsVoltageLV=(ListView) findViewById(R.id.resultsVoltageLV);
         plotsVoltageButton=(Button)findViewById(R.id.plotsVoltageButton);
         menuVoltageButton=(Button)findViewById(R.id.menuVoltageButton);
+        xlButton=(Button)findViewById(R.id.xlButton);
 
         Intent gi=getIntent();
         rList=gi.getDoubleArrayExtra("rList");
@@ -168,6 +169,7 @@ public class VoltageResults extends AppCompatActivity
     {
         plotsVoltageButton.setText(Languages.plots);
         menuVoltageButton.setText(Languages.backToMenu);
+        xlButton.setText(Languages.createExcel);
     }
 
     /**

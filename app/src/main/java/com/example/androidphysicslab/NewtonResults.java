@@ -33,7 +33,7 @@ public class NewtonResults extends AppCompatActivity
 {
     TextView m1m2gaView;
     ListView resultsNewtonLV;
-    Button plotsNewtonButton,menuNewtonButton,animationNewtonButton;
+    Button plotsNewtonButton,menuNewtonButton,animationNewtonButton,xlButton;
     AlertDialog.Builder adb;
 
     double[] xList,vList;
@@ -52,6 +52,7 @@ public class NewtonResults extends AppCompatActivity
         plotsNewtonButton=(Button)findViewById(R.id.plotsNewtonButton);
         menuNewtonButton=(Button)findViewById(R.id.menuNewtonButton);
         animationNewtonButton=(Button)findViewById(R.id.animationNewtonButton);
+        xlButton=(Button)findViewById(R.id.xlButton);
         changeLanguage();
 
         Intent gi=getIntent();
@@ -97,6 +98,7 @@ public class NewtonResults extends AppCompatActivity
         plotsNewtonButton.setText(Languages.plots);
         menuNewtonButton.setText(Languages.backToMenu);
         animationNewtonButton.setText(Languages.backToAnimation);
+        xlButton.setText(Languages.createExcel);
     }
 
     /**

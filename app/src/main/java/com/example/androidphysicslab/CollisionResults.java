@@ -38,7 +38,7 @@ public class CollisionResults extends AppCompatActivity
         g=gi.getDoubleExtra("g",0);
         tall=gi.getBooleanExtra("tall",false);
 
-        dataCollisionView.setText("h1="+h1+" m\nh2="+h2+" m\nv="+v+" m/sec\nu="+u+" m/sec g="+g+" m/sec^2");
+        dataCollisionView.setText("h1="+h1+" m\nh2="+h2+" m\nv="+v+" m/sec\nu="+u+" m/sec\ng="+g+" m/sec^2");
     }
 
     /**

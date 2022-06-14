@@ -34,7 +34,7 @@ public class SpringResults extends AppCompatActivity
 {
     TextView mgkView;
     ListView resultsSpringLV;
-    Button plotsSpringButton,menuSpringButton,animationSpringButton;
+    Button plotsSpringButton,menuSpringButton,animationSpringButton,xlButton;
     double[] xList,vList,aList;
     double m,g,k,amplitude,periods;
     AlertDialog.Builder adb;
@@ -52,6 +52,7 @@ public class SpringResults extends AppCompatActivity
         plotsSpringButton=(Button)findViewById(R.id.plotsSpringButton);
         menuSpringButton=(Button)findViewById(R.id.menuSpringButton);
         animationSpringButton=(Button)findViewById(R.id.animationSpringButton);
+        xlButton=(Button)findViewById(R.id.xlButton);
         changeLanguage();
 
         Intent gi=getIntent();
@@ -99,6 +100,7 @@ public class SpringResults extends AppCompatActivity
         plotsSpringButton.setText(Languages.plots);
         menuSpringButton.setText(Languages.backToMenu);
         animationSpringButton.setText(Languages.backToAnimation);
+        xlButton.setText(Languages.createExcel);
     }
 
     /**

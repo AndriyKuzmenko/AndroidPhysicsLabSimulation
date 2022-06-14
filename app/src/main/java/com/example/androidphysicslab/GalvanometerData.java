@@ -126,6 +126,12 @@ public class GalvanometerData extends AppCompatActivity
         int n=Integer.parseInt(nStr);
         double a=Double.parseDouble(aStr);
 
+        if(epsilon==0||n==0||a==0||maxR==0)
+        {
+            Toast.makeText(GalvanometerData.this, Languages.invalidInnput, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         si.putExtra("epsilon",epsilon);
         si.putExtra("maxR",maxR);
         si.putExtra("n",n);

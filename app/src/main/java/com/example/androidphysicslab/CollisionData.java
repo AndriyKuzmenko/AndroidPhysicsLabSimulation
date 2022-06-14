@@ -161,6 +161,12 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
         double h2=Double.parseDouble(h2Str);
         double h1=Double.parseDouble(h1Str);
 
+        if(h1==0 || h2==0)
+        {
+            Toast.makeText(CollisionData.this, Languages.invalidInnput, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         si.putExtra("h2",h2);
         si.putExtra("h1",h1);
         if(b) si.putExtra("planet",-1);

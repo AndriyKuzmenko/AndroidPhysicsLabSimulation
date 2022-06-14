@@ -33,7 +33,7 @@ public class GalvanometerResults extends AppCompatActivity
 {
     TextView dataTV;
     ListView resultsLV;
-    Button plotsButton,menuButton;
+    Button plotsButton,menuButton,xlButton;
     double[] rList,iList,thetaList,tgList;
     double hEarthMagneticField,epsilon,a;
     int n;
@@ -51,6 +51,7 @@ public class GalvanometerResults extends AppCompatActivity
         resultsLV=(ListView)findViewById(R.id.resultsLV);
         plotsButton=(Button)findViewById(R.id.plotsButton);
         menuButton=(Button)findViewById(R.id.menuButton);
+        xlButton=(Button)findViewById(R.id.xlButton);
 
         Intent gi=getIntent();
         rList=gi.getDoubleArrayExtra("rList");
@@ -176,6 +177,7 @@ public class GalvanometerResults extends AppCompatActivity
     {
         plotsButton.setText(Languages.plots);
         menuButton.setText(Languages.backToMenu);
+        xlButton.setText(Languages.createExcel);
     }
 
     /**

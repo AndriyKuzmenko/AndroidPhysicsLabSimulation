@@ -110,6 +110,12 @@ public class VoltageData extends AppCompatActivity
         double internalR=Double.parseDouble(internalRStr);
         double maxR=Double.parseDouble(maxRStr);
 
+        if(epsilon==0||(internalR==0&&maxR==0))
+        {
+            Toast.makeText(VoltageData.this, Languages.invalidInnput, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         si.putExtra("epsilon",epsilon);
         si.putExtra("internalR",internalR);
         si.putExtra("maxR",maxR);

@@ -114,6 +114,12 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
         double m=Double.parseDouble(mStr);
         double h=Double.parseDouble(hStr);
 
+        if(m==0||h==0)
+        {
+            Toast.makeText(FreeFallData.this, Languages.invalidInnput, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         si.putExtra("mass",m);
         si.putExtra("height",h);
         if(b) si.putExtra("planet",-1);
