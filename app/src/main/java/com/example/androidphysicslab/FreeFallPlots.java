@@ -77,6 +77,11 @@ public class FreeFallPlots extends AppCompatActivity
         }
     }
 
+    /**
+     * @param view - the button pressed
+     * @return - goes back to the results screen
+     */
+
     public void back(View view)
     {
         Intent si=new Intent(this,FreeFallResults.class);
@@ -89,6 +94,11 @@ public class FreeFallPlots extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @param menu  - the menu
+     * @return      - shows the main menu
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -96,6 +106,11 @@ public class FreeFallPlots extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the item that was selected
+     * @return     - Changes the language to the selected language
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -115,12 +130,20 @@ public class FreeFallPlots extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @return Updates the interface language after it was changed
+     */
+
     public void changeLanguage()
     {
         heightTime.setText(Languages.heightTime);
         velocityTime.setText(Languages.velocityTime);
         backButton.setText(Languages.back);
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()

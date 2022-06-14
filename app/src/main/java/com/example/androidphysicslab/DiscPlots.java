@@ -98,6 +98,10 @@ public class DiscPlots extends AppCompatActivity
         startActivity(si);
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {

@@ -89,6 +89,10 @@ public class DiscResults extends AppCompatActivity
         changeLanguage();
     }
 
+    /**
+     * @return - finishes the activity
+     */
+
     @Override
     protected void onPause()
     {

@@ -20,6 +20,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -48,7 +49,13 @@ public class FreeFallActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         drawingView=new DrawingView(this,accelaration,height*meter,meter);
         setContentView(drawingView);
+
+        Toast.makeText(FreeFallActivity.this, Languages.clickToStart, Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * @return - finishes the activity
+     */
 
     @Override
     protected void onPause()
@@ -58,6 +65,11 @@ public class FreeFallActivity extends AppCompatActivity
         finish();
     }
 
+    /**
+     * @param menu - the menu
+     * @return dispays an OptionsMenu with the option to go to the results screen
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -65,6 +77,11 @@ public class FreeFallActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item - the selected item from the menu
+     * @return - If the animation is over, sends the user to the results screen and if necessary saves the results to firebase.
+     */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -97,6 +114,11 @@ public class FreeFallActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * @param results - an object that stores the results of the experiment
+     * @return - saves the results to firebase.
+     */
+
     public void saveResults(FreeFallObject results)
     {
         FBRef.myRef.child("Free Fall").child(results.getName()).setValue(results);
@@ -117,6 +139,14 @@ class DrawingView extends SurfaceView
     public ArrayList<Double> vList;
     public String name;
 
+    /**
+     *
+     * @param context - the activity
+     * @param accelaration - the free fall acceleration in pixels/sec^2
+     * @param h - the height in pixels
+     * @param meter - the amount of pixels that represent one meter
+     */
+
     public DrawingView(Context context, double accelaration, double h, double meter)
     {
         super(context);
@@ -134,18 +164,12 @@ class DrawingView extends SurfaceView
         vList=new ArrayList<>();
         name="Free Fall "+SystemClock.uptimeMillis();
         Log.d("TAG",name);
-
-/*
-        Timer t=new Timer();
-        t.scheduleAtFixedRate(new TimerTask()
-        {
-            @Override
-            public void run()
-            {
-                draw();
-            }
-        }, 100, 100);*/
     }
+
+    /**
+     * @param event - the screen event that was triggered.
+     * @return - if the screen was pressed, and the animation hasn't started yet, starts the animation. Does all the calculations for the drawing routines and saves the results in ArrayLists for Firebase.
+     */
 
     @Override
     public boolean onTouchEvent(MotionEvent event)
@@ -154,6 +178,7 @@ class DrawingView extends SurfaceView
         {
             if (surfaceHolder.getSurface().isValid() && !started)
             {
+                //position and velocity in pixels
                 x=getWidth()/2-25;
                 y=30;
                 vy=0;
@@ -173,9 +198,12 @@ class DrawingView extends SurfaceView
                             t.cancel();
                         }
 
+                        //Height and velocity in meters
                         Log.w("TAG","y="+y+"  h="+(h-y+30)/meter+"  vy"+vy/meter);
                         hList.add((h-y+30)/meter);
                         vList.add(vy/meter);
+
+                        //Drawing
                         canvas = surfaceHolder.lockCanvas();
                         canvas.drawColor(Color.YELLOW);
                         paint.setColor(Color.RED);
@@ -183,8 +211,9 @@ class DrawingView extends SurfaceView
                         paint.setColor(Color.BLUE);
                         canvas.drawRect(new Rect(0,(int)h+61,Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels),paint);
                         surfaceHolder.unlockCanvasAndPost(canvas);
-                        y+=vy/100;
 
+                        //Updating values for next iteration
+                        y+=vy/100;
                         vy+=accelaration/100;
                     }
                 }, 5, 5);
@@ -196,12 +225,4 @@ class DrawingView extends SurfaceView
         }
         return false;
     }
-/*
-    @Override
-    protected void onDraw(Canvas canvas)
-    {
-        canvas.drawColor(Color.BLUE);
-        canvas.drawCircle((int)x, (int)y, 100, paint);
-    }
-    */
 }
