@@ -16,8 +16,6 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import org.w3c.dom.Text;
-
 public class FreeFallPlots extends AppCompatActivity
 {
     double[] hList,vList;

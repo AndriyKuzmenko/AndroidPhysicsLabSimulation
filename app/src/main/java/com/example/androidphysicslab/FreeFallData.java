@@ -18,8 +18,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class FreeFallData extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     TextView massLabel, heightLabel;
