@@ -132,7 +132,7 @@ public class Languages
         logOut="Log out";
         springConstant="Spring Constant (N/m)";
         aTime="Acceleration as function of time";
-        xTime="length as function of time";
+        xTime="Length as function of time";
         secondNewtonsLaw="2nd Newton's Law";
         mass1="Mass on desk (kg)";
         mass2="Mass in air (kg)";
