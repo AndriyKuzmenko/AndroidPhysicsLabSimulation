@@ -16,8 +16,6 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.util.ArrayList;
-
 public class VoltagePlots extends AppCompatActivity
 {
     TextView vAsI;
