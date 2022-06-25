@@ -10,10 +10,20 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import java.util.Arrays;
+
 public class CollisionResults extends AppCompatActivity
 {
     TextView dataCollisionView;
     Button menuCollisionButton,animationCollisionButton;
+    AdView adView;
     double h1,h2,v,u,g;
     boolean tall;
 
@@ -26,6 +36,7 @@ public class CollisionResults extends AppCompatActivity
         dataCollisionView=(TextView)findViewById(R.id.dataCollisionView);
         menuCollisionButton=(Button)findViewById(R.id.menuCollisionButton);
         animationCollisionButton=(Button)findViewById(R.id.animationCollisionButton);
+        adView=(AdView)findViewById(R.id.adView);
 
         Intent gi=getIntent();
         h1=gi.getDoubleExtra("h1",0);
@@ -36,6 +47,20 @@ public class CollisionResults extends AppCompatActivity
         tall=gi.getBooleanExtra("tall",false);
 
         dataCollisionView.setText("h1="+h1+" m\nh2="+h2+" m\nv="+v+" m/sec\nu="+u+" m/sec\ng="+g+" m/sec^2");
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**
