@@ -172,7 +172,7 @@ public class Languages
 
     public static void toHebrew()
     {
-        logIn="יצירת חשבון";
+        logIn="התחברות";
         freeFall="נפילה חופשית";
         start="התחל";
         mass="מסה (קילוגרם)";
@@ -210,7 +210,7 @@ public class Languages
         back="חזור";
         emailAddress="כתובת אימייל";
         password="סיסמא";
-        signIn="התחברות";
+        signIn="יצירת חשבון";
         spring="קפיץ";
         results="תוצאות";
         credits="קרדיטים";

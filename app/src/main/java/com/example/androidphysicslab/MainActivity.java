@@ -13,11 +13,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,6 +32,7 @@ public class MainActivity extends AppCompatActivity
 {
     Button logInButton,signInButton,guestButton;
     EditText emailET,passwordET;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,11 +45,27 @@ public class MainActivity extends AppCompatActivity
         logInButton = (Button) findViewById(R.id.logInButton);
         signInButton = (Button) findViewById(R.id.signInButton);
         guestButton=(Button)findViewById(R.id.guestButton);
+        adView=(AdView)findViewById(R.id.adView);
+
         if (Languages.signIn == null)
         {
             Languages.toEnglish();
         }
         changeLanguage();
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**

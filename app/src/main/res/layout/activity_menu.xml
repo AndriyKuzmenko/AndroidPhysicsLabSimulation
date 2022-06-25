@@ -4,268 +4,283 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MenuActivity">
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
-
-
     <LinearLayout
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="7"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="Android Physics Lab"
-            android:textColor="#FF0000"
-            android:textSize="27sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:orientation="vertical">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/emailTV"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="2"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#090835"
-            android:textSize="15sp"
-            android:textStyle="bold|italic"
-            tools:text="example@example.com" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="20">
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Android Physics Lab"
+                android:textColor="#FF0000"
+                android:textSize="27sp"
+                android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/experimentsLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:text="Experiments"
-                    android:textColor="#3A0543"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/emailTV"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="2"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#090835"
+                android:textSize="15sp"
+                android:textStyle="bold|italic"
+                tools:text="example@example.com" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1" />
 
-                <Button
-                    android:id="@+id/freeFallButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="freeFall"
-                    android:text="Free fall"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="20">
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
-
-                <Button
-                    android:id="@+id/springButton"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="spring"
-                    android:text="Spring"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
 
-                <Button
-                    android:id="@+id/newtonButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="newton"
-                    android:text="Second Newton's Law"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/experimentsLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="Experiments"
+                        android:textColor="#3A0543"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
 
-                <Button
-                    android:id="@+id/voltageButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="voltage"
-                    android:text="Voltage Experiment"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/freeFallButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="freeFall"
+                        android:text="Free fall"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
 
-                <Button
-                    android:id="@+id/discButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="disc"
-                    android:text="Disc Experiment"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/springButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="spring"
+                        android:text="Spring"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
 
-                <Button
-                    android:id="@+id/collisionButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="collision"
-                    android:text="2D collision"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/newtonButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="newton"
+                        android:text="Second Newton's Law"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
 
-                <Button
-                    android:id="@+id/galvanometerButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="galvanometer"
-                    android:text="Tangent Galvanometer"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/voltageButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="voltage"
+                        android:text="Voltage Experiment"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="15px" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
 
-                <TextView
-                    android:id="@+id/otherLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:text="Other"
-                    android:textColor="#3A0543"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/discButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="disc"
+                        android:text="Disc Experiment"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
 
-                <Button
-                    android:id="@+id/resultsButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="results"
-                    android:text="Results"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/collisionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="collision"
+                        android:text="2D collision"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
 
-                <Button
-                    android:id="@+id/creditsButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="credits"
-                    android:text="Credits"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/galvanometerButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="galvanometer"
+                        android:text="Tangent Galvanometer"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15px" />
 
-                <Button
-                    android:id="@+id/logOutButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:onClick="logOut"
-                    android:text="Log Out"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/otherLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="Other"
+                        android:textColor="#3A0543"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="10px" />
-            </LinearLayout>
-        </ScrollView>
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
 
+                    <Button
+                        android:id="@+id/resultsButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="results"
+                        android:text="Results"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
+
+                    <Button
+                        android:id="@+id/creditsButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="credits"
+                        android:text="Credits"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
+
+                    <Button
+                        android:id="@+id/logOutButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:onClick="logOut"
+                        android:text="Log Out"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10px" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
 </LinearLayout>
