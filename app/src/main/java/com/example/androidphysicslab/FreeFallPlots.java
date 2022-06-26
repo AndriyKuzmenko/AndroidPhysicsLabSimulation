@@ -12,9 +12,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.Arrays;
 
 public class FreeFallPlots extends AppCompatActivity
 {
@@ -22,6 +30,7 @@ public class FreeFallPlots extends AppCompatActivity
     DataPoint[] vPlot,hPlot;
     TextView heightTime, velocityTime;
     Button backButton;
+    AdView adView;
     double g,m;
 
     @Override
@@ -35,6 +44,7 @@ public class FreeFallPlots extends AppCompatActivity
         heightTime=(TextView)findViewById(R.id.heightTime);
         velocityTime=(TextView)findViewById(R.id.velocityTime);
         backButton=(Button)findViewById(R.id.backButton);
+        adView=(AdView)findViewById(R.id.adView);
 
         Intent gi=getIntent();
         hList=gi.getDoubleArrayExtra("hList");
@@ -73,6 +83,20 @@ public class FreeFallPlots extends AppCompatActivity
         {
             Toast.makeText(FreeFallPlots.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**

@@ -11,9 +11,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.Arrays;
 
 public class DiscPlots extends AppCompatActivity
 {
@@ -22,6 +30,7 @@ public class DiscPlots extends AppCompatActivity
     double m,mu,g,k,deltax,v0,l0;
     GraphView lGraph,vGraph;
     TextView lTime,vTime;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +53,7 @@ public class DiscPlots extends AppCompatActivity
         lGraph=(GraphView)findViewById(R.id.lGraph);
         lTime=(TextView)findViewById(R.id.lTime);
         vTime=(TextView)findViewById(R.id.vTime);
+        adView=(AdView)findViewById(R.id.adView);
 
         vPlot=new DataPoint[vList.length];
         lPlot=new DataPoint[vList.length];
@@ -76,6 +86,20 @@ public class DiscPlots extends AppCompatActivity
         {
             Toast.makeText(DiscPlots.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**

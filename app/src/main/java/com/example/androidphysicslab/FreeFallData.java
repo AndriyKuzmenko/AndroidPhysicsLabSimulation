@@ -18,6 +18,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import java.util.Arrays;
+
 public class FreeFallData extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     TextView massLabel, heightLabel;
@@ -26,6 +35,7 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
     AlertDialog.Builder adb;
     EditText massET, heightET;
     Button startButton,backToMenuButton;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +50,7 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
         heightET=(EditText)findViewById(R.id.heightET);
         startButton=(Button)findViewById(R.id.startButton);
         backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
+        adView=(AdView)findViewById(R.id.adView);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
@@ -48,6 +59,20 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
         planet=0;
 
         changeLanguage();
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**

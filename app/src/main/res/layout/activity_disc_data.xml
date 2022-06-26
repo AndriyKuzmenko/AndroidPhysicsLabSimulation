@@ -4,171 +4,188 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".FreeFallData">
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-    <ScrollView
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="7">
+        <Space
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:orientation="vertical">
+        <ScrollView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="7">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15px" />
-
-            <TextView
-                android:id="@+id/massDiscLabel"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:gravity="center"
-                android:text="Mass (kg)"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_weight="7"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/massDiscET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:inputType="numberDecimal"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15px" />
+                <TextView
+                    android:id="@+id/massDiscLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Mass (kg)"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/muDiscLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:gravity="center"
-                android:text="Mu"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/massDiscET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:inputType="numberDecimal"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/muDiscET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:inputType="numberDecimal"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15px" />
+                <TextView
+                    android:id="@+id/muDiscLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="Mu"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/kDiscLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:gravity="center"
-                android:text="K (N/m)"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/muDiscET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:inputType="numberDecimal"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/kDiscET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:inputType="numberDecimal"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15px" />
+                <TextView
+                    android:id="@+id/kDiscLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="K (N/m)"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/shiftDiscLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:gravity="center"
-                android:text="K (N/m)"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/kDiscET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:inputType="numberDecimal"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/shiftDiscET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:inputType="numberDecimal"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15px" />
+                <TextView
+                    android:id="@+id/shiftDiscLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="K (N/m)"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/planetDiscSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/shiftDiscET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:inputType="numberDecimal"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/startButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:onClick="start"
-                android:text="Start"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30px" />
+                <Spinner
+                    android:id="@+id/planetDiscSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15px" />
+                <Button
+                    android:id="@+id/startButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:onClick="start"
+                    android:text="Start"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/backToMenuButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="back"
-                android:text="Back"
-                android:fontFamily="serif"
-                android:textColor="#06073E"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="30px" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15px" />
-        </LinearLayout>
-    </ScrollView>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+                <Button
+                    android:id="@+id/backToMenuButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:onClick="back"
+                    android:text="Back"
+                    android:textColor="#06073E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15px" />
+            </LinearLayout>
+        </ScrollView>
+
+        <Space
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
 </LinearLayout>

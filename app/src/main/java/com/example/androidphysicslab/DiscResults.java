@@ -20,6 +20,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -27,12 +34,15 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class DiscResults extends AppCompatActivity
 {
     TextView mgkDiscView;
     ListView resultsDiscLV;
     Button plotsDiscButton,menuDiscButton,animationDiscButton,xlButton;
+    AdView adView;
+
     double[] lList,vList;
     double m,mu,g,k,deltax,v0,l0;
     AlertDialog.Builder adb;
@@ -51,6 +61,7 @@ public class DiscResults extends AppCompatActivity
         menuDiscButton=(Button)findViewById(R.id.menuDiscButton);
         animationDiscButton=(Button)findViewById(R.id.animationDiscButton);
         xlButton=(Button)findViewById(R.id.xlButton);
+        adView=(AdView)findViewById(R.id.adView);
 
         Intent gi=getIntent();
         lList=gi.getDoubleArrayExtra("lList");
@@ -87,6 +98,20 @@ public class DiscResults extends AppCompatActivity
         resultsDiscLV.setAdapter(adp);
 
         changeLanguage();
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**

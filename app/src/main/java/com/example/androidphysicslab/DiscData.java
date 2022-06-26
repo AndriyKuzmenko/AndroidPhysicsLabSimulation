@@ -18,12 +18,23 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import java.util.Arrays;
+
 public class DiscData extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     TextView massDiscLabel,muDiscLabel,kDiscLabel,shiftDiscLabel;
     EditText massDiscET,muDiscET,kDiscET,shiftDiscET;
     Spinner planetDiscSpinner;
     Button startButton,backToMenuButton;
+    AdView adView;
+
     AlertDialog.Builder adb;
     int planet;
 
@@ -44,10 +55,26 @@ public class DiscData extends AppCompatActivity implements AdapterView.OnItemSel
         shiftDiscLabel=(TextView)findViewById(R.id.shiftDiscLabel);
         shiftDiscET=(EditText)findViewById(R.id.shiftDiscET);
         backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
+        adView=(AdView)findViewById(R.id.adView);
+
         planet=0;
         planetDiscSpinner.setOnItemSelectedListener(this);
 
         changeLanguage();
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**
