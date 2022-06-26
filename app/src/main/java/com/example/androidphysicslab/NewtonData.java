@@ -18,12 +18,23 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import java.util.Arrays;
+
 public class NewtonData extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     TextView mass1Label,mass2Label,frictionLabel;
     EditText mass1ET,mass2ET,frictionET;
     Spinner planetNewtonSpinner;
     Button startNewtonButton,backToMenuButton;
+    AdView adView;
+
     int planet;
     AlertDialog.Builder adb;
 
@@ -42,10 +53,25 @@ public class NewtonData extends AppCompatActivity implements AdapterView.OnItemS
         planetNewtonSpinner=(Spinner)findViewById(R.id.planetNewtonSpinner);
         startNewtonButton=(Button)findViewById(R.id.startNewtonButton);
         backToMenuButton=(Button)findViewById(R.id.backToMenuButton);
+        adView=(AdView)findViewById(R.id.adView);
 
         changeLanguage();
         planet=0;
         planetNewtonSpinner.setOnItemSelectedListener(this);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**

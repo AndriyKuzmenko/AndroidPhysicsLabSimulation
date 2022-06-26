@@ -4,116 +4,132 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".FreeFallResults">
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
-
     <LinearLayout
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="8"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/voltageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#03071B"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:orientation="vertical">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1" />
 
-        <ListView
-            android:id="@+id/resultsVoltageLV"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="20" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="11">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/voltageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#03071B"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="15px" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1" />
 
-                <Button
-                    android:id="@+id/plotsVoltageButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:onClick="plots"
-                    android:text="Plots"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
+            <ListView
+                android:id="@+id/resultsVoltageLV"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="20" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="15px" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1" />
 
-                <Button
-                    android:id="@+id/xlButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="createExcel"
-                    android:text="Create Excel"
-                    android:fontFamily="serif"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="11">
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="15px" />
-
-                <Button
-                    android:id="@+id/menuVoltageButton"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="back"
-                    android:text="Back to menu"
-                    android:fontFamily="serif"
-                    android:textColor="#06073E"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:orientation="vertical">
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="15px" />
-            </LinearLayout>
-        </ScrollView>
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15px" />
 
+                    <Button
+                        android:id="@+id/plotsVoltageButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:onClick="plots"
+                        android:text="Plots"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15px" />
+
+                    <Button
+                        android:id="@+id/xlButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:onClick="createExcel"
+                        android:text="Create Excel"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15px" />
+
+                    <Button
+                        android:id="@+id/menuVoltageButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:onClick="back"
+                        android:text="Back to menu"
+                        android:textColor="#06073E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15px" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
-    <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
 </LinearLayout>

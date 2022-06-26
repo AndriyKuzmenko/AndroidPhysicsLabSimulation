@@ -20,6 +20,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -28,12 +35,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SpringResults extends AppCompatActivity
 {
     TextView mgkView;
     ListView resultsSpringLV;
     Button plotsSpringButton,menuSpringButton,animationSpringButton,xlButton;
+    AdView adView;
     double[] xList,vList,aList;
     double m,g,k,amplitude,periods;
     AlertDialog.Builder adb;
@@ -52,6 +61,7 @@ public class SpringResults extends AppCompatActivity
         menuSpringButton=(Button)findViewById(R.id.menuSpringButton);
         animationSpringButton=(Button)findViewById(R.id.animationSpringButton);
         xlButton=(Button)findViewById(R.id.xlButton);
+        adView=(AdView)findViewById(R.id.adView);
         changeLanguage();
 
         Intent gi=getIntent();
@@ -88,6 +98,20 @@ public class SpringResults extends AppCompatActivity
 
         ArrayAdapter<String> adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,list);
         resultsSpringLV.setAdapter(adp);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**

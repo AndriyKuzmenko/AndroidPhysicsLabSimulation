@@ -21,6 +21,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -28,12 +35,14 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class NewtonResults extends AppCompatActivity
 {
     TextView m1m2gaView;
     ListView resultsNewtonLV;
     Button plotsNewtonButton,menuNewtonButton,animationNewtonButton,xlButton;
+    AdView adView;
     AlertDialog.Builder adb;
 
     double[] xList,vList;
@@ -53,6 +62,7 @@ public class NewtonResults extends AppCompatActivity
         menuNewtonButton=(Button)findViewById(R.id.menuNewtonButton);
         animationNewtonButton=(Button)findViewById(R.id.animationNewtonButton);
         xlButton=(Button)findViewById(R.id.xlButton);
+        adView=(AdView)findViewById(R.id.adView);
         changeLanguage();
 
         Intent gi=getIntent();
@@ -87,6 +97,20 @@ public class NewtonResults extends AppCompatActivity
 
         ArrayAdapter<String> adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,list);
         resultsNewtonLV.setAdapter(adp);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**

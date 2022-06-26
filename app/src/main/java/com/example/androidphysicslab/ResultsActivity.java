@@ -12,11 +12,18 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ResultsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
 {
@@ -30,6 +37,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
     ArrayList<GalvanometerObject> galvanometerList;
     ListView experimentsLV;
     Button backButton;
+    AdView adView;
     int freeFallStart,springStart,newtonStart,voltageStart,discStart,collisionStart,galvanometerStart;
 
     @Override
@@ -52,8 +60,23 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
         experimentsLV.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         backButton=(Button)findViewById(R.id.backButton);
         backButton.setText(Languages.back);
+        adView=(AdView)findViewById(R.id.adView);
 
         showFreeFall();
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**

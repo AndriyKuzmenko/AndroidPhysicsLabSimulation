@@ -11,9 +11,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.Arrays;
 
 public class NewtonPlots extends AppCompatActivity
 {
@@ -22,6 +30,8 @@ public class NewtonPlots extends AppCompatActivity
     TextView deltaXTimeNewton,velocityNewtonTime;
     GraphView deltaXGraphNewton,velocityNewtonGraph;
     Button backNewtonButton;
+    AdView adView;
+
     double g,m1,m2,mu;
 
     @Override
@@ -35,6 +45,7 @@ public class NewtonPlots extends AppCompatActivity
         deltaXGraphNewton=(GraphView)findViewById(R.id.deltaXGraphNewton);
         velocityNewtonGraph=(GraphView)findViewById(R.id.velocityNewtonGraph);
         backNewtonButton=(Button)findViewById(R.id.backNewtonButton);
+        adView=(AdView)findViewById(R.id.adView);
 
         Intent gi=getIntent();
         xList=gi.getDoubleArrayExtra("xList");
@@ -67,6 +78,20 @@ public class NewtonPlots extends AppCompatActivity
         {
             Toast.makeText(NewtonPlots.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener()
+        {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus)
+            {
+
+            }
+        });
+
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+        AdRequest adRequest=new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     /**
