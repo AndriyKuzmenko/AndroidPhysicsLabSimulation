@@ -47,7 +47,7 @@ public class FreeFallActivity extends AppCompatActivity
         int planet=gi.getIntExtra("planet",-2);
         if(planet>=0) gravity=Languages.gravity[planet];
         else gravity=10;
-        double meter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height*1.3);
+        double meter=0.8*(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height*1.3);
         accelaration=gravity*meter;
         rerun=gi.getBooleanExtra("rerun",false);
         Log.w("TAG","a="+accelaration+" meter="+meter+" g="+gravity+" h="+height);
