@@ -119,6 +119,8 @@ public class CollisionData extends AppCompatActivity implements AdapterView.OnIt
         tableHeightLabel.setText(Languages.tableHeight);
         startCollisionButton.setText(Languages.start);
         backToMenuButton.setText(Languages.back);
+        wideTallToggle.setTextOff(Languages.wide);
+        wideTallToggle.setTextOn(Languages.tall);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);

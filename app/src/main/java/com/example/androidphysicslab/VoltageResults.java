@@ -260,7 +260,8 @@ public class VoltageResults extends AppCompatActivity
             row.createCell(2).setCellValue(vList[i]);
         }
 
-        File filePath=new File(Environment.getExternalStorageDirectory()+"/"+name+".xls");
+        File directory=new File(Environment.getExternalStorageDirectory() + "/Download/");
+        File filePath=new File(directory,name+".xls");
 
         if(filePath.exists())
         {

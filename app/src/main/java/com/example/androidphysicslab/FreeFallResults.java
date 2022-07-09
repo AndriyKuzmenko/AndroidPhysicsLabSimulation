@@ -300,13 +300,13 @@ public class FreeFallResults extends AppCompatActivity
             row.createCell(2).setCellValue(vList[i]);
         }
 
-        File filePath=new File(Environment.getExternalStorageDirectory()+"/"+name+".xls");
+        File directory=new File(Environment.getExternalStorageDirectory() + "/Download/");
+        File filePath=new File(directory,name+".xls");
 
         if(filePath.exists())
         {
             Toast.makeText(this,filePath.getName()+" exists",Toast.LENGTH_LONG).show();
-        }
-        else
+        }        else
         {
             try
             {

@@ -310,7 +310,8 @@ public class SpringResults extends AppCompatActivity
             row.createCell(3).setCellValue(aList[i]);
         }
 
-        File filePath=new File(Environment.getExternalStorageDirectory()+"/"+name+".xls");
+        File directory=new File(Environment.getExternalStorageDirectory() + "/Download/");
+        File filePath=new File(directory,name+".xls");
 
         if(filePath.exists())
         {
