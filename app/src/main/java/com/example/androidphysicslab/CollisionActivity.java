@@ -232,15 +232,15 @@ class CollisionView extends SurfaceView
         width=Resources.getSystem().getDisplayMetrics().widthPixels;
         height=Resources.getSystem().getDisplayMetrics().heightPixels;
 
-        y1=(int)(height*3/4-(h1+h2)*pixelsPerMeter-10);
-        m=(h2)/(width/3/pixelsPerMeter);
+        y1=(int)(height*3/4-(h1+h2)*pixelsPerMeter-20);
+        m=(h2)/((width/3)/pixelsPerMeter);
         Log.d("TAG","m="+m+" h2="+h2);
-        x1=(int)(y1-(height*3/4-h1*pixelsPerMeter)+m*width/3)/(m)+70;
+        x1=(int)(y1-(height*3/4-h1*pixelsPerMeter)+m*width/3)/(m)+110;
 
         alpha=Math.atan(m);
         sin=Math.sin(alpha);
         cos=Math.cos(alpha);
-        a=g*Math.sin(alpha);
+        a=g*sin;
         vx=vy=ux=uy=0;
 
         x2=width/2;
@@ -298,15 +298,19 @@ class CollisionView extends SurfaceView
                         if(y1>=height*3/4-(int)(h1*pixelsPerMeter)-20)
                         {
                             if(y1>height*3/4-(int)(h1*pixelsPerMeter)-20)
-                                v=vx=Math.sqrt(vx*vx+vy*vy);
-                            vy=0;
-                            y1=height*3/4-(int)(h1*pixelsPerMeter)-20;
-                            Log.d("TAG","v="+vx);
+                            {
+                                vx=Math.sqrt(vx*vx+vy*vy);
+                                v=vx;
+                                vy=0;
+                                y1=height*3/4-(int)(h1*pixelsPerMeter)-20;
+                                Log.d("TAG", "v="+vx);
+                            }
 
                             if(x1>width/2-20)
                             {
                                 x1=width/2-20;
-                                u=ux=vx;
+                                ux=vx;
+                                u=ux;
                                 vx=a=0;
                             }
                             else if(y2>=height*3/4)
