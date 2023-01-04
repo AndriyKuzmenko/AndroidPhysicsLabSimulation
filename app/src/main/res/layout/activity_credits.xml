@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
                 android:gravity="center"
-                android:text="This app was made by Andriy Kuzmenko as a high school project.\n\nFor feedback:\nphysicsapp.andriy@gmail.com"
+                android:text="This app was made by Andriy Kuzmenko as a high school project, supervised by Albert Levi.\n\nFor feedback:\nphysicsapp.andriy@gmail.com"
                 android:textColor="#100A47"
                 android:textSize="25sp"
                 android:textStyle="bold" />

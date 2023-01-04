@@ -92,6 +92,16 @@ public class NewtonPlots extends AppCompatActivity
 
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+
+        deltaXGraphNewton.getViewport().setScalable(true);
+        deltaXGraphNewton.getViewport().setScrollable(true);
+        deltaXGraphNewton.getViewport().setScalableY(true);
+        deltaXGraphNewton.getViewport().setScrollableY(true);
+
+        velocityNewtonGraph.getViewport().setScalable(true);
+        velocityNewtonGraph.getViewport().setScrollable(true);
+        velocityNewtonGraph.getViewport().setScalableY(true);
+        velocityNewtonGraph.getViewport().setScrollableY(true);
     }
 
     /**

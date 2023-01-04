@@ -1,6 +1,8 @@
 package com.example.androidphysicslab;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -35,6 +38,7 @@ public class GalvanometerActivity extends AppCompatActivity
     GalvanometerView galvanometerView;
     double epsilon,maxR,a,hEarthMagneticField;
     int n;
+    AlertDialog.Builder adb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -113,35 +117,83 @@ public class GalvanometerActivity extends AppCompatActivity
     {
         if (galvanometerView.rList.size()==10)
         {
+            Intent si = new Intent(this, GalvanometerResults.class);
             GalvanometerObject results=new GalvanometerObject(epsilon,a,n,hEarthMagneticField,galvanometerView.iList,galvanometerView.rList,galvanometerView.tgList,galvanometerView.thetaList);
-            results.setName(galvanometerView.name);
 
             if(FBRef.mUser!=null)
-                saveResults(results);
-
-            Intent si=new Intent(this,GalvanometerResults.class);
-            double[] rList=new double[results.getRList().size()];
-            double[] iList=new double[results.getIList().size()];
-            double[] thetaList=new double[results.getThetaList().size()];
-            double[] tgList=new double[results.getTgList().size()];
-
-            for(int i=0; i<rList.length; i++)
             {
-                rList[i]=results.getRList().get(i);
-                iList[i]=results.getIList().get(i);
-                thetaList[i]=results.getThetaList().get(i);
-                tgList[i]=results.getTgList().get(i);
-            }
+                final String[] name = {galvanometerView.name};
+                adb = new AlertDialog.Builder(this);
+                adb.setCancelable(false);
+                adb.setTitle("Please give a title for your results. Will override existing results in case of name collision");
+                final EditText eT = new EditText(this);
+                eT.setHint(name[0]);
+                adb.setView(eT);
+                adb.setPositiveButton("Confirm title", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        if (!eT.getText().toString().equals(""))
+                        {
+                            name[0] = eT.getText().toString();
+                        }
 
-            si.putExtra("rList",rList);
-            si.putExtra("iList",iList);
-            si.putExtra("thetaList",thetaList);
-            si.putExtra("tgList",tgList);
-            si.putExtra("epsilon",epsilon);
-            si.putExtra("a",a);
-            si.putExtra("n",n);
-            si.putExtra("hEarthMagneticField",hEarthMagneticField);
-            startActivity(si);
+                        results.setName(name[0]);
+                        saveResults(results);
+
+                        double[] rList = new double[results.getRList().size()];
+                        double[] iList = new double[results.getIList().size()];
+                        double[] thetaList = new double[results.getThetaList().size()];
+                        double[] tgList = new double[results.getTgList().size()];
+
+                        for (int i = 0; i < rList.length; i++)
+                        {
+                            rList[i] = results.getRList().get(i);
+                            iList[i] = results.getIList().get(i);
+                            thetaList[i] = results.getThetaList().get(i);
+                            tgList[i] = results.getTgList().get(i);
+                        }
+
+                        si.putExtra("rList", rList);
+                        si.putExtra("iList", iList);
+                        si.putExtra("thetaList", thetaList);
+                        si.putExtra("tgList", tgList);
+                        si.putExtra("epsilon", epsilon);
+                        si.putExtra("a", a);
+                        si.putExtra("n", n);
+                        si.putExtra("hEarthMagneticField", hEarthMagneticField);
+                        startActivity(si);
+                    }
+                });
+
+                AlertDialog ad = adb.create();
+                ad.show();
+            }
+            else
+            {
+                double[] rList = new double[results.getRList().size()];
+                double[] iList = new double[results.getIList().size()];
+                double[] thetaList = new double[results.getThetaList().size()];
+                double[] tgList = new double[results.getTgList().size()];
+
+                for (int i = 0; i < rList.length; i++) {
+                    rList[i] = results.getRList().get(i);
+                    iList[i] = results.getIList().get(i);
+                    thetaList[i] = results.getThetaList().get(i);
+                    tgList[i] = results.getTgList().get(i);
+                }
+
+                si.putExtra("rList", rList);
+                si.putExtra("iList", iList);
+                si.putExtra("thetaList", thetaList);
+                si.putExtra("tgList", tgList);
+                si.putExtra("epsilon", epsilon);
+                si.putExtra("a", a);
+                si.putExtra("n", n);
+                si.putExtra("hEarthMagneticField", hEarthMagneticField);
+                startActivity(si);
+            }
         }
         return true;
     }

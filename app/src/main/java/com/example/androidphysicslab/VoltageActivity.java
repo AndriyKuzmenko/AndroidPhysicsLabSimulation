@@ -1,6 +1,8 @@
 package com.example.androidphysicslab;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -34,6 +37,7 @@ public class VoltageActivity extends AppCompatActivity
 {
     VoltageView voltageView;
     double epsilon,internalR,maxR;
+    AlertDialog.Builder adb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -100,29 +104,75 @@ public class VoltageActivity extends AppCompatActivity
         {
             VoltageObject results=new VoltageObject(voltageView.rList,voltageView.iList,voltageView.vList,epsilon,internalR,maxR);
             results.setName(voltageView.name);
+            Intent si=new Intent(this,VoltageResults.class);
 
             if(FBRef.mUser!=null)
-                saveResults(results);
-
-            Intent si=new Intent(this,VoltageResults.class);
-            double[] rList=new double[results.getRList().size()];
-            double[] vList=new double[results.getVList().size()];
-            double[] iList=new double[results.getIList().size()];
-
-            for(int i=0; i<rList.length; i++)
             {
-                rList[i]=results.getRList().get(i);
-                vList[i]=results.getVList().get(i);
-                iList[i]=results.getIList().get(i);
-            }
+                final String[] name = {voltageView.name};
+                adb = new AlertDialog.Builder(this);
+                adb.setCancelable(false);
+                adb.setTitle("Please give a title for your results. Will override existing results in case of name collision");
+                final EditText eT = new EditText(this);
+                eT.setHint(name[0]);
+                adb.setView(eT);
+                adb.setPositiveButton("Confirm title", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        if (!eT.getText().toString().equals(""))
+                        {
+                            name[0] = eT.getText().toString();
+                        }
 
-            si.putExtra("rList",rList);
-            si.putExtra("vList",vList);
-            si.putExtra("iList",iList);
-            si.putExtra("epsilon",epsilon);
-            si.putExtra("internalR",internalR);
-            si.putExtra("maxR",maxR);
-            startActivity(si);
+                        results.setName(name[0]);
+                        saveResults(results);
+
+                        double[] rList = new double[results.getRList().size()];
+                        double[] vList = new double[results.getVList().size()];
+                        double[] iList = new double[results.getIList().size()];
+
+                        for (int i = 0; i < rList.length; i++)
+                        {
+                            rList[i] = results.getRList().get(i);
+                            vList[i] = results.getVList().get(i);
+                            iList[i] = results.getIList().get(i);
+                        }
+
+                        si.putExtra("rList", rList);
+                        si.putExtra("vList", vList);
+                        si.putExtra("iList", iList);
+                        si.putExtra("epsilon", epsilon);
+                        si.putExtra("internalR", internalR);
+                        si.putExtra("maxR", maxR);
+                        startActivity(si);
+                    }
+                });
+
+                AlertDialog ad = adb.create();
+                ad.show();
+            }
+            else
+            {
+                double[] rList = new double[results.getRList().size()];
+                double[] vList = new double[results.getVList().size()];
+                double[] iList = new double[results.getIList().size()];
+
+                for (int i = 0; i < rList.length; i++)
+                {
+                    rList[i] = results.getRList().get(i);
+                    vList[i] = results.getVList().get(i);
+                    iList[i] = results.getIList().get(i);
+                }
+
+                si.putExtra("rList", rList);
+                si.putExtra("vList", vList);
+                si.putExtra("iList", iList);
+                si.putExtra("epsilon", epsilon);
+                si.putExtra("internalR", internalR);
+                si.putExtra("maxR", maxR);
+                startActivity(si);
+            }
         }
         return true;
     }

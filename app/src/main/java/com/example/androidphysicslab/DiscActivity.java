@@ -1,6 +1,8 @@
 package com.example.androidphysicslab;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -36,6 +39,7 @@ public class DiscActivity extends AppCompatActivity
     double m,mu,k,shift,g,v0,a,t,l0;
     int planet;
     boolean rerun;
+    AlertDialog.Builder adb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -128,22 +132,57 @@ public class DiscActivity extends AppCompatActivity
 
             if(!(rerun||FBRef.mUser==null))
             {
-                DiscObject results = new DiscObject(m, mu, g, k, v0, l0, shift, discView.lList, discView.vList);
-                results.setName(discView.name);
-                saveResults(results);
+                final String[] name = {discView.name};
+                adb = new AlertDialog.Builder(this);
+                adb.setCancelable(false);
+                adb.setTitle("Please give a title for your results. Will override existing results in case of name collision");
+                final EditText eT = new EditText(this);
+                eT.setHint(name[0]);
+                adb.setView(eT);
+                adb.setPositiveButton("Confirm title", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        if (!eT.getText().toString().equals(""))
+                        {
+                            name[0] = eT.getText().toString();
+                        }
+
+                        DiscObject results = new DiscObject(m, mu, g, k, v0, l0, shift, discView.lList, discView.vList);
+                        results.setName(name[0]);
+                        saveResults(results);
+
+                        si.putExtra("lList",lList);
+                        si.putExtra("vList",vList);
+                        si.putExtra("g",g);
+                        si.putExtra("m",m);
+                        si.putExtra("mu",mu);
+                        si.putExtra("k",k);
+                        si.putExtra("v0",v0);
+                        si.putExtra("l0",l0);
+                        si.putExtra("deltax",shift);
+                        startActivity(si);
+                    }
+                });
+
+                AlertDialog ad = adb.create();
+                ad.show();
             }
+            else
+            {
+                si.putExtra("lList", lList);
+                si.putExtra("vList", vList);
+                si.putExtra("g", g);
+                si.putExtra("m", m);
+                si.putExtra("mu", mu);
+                si.putExtra("k", k);
+                si.putExtra("v0", v0);
+                si.putExtra("l0", l0);
+                si.putExtra("deltax", shift);
 
-            si.putExtra("lList",lList);
-            si.putExtra("vList",vList);
-            si.putExtra("g",g);
-            si.putExtra("m",m);
-            si.putExtra("mu",mu);
-            si.putExtra("k",k);
-            si.putExtra("v0",v0);
-            si.putExtra("l0",l0);
-            si.putExtra("deltax",shift);
-
-            startActivity(si);
+                startActivity(si);
+            }
         }
 
         return true;

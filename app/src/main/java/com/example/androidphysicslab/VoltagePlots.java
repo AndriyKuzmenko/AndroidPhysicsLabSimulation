@@ -86,6 +86,11 @@ public class VoltagePlots extends AppCompatActivity
 
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+
+        vIGraph.getViewport().setScalable(true);
+        vIGraph.getViewport().setScrollable(true);
+        vIGraph.getViewport().setScalableY(true);
+        vIGraph.getViewport().setScrollableY(true);
     }
 
     /**

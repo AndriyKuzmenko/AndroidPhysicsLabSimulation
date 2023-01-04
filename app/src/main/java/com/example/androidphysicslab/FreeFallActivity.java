@@ -152,16 +152,15 @@ public class FreeFallActivity extends AppCompatActivity
                         if (!eT.getText().toString().equals(""))
                         {
                             name[0] = eT.getText().toString();
-
-                            saveResults(new FreeFallObject(drawingView.hList, drawingView.vList, name[0], gravity, mass));
-
-                            si.putExtra("hList",hList);
-                            si.putExtra("vList",vList);
-                            si.putExtra("g",gravity);
-                            si.putExtra("m",mass);
-
-                            startActivity(si);
                         }
+                        saveResults(new FreeFallObject(drawingView.hList, drawingView.vList, name[0], gravity, mass));
+
+                        si.putExtra("hList",hList);
+                        si.putExtra("vList",vList);
+                        si.putExtra("g",gravity);
+                        si.putExtra("m",mass);
+
+                        startActivity(si);
                     }
                 });
 

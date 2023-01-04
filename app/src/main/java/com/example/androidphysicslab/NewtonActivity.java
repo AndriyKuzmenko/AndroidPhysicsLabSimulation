@@ -1,6 +1,8 @@
 package com.example.androidphysicslab;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -38,6 +41,7 @@ public class NewtonActivity extends AppCompatActivity
     double m1,m2,g,mu,pixelsPerMeter,a,maxLength;
     final int seconds=5;
     boolean rerun;
+    AlertDialog.Builder adb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -141,30 +145,73 @@ public class NewtonActivity extends AppCompatActivity
     {
         if (newtonView.xList.contains(-1.1))
         {
+            Intent si = new Intent(this, NewtonResults.class);
             newtonView.xList.remove(-1.1);
-            if(!(rerun||FBRef.mUser==null))
+            if (!(rerun || FBRef.mUser == null))
             {
                 NewtonObject results = new NewtonObject(m1, m2, g, mu, newtonView.xList, newtonView.vList);
-                results.setName(newtonView.name);
-                saveResults(results);
-            }
-            Intent si=new Intent(this,NewtonResults.class);
-            double[] xList=new double[newtonView.xList.size()];
-            double[] vList=new double[newtonView.vList.size()];
 
-            for(int i=0; i<xList.length; i++)
-            {
-                xList[i]=newtonView.xList.get(i);
-                vList[i]=newtonView.vList.get(i);
+                final String[] name = {newtonView.name};
+                adb = new AlertDialog.Builder(this);
+                adb.setCancelable(false);
+                adb.setTitle("Please give a title for your results. Will override existing results in case of name collision");
+                final EditText eT = new EditText(this);
+                eT.setHint(name[0]);
+                adb.setView(eT);
+                adb.setPositiveButton("Confirm title", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        if (!eT.getText().toString().equals(""))
+                        {
+                            name[0] = eT.getText().toString();
+                        }
+
+                        results.setName(name[0]);
+                        saveResults(results);
+
+                        double[] xList = new double[newtonView.xList.size()];
+                        double[] vList = new double[newtonView.vList.size()];
+
+                        for (int i = 0; i < xList.length; i++)
+                        {
+                            xList[i] = newtonView.xList.get(i);
+                            vList[i] = newtonView.vList.get(i);
+                        }
+                        si.putExtra("xList", xList);
+                        si.putExtra("vList", vList);
+                        si.putExtra("g", g);
+                        si.putExtra("m1", m1);
+                        si.putExtra("m2", m2);
+                        si.putExtra("mu", mu);
+                        si.putExtra("a", a);
+                        startActivity(si);
+                    }
+                });
+
+                AlertDialog ad = adb.create();
+                ad.show();
             }
-            si.putExtra("xList",xList);
-            si.putExtra("vList",vList);
-            si.putExtra("g",g);
-            si.putExtra("m1",m1);
-            si.putExtra("m2",m2);
-            si.putExtra("mu",mu);
-            si.putExtra("a",a);
-            startActivity(si);
+            else
+            {
+                double[] xList = new double[newtonView.xList.size()];
+                double[] vList = new double[newtonView.vList.size()];
+
+                for (int i = 0; i < xList.length; i++)
+                {
+                    xList[i] = newtonView.xList.get(i);
+                    vList[i] = newtonView.vList.get(i);
+                }
+                si.putExtra("xList", xList);
+                si.putExtra("vList", vList);
+                si.putExtra("g", g);
+                si.putExtra("m1", m1);
+                si.putExtra("m2", m2);
+                si.putExtra("mu", mu);
+                si.putExtra("a", a);
+                startActivity(si);
+            }
         }
         return true;
     }

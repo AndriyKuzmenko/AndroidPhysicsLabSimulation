@@ -87,6 +87,11 @@ public class GalvanometerPlots extends AppCompatActivity
 
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+
+        tgIGraph.getViewport().setScalable(true);
+        tgIGraph.getViewport().setScrollable(true);
+        tgIGraph.getViewport().setScalableY(true);
+        tgIGraph.getViewport().setScrollableY(true);
     }
 
     /**

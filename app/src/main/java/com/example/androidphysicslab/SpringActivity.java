@@ -1,6 +1,8 @@
 package com.example.androidphysicslab;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -36,6 +39,7 @@ public class SpringActivity extends AppCompatActivity
     SpringView springView;
     double m,g,k,amplit,periods,pixelsPerMeter;
     boolean rerun;
+    AlertDialog.Builder adb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -123,6 +127,7 @@ public class SpringActivity extends AppCompatActivity
     {
         if (springView.xList.contains(-1.1))
         {
+            Intent si = new Intent(this, SpringResults.class);
             Log.i("TAG","here");
             springView.xList.remove(-1.1);
 
@@ -130,31 +135,75 @@ public class SpringActivity extends AppCompatActivity
 
             if(!(rerun||FBRef.mUser==null))
             {
-                results.setName(springView.name);
-                saveResults(results);
+                final String[] name = {springView.name};
+                adb = new AlertDialog.Builder(this);
+                adb.setCancelable(false);
+                adb.setTitle("Please give a title for your results. Will override existing results in case of name collision");
+                final EditText eT = new EditText(this);
+                eT.setHint(name[0]);
+                adb.setView(eT);
+                adb.setPositiveButton("Confirm title", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        if (!eT.getText().toString().equals(""))
+                        {
+                            name[0] = eT.getText().toString();
+                        }
+
+                        results.setName(name[0]);
+                        saveResults(results);
+
+                        double[] xList = new double[results.getXList().size()];
+                        double[] vList = new double[results.getVList().size()];
+                        double[] aList = new double[results.getAList().size()];
+
+                        for (int i = 0; i < xList.length; i++)
+                        {
+                            xList[i] = results.getXList().get(i);
+                            vList[i] = results.getVList().get(i);
+                            aList[i] = results.getAList().get(i);
+                        }
+
+                        si.putExtra("xList", xList);
+                        si.putExtra("vList", vList);
+                        si.putExtra("aList", aList);
+                        si.putExtra("g", g);
+                        si.putExtra("m", m);
+                        si.putExtra("k", k);
+                        si.putExtra("amplitude", amplit);
+                        si.putExtra("periods", periods);
+                        startActivity(si);
+                    }
+                });
+
+                AlertDialog ad = adb.create();
+                ad.show();
             }
-
-            Intent si=new Intent(this,SpringResults.class);
-            double[] xList=new double[results.getXList().size()];
-            double[] vList=new double[results.getVList().size()];
-            double[] aList=new double[results.getAList().size()];
-
-            for(int i=0; i<xList.length; i++)
+            else
             {
-                xList[i]=results.getXList().get(i);
-                vList[i]=results.getVList().get(i);
-                aList[i]=results.getAList().get(i);
-            }
+                double[] xList = new double[results.getXList().size()];
+                double[] vList = new double[results.getVList().size()];
+                double[] aList = new double[results.getAList().size()];
 
-            si.putExtra("xList",xList);
-            si.putExtra("vList",vList);
-            si.putExtra("aList",aList);
-            si.putExtra("g",g);
-            si.putExtra("m",m);
-            si.putExtra("k",k);
-            si.putExtra("amplitude",amplit);
-            si.putExtra("periods",periods);
-            startActivity(si);
+                for (int i = 0; i < xList.length; i++)
+                {
+                    xList[i] = results.getXList().get(i);
+                    vList[i] = results.getVList().get(i);
+                    aList[i] = results.getAList().get(i);
+                }
+
+                si.putExtra("xList", xList);
+                si.putExtra("vList", vList);
+                si.putExtra("aList", aList);
+                si.putExtra("g", g);
+                si.putExtra("m", m);
+                si.putExtra("k", k);
+                si.putExtra("amplitude", amplit);
+                si.putExtra("periods", periods);
+                startActivity(si);
+            }
         }
         return true;
     }

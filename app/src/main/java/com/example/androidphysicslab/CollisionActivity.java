@@ -1,6 +1,8 @@
 package com.example.androidphysicslab;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -38,6 +41,7 @@ public class CollisionActivity extends AppCompatActivity
     double h1,h2,g;
     int planet;
     boolean tall,rerun;
+    AlertDialog.Builder adb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -117,22 +121,53 @@ public class CollisionActivity extends AppCompatActivity
     {
         if (collisionView.ended)
         {
-            CollisionObject results=new CollisionObject(h1,h2,collisionView.v,collisionView.u,g,tall);
+            Intent si = new Intent(this, CollisionResults.class);
             if(!(rerun||FBRef.mUser==null))
             {
-                results.setName(collisionView.name);
-                saveResults(results);
+                final String[] name = {collisionView.name};
+                adb = new AlertDialog.Builder(this);
+                adb.setCancelable(false);
+                adb.setTitle("Please give a title for your results. Will override existing results in case of name collision");
+                final EditText eT = new EditText(this);
+                eT.setHint(name[0]);
+                adb.setView(eT);
+                adb.setPositiveButton("Confirm title", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        if (!eT.getText().toString().equals(""))
+                        {
+                            name[0] = eT.getText().toString();
+                        }
+
+                        CollisionObject results=new CollisionObject(h1,h2,collisionView.v,collisionView.u,g,tall);
+                        results.setName(name[0]);
+                        saveResults(results);
+
+                        si.putExtra("h1", h1);
+                        si.putExtra("h2", h2);
+                        si.putExtra("v", collisionView.v);
+                        si.putExtra("u", collisionView.u);
+                        si.putExtra("g", g);
+                        si.putExtra("tall", tall);
+                        startActivity(si);
+                    }
+                });
+
+                AlertDialog ad = adb.create();
+                ad.show();
             }
-
-            Intent si=new Intent(this,CollisionResults.class);
-
-            si.putExtra("h1",h1);
-            si.putExtra("h2",h2);
-            si.putExtra("v",results.getV());
-            si.putExtra("u",results.getU());
-            si.putExtra("g",g);
-            si.putExtra("tall",tall);
-            startActivity(si);
+            else
+            {
+                si.putExtra("h1", h1);
+                si.putExtra("h2", h2);
+                si.putExtra("v", collisionView.v);
+                si.putExtra("u", collisionView.u);
+                si.putExtra("g", g);
+                si.putExtra("tall", tall);
+                startActivity(si);
+            }
         }
         return true;
     }

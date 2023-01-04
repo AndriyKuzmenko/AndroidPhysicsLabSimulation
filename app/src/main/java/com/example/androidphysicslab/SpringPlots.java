@@ -107,6 +107,21 @@ public class SpringPlots extends AppCompatActivity
 
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+
+        velocitySpringGraph.getViewport().setScalable(true);
+        velocitySpringGraph.getViewport().setScrollable(true);
+        velocitySpringGraph.getViewport().setScalableY(true);
+        velocitySpringGraph.getViewport().setScrollableY(true);
+
+        deltaXGraph.getViewport().setScalable(true);
+        deltaXGraph.getViewport().setScrollable(true);
+        deltaXGraph.getViewport().setScalableY(true);
+        deltaXGraph.getViewport().setScrollableY(true);
+
+        aSpringGraph.getViewport().setScalable(true);
+        aSpringGraph.getViewport().setScrollable(true);
+        aSpringGraph.getViewport().setScalableY(true);
+        aSpringGraph.getViewport().setScrollableY(true);
     }
 
     /**

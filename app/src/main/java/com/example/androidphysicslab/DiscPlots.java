@@ -100,6 +100,16 @@ public class DiscPlots extends AppCompatActivity
 
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+
+        lGraph.getViewport().setScalable(true);
+        lGraph.getViewport().setScrollable(true);
+        lGraph.getViewport().setScalableY(true);
+        lGraph.getViewport().setScrollableY(true);
+
+        vGraph.getViewport().setScalable(true);
+        vGraph.getViewport().setScrollable(true);
+        vGraph.getViewport().setScalableY(true);
+        vGraph.getViewport().setScrollableY(true);
     }
 
     /**
