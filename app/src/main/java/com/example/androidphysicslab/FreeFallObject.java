@@ -34,7 +34,7 @@ public class FreeFallObject extends Experiment
         this.m=m;
     }
 
-    public void setG(double m)
+    public void setG(double g)
     {
         this.g=g;
     }

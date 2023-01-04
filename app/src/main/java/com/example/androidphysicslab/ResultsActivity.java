@@ -107,7 +107,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
-        if(experimentsList.get(position).startsWith("Free Fall"))
+        if(position>=freeFallStart && position<springStart)
         {
             FreeFallObject results=freeFallList.get(position-freeFallStart);
             double[] hList=new double[results.getHList().size()];
@@ -129,7 +129,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("g",results.getG());
             startActivity(si);
         }
-        else if(experimentsList.get(position).startsWith("Spring"))
+        else if(position>=springStart && position<newtonStart)
         {
             SpringObject results=springList.get(position-springStart);
             double[] xList=new double[results.getVList().size()];
@@ -157,7 +157,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("periods",results.getPeriods());
             startActivity(si);
         }
-        else if(experimentsList.get(position).startsWith("Second Newton's Law"))
+        else if(position>=newtonStart && position<voltageStart)
         {
             NewtonObject results=newtonList.get(position-newtonStart);
             double[] xList=new double[results.getVList().size()];
@@ -178,7 +178,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("mu",results.getMu());
             startActivity(si);
         }
-        else if(experimentsList.get(position).startsWith("Voltage"))
+        else if(position>=voltageStart && position<discStart)
         {
             VoltageObject results=voltageList.get(position-voltageStart);
             double[] rList=new double[10];
@@ -201,7 +201,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("maxR",results.getMaxR());
             startActivity(si);
         }
-        else if(experimentsList.get(position).startsWith("Disc"))
+        else if(position>=discStart && position<collisionStart)
         {
             DiscObject results=discList.get(position-discStart);
 
@@ -227,7 +227,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("deltax",results.getDeltax());
             startActivity(si);
         }
-        else if(experimentsList.get(position).startsWith("Collision"))
+        else if(position>=collisionStart && position<galvanometerStart)
         {
             CollisionObject results=collisionList.get(position-collisionStart);
 
@@ -240,7 +240,7 @@ public class ResultsActivity extends AppCompatActivity implements AdapterView.On
             si.putExtra("tall",results.getTall());
             startActivity(si);
         }
-        else if(experimentsList.get(position).startsWith("Tangent Galvanometer"))
+        else if(position>=galvanometerStart)
         {
             GalvanometerObject results=galvanometerList.get(position-galvanometerStart);
 

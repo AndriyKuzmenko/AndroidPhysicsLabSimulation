@@ -97,6 +97,16 @@ public class FreeFallPlots extends AppCompatActivity
 
         AdRequest adRequest=new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+
+        heightPlot.getViewport().setScalable(true);
+        heightPlot.getViewport().setScrollable(true);
+        heightPlot.getViewport().setScalableY(true);
+        heightPlot.getViewport().setScrollableY(true);
+
+        velocityPlot.getViewport().setScalable(true);
+        velocityPlot.getViewport().setScrollable(true);
+        velocityPlot.getViewport().setScalableY(true);
+        velocityPlot.getViewport().setScrollableY(true);
     }
 
     /**

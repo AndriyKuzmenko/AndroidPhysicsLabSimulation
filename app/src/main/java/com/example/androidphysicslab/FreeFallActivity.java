@@ -2,7 +2,9 @@ package com.example.androidphysicslab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -17,6 +19,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +40,7 @@ public class FreeFallActivity extends AppCompatActivity
     double mass,height,gravity,accelaration;
     boolean rerun;
     DrawingView drawingView;
+    AlertDialog.Builder adb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -133,14 +137,46 @@ public class FreeFallActivity extends AppCompatActivity
 
             if(!(rerun||FBRef.mUser==null))
             {
-                saveResults(new FreeFallObject(drawingView.hList, drawingView.vList, drawingView.name, gravity, mass));
-            }
+                final String[] name = {drawingView.name};
+                adb = new AlertDialog.Builder(this);
+                adb.setCancelable(false);
+                adb.setTitle("Please give a title for your results. Will override existing results in case of name collision");
+                final EditText eT = new EditText(this);
+                eT.setHint(name[0]);
+                adb.setView(eT);
+                adb.setPositiveButton("Confirm title", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        if (!eT.getText().toString().equals(""))
+                        {
+                            name[0] = eT.getText().toString();
 
-            si.putExtra("hList",hList);
-            si.putExtra("vList",vList);
-            si.putExtra("g",gravity);
-            si.putExtra("m",mass);
-            startActivity(si);
+                            saveResults(new FreeFallObject(drawingView.hList, drawingView.vList, name[0], gravity, mass));
+
+                            si.putExtra("hList",hList);
+                            si.putExtra("vList",vList);
+                            si.putExtra("g",gravity);
+                            si.putExtra("m",mass);
+
+                            startActivity(si);
+                        }
+                    }
+                });
+
+                AlertDialog ad = adb.create();
+                ad.show();
+            }
+            else
+            {
+                si.putExtra("hList",hList);
+                si.putExtra("vList",vList);
+                si.putExtra("g",gravity);
+                si.putExtra("m",mass);
+
+                startActivity(si);
+            }
         }
 
         return true;
